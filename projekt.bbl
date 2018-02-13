@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{KrausDisP}
+Kraus, M.: \emph{Paralelní výpočetní architektury založené na numerické
+  integraci}. Disertačná práca, FIT VUT v Brně, 2013.
+
+\bibitem{KunovskyH}
+Kunovský, J.: \emph{Modern Taylor Series Method}. Habilitation work, VUT Brno,
+  1994.
+
+\bibitem{MatecnyBP}
+Matečný, F.: \emph{Simulátor procesora s operáciou delenia}. Bakalářska
+  práce, FIT VUT v Brně, 2016.
+
+\bibitem{NumMetody}
+Milan~Kubíèek, D.~J., Miroslava~Dubcová: \emph{Numerické metody a
+  algoritmy}. VŠCHT Praha, 2005, ISBN 80-7080-558-7.
+
+\bibitem{OpalkaBP}
+Opálka, J.: \emph{Automatické řízení výpočtu}. Bakalářska práce, FIT
+  VUT v Brně, 2014.
+
+\bibitem{OpalkaDP}
+Opálka, J.: \emph{Automatické řízení výpočtu ve specializovaném
+  výpočetním systému}. Diplomová práce, FIT VUT v Brně, 2016.
+
+\bibitem{inpFP}
+Sekanina, L.: Operace v FP a iterační algoritmy. {}, 2017, slajdy k predmetu
+  INP - Návrh počítačových systémů.
+
+\bibitem{inpRepDat}
+Sekanina, L.: Reprezentace dat. {}, 2017, slajdy k predmetu INP - Návrh
+  počítačových systémů.
+
+\bibitem{FXOnline}
+Tišňovský, P.: Fixed point arithmetic [online]. {\tt
+  http://www.root.cz/clanky/fixed-point-arithmetic/}, 2006-05-24 [cit.
+  2017-11-22].
+
+\bibitem{FPOnline}
+Tišňovský, P.: Norma IEEE 754 a příbuzní: formáty plovoucí řádové
+  tečky [online]. {\tt
+  https://www.root.cz/clanky/norma-ieee-754-a-pribuzni-formaty \\
+  -plovouci-radove-tecky/}, 2006-05-31 [cit. 2017-11-22].
+
+\bibitem{FPOnline_operacie}
+Tišňovský, P.: Aritmetické operace s hodnotami ve formátu plovoucí
+  řádové čárky [online]. {\tt
+  https://www.root.cz/clanky/aritmeticke-operace-s-hodnotami-ve-formatu-plovouci-radove-carky/},
+  2006-06-07 [cit. 2018-01-07].
+
+\bibitem{ZavadaBP}
+Závada, V.: \emph{Simulátor procesoru s operací násobení}. Bakalářska
+  práce, FIT VUT v Brně, 2016.
+
+\bibitem{CamborBP}
+Čambor, M.: \emph{Elementární procesor v aritmetice pevné a pohyblivé
+  řádové čárky}. Bakalářska práce, FIT VUT v Brně, 2009.
+
+\end{thebibliography}
