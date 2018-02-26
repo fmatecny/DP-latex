@@ -139,3 +139,76 @@ DY4_{i} & = & \dfrac{1}{4v} ( DU3_{i}h - 3DY3_{i}DV1_{i} - 2DY2_{i}DV2_{i} - DY1
 
 
 Formuly jednotlivých členov tvoria Pascalov trojuholník a sú základom pre tvorbu návrhu deliaceho integrátora.
+
+
+
+\newpage
+
+Derivácie diferenciálnej rovnice s~operáciou násobenia:
+\begin{eqnarray}
+y' & = & qr \nonumber \\
+y'' & = & q'r + qr' \nonumber \\
+y''' & = & q''r + 2q'r' + qr'' \nonumber \\
+y^{(4)} & = & q'''r + 3q''r'+ 3q'r'' + qr''' \nonumber \\
+ & \vdots \nonumber &
+\end{eqnarray}
+
+Všeobecný zápis:
+\begin{equation}
+y^{(n+1)} = \sum_{k=0}^n \binom{n}{k} q^{(n-k)} r^{(k)} \nonumber
+\end{equation}
+
+\bigskip
+\bigskip
+
+Členy Taylorovej rady:
+\begin{eqnarray}
+DY1_{i} &=& h \cdot ( DQ0_{i} \cdot DR0_{i} ) \nonumber \\
+DY2_{i} &=& \frac{h}{2} \cdot ( DQ1_{i} \cdot DR0_{i} + DQ0_{i} \cdot DR1_{i}) \nonumber \\
+DY3_{i} &=& \frac{h}{3} \cdot ( DQ2_{i} \cdot DR0_{i} + DQ1_{i} \cdot DR1_{i} + DQ0_{i} \cdot DR2_{i}) \nonumber \\
+DY4_{i} &=& \frac{h}{4} \cdot (DQ3_{i} \cdot DR0_{i} + DQ2_{i} \cdot DR1_{i} + DQ1_{i} \cdot DR2_{i} + DQ0_{i} \cdot DR3_{i}) \nonumber \\
+ & \vdots \nonumber &
+\end{eqnarray}
+
+Všeobecný zápis:
+\begin{equation}
+DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
+\end{equation}
+
+\newpage
+
+Derivácie diferenciálnej rovnice s~operáciou delenia:
+\begin{eqnarray}
+y' & = & \dfrac{u}{v} \nonumber \\
+y'' & = & \dfrac{1}{v} (u' - y'v') \nonumber \\
+y''' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
+y^{(4)} & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
+ & \vdots \nonumber &
+\end{eqnarray}
+
+Všeobecný zápis:
+\begin{equation}
+y^{(n+1)} = \dfrac{1}{v} \left( u^{(n)} - \left( \sum_{k=1}^n \binom{n}{k} y^{(n-k+1)} v^{(k)} \right) \right) \nonumber
+\end{equation}
+
+\bigskip
+\bigskip
+
+Členy Taylorovej rady:
+\begin{eqnarray}
+DY1_{i} & = & \frac{1}{DV0_{i}} \cdot (DU0_{i} \cdot h) \nonumber \\
+DY2_{i} & = & \dfrac{1}{2DV0_{i}} \cdot (DU1_{i} \cdot h - DY1_{i} \cdot DV1_{i}) \nonumber \\
+DY3_{i} & = & \dfrac{1}{3DV0_{i}} \cdot ( DU2_{i} \cdot h - 2 \cdot DY2_{i} \cdot DV1_{i} - DY1_{i} \cdot DV2_{i} ) \nonumber \\
+DY4_{i} & = & \dfrac{1}{4DV0_{i}} \cdot ( DU3_{i} \cdot h - 3 \cdot DY3_{i} \cdot DV1_{i} - 2DY2_{i} \cdot DV2_{i} - DY1_{i} \cdot DV3_{i} ) \nonumber \\
+& \vdots \nonumber & 
+\end{eqnarray}
+
+Všeobecný zápis:
+\begin{equation}
+DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \nonumber
+\end{equation}
+
+
+
+
+
