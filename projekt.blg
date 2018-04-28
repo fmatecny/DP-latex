@@ -6,7 +6,7 @@ Database file #1: projekt-20-literatura-bibliography.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 You've used 13 entries,
             3151 wiz_defined-function locations,
-            720 strings with 6928 characters,
+            720 strings with 6932 characters,
 and the built_in function-call counts, 3914 in all, are:
 = -- 259
 > -- 91

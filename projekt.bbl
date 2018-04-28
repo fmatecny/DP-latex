@@ -21,7 +21,7 @@ Matečný, F.: \emph{Simulátor procesora s operáciou delenia}. Bakalářska
   práce, FIT VUT v Brně, 2016.
 
 \bibitem{NumMetody}
-Milan~Kubíèek, D.~J., Miroslava~Dubcová: \emph{Numerické metody a
+Milan~Kubíček, D.~J., Miroslava~Dubcová: \emph{Numerické metody a
   algoritmy}. VŠCHT Praha, 2005, ISBN 80-7080-558-7.
 
 \bibitem{OpalkaBP}
@@ -54,8 +54,8 @@ Tišňovský, P.: Norma IEEE 754 a příbuzní: formáty plovoucí řádové
 \bibitem{FPOnline_operacie}
 Tišňovský, P.: Aritmetické operace s hodnotami ve formátu plovoucí
   řádové čárky [online]. {\tt
-  https://www.root.cz/clanky/aritmeticke-operace-s-hodnotami-ve-formatu-plovouci-radove-carky/},
-  2006-06-07 [cit. 2018-01-07].
+  https://www.root.cz/clanky/aritmeticke-operace-s-hodnotami-ve-formatu \\
+  -plovouci-radove-carky/}, 2006-06-07 [cit. 2018-01-07].
 
 \bibitem{ZavadaBP}
 Závada, V.: \emph{Simulátor procesoru s operací násobení}. Bakalářska
