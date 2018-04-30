@@ -122,21 +122,42 @@ DY1_{i} & = & h y_{i} \label{DY_cleny} \\
 DY2_{i} = \dfrac{h^{2}}{2!}y_{i} & = & \dfrac{h}{2} DY1_{i} \nonumber \\
 DY3_{i} = \dfrac{h^{3}}{3!}y_{i} & = & \dfrac{h}{3} DY2_{i} \nonumber \\
 DY4_{i} = \dfrac{h^{4}}{4!}y_{i} & = & \dfrac{h}{4} DY3_{i} \nonumber \\
-& \vdots & \nonumber \\
-DY(N)_{i} =  \dfrac{h^{n}}{n!}y_{i} & = & \dfrac{h}{n} DY(N-1)_{i} \nonumber
+& \vdots & \nonumber
+%DY(N)_{i} =  \dfrac{h^{n}}{n!}y_{i} & = & \dfrac{h}{n} DY(N-1)_{i} \nonumber
 \end{eqnarray}
+
+Všeobecný zápis:
+\begin{equation}
+DY(N)_{i} =  \dfrac{h^{n}}{n!}y_{i} = \dfrac{h}{n} DY(N-1)_{i} \nonumber
+\end{equation}
 
 Z~týchto vzťahov je možné riešiť jednoduché diferenciálne rovnice, ako je tomu \cite{OpalkaBP}, \cite{KrausDisP}.
 Zo vzťahov taktiež vyplýva, že každý ďalší člen Taylorovej rady je počítaný z~predchádzajúceho, čo vedie k~zefektívneniu výpočtu, a to hlavne pri vyšších deriváciách, kde je výpočet častokrát zložitý. Podobným postupom je možné upraviť diferenciálne rovnice, ktoré obsahujú operáciu násobenia alebo delenia, a tiež tak zvýšiť efektivitu výpočtu týchto výpočtovo náročnejších operácií. 
 
 
 \section{Riešenie diferenciálnej rovnice s~operáciou násobenia}
-Jednotlivé členy Taylorovej rady pre diferenciálnu rovnicu
+Všeobecný zápis pre diferenciálnu rovnicu s operáciou násobenia je nasledujúci:
 \begin{eqnarray}
 y' & = & qr \, , \quad y(0) = y_{0} \label{dif_nasobenie}
 \end{eqnarray}
 
-majú nasledujúci význam:
+Spočítame jednotlivé derivácie:
+\begin{eqnarray}
+y' & = & qr \nonumber \\
+y'' & = & q'r + qr' \nonumber \\
+y''' & = & q''r + 2q'r' + qr'' \nonumber \\
+y^{(4)} & = & q'''r + 3q''r'+ 3q'r'' + qr''' \nonumber \\
+ & \vdots \nonumber &
+\end{eqnarray}
+
+
+ktoré vytvárajú Pascalov trojuholník. Derivácie možeme všeobecne zápísať ako:
+\begin{equation}
+y^{(n+1)} = \sum_{k=0}^n \binom{n}{k} q^{(n-k)} r^{(k)} \nonumber
+\end{equation}
+\bigskip
+
+Z derivácií odvodíme jednotlivé členy Taylorovej rady \eqref{Taylor}, ktoré majú nasledujúci význam:
 
 \begin{eqnarray}
 DY1_{i} & = & hq_{i}r_{i} \label{DY1_cleny_nasobenia} \\
@@ -146,7 +167,12 @@ DY4_{i} & = & \frac{h}{4} (DQ3_{i}DR0_{i} + DQ2_{i}DR1_{i} + DQ1_{i}DR2_{i} + DQ
 & \vdots \nonumber &
 \end{eqnarray}
 
-Podrobný prevod je uvedený v~prílohe \ref{priloha_nasobenie} a je prevzatý z~\cite{ZavadaBP}. Ako je vidieť, jednotlivé členy vytvárajú Pascalov trojuholník.
+Všeobecný zápis:
+\begin{equation}
+DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
+\end{equation}
+
+Uvedený prevod vychádza z práce \cite{ZavadaBP}.
 
 
 \section{Riešenie diferenciálnej rovnice s~operáciou delenia}
@@ -173,20 +199,26 @@ Podrobný prevod je uvedený v~prílohe~\ref{priloha_delenie} a je prevzatý z~m
 
 
 \section{Pevná rádová čiarka}
-Pri počítaní v~pevnej rádovej čiarke sú čísla reprezentované na $ k $ bitoch v~tvare $ N.M $, kde prvých $ N $ bitov tvorí časť čísla pred desatinnou čiarkou, a zostávajúcich $ M $ bitov tvorí číslo za desatinnou čiarkou. Pozícia desatinnej čiarky je dopredu známa. V~závislosti od jej pozície sa používajú rôzne formáty pevnej rádovej čiarky. Tie najpoužívanejšie sú znázornené na obrázku~\ref{formatfixpoint}. 
-\\ TODO
-Obrázok \ref{formatfixpoint}a) zobrazuje celočíselnú arimtetiku na n bitoch a s
-b) n bitov pred desatinnou čiarkou a m bitov za desatinou čiarkou. 
-c) je opakom a kde je číslo reprezentované za desatinou čiarkou
-d) je c s pridaním znaminekového bitu.
-
-budeme používať b) kde MSB j eznamienko, n bitov pred a m bitov za desatinnou čiarkuio kde n = , a m = .
+Pri počítaní v~pevnej rádovej čiarke sú čísla reprezentované na $ k $ bitoch v~tvare $ n.m $, kde prvých $ n $ bitov tvorí časť čísla pred desatinnou čiarkou, a zostávajúcich $ m $ bitov tvorí číslo za desatinnou čiarkou. Pozícia desatinnej čiarky je dopredu známa. V~závislosti od jej pozície sa používajú rôzne formáty pevnej rádovej čiarky. Tie najpoužívanejšie sú znázornené na obrázku~\ref{formatfixpoint}. \\
+Obrázok \ref{formatfixpointa} zobrazuje aritmetiku s nulovým počtom bitov za desatinnou čiarkou a teda sa jedná o celočíselnú arimtetiku na $ n $ bitoch. \ref{formatfixpointb} zobrazuje aritmetiku s $ n $ bitmi pred desatinnou čiarkou a $ m $ bitmi za desatinou čiarkou. Ďalšia časť obrázku \ref{formatfixpointc} je opakom \ref{formatfixpointa}, kde je číslo reprezentované len za desatinou čiarkou. Posledná časť \ref{formatfixpointd} je podobná ako \ref{formatfixpointc}, ale s pridaným znamienkovým bitom $ S $.
+V tejto práci budem používať FP aritemtiku v tvare \ref{formatfixpointb} s pridaním znamienkovým bitom na pozícii MSB.
  TODO -popísať obrázok!!
 
-\bigskip
+%\bigskip
+%\begin{figure}[h]
+%\centering
+%\scalebox{0.9}{\includegraphics{obrazky/pevna_rad_carka.eps}}
+%\caption{Rôzne formáty fixed point aritmetiky \cite{KrausDisP}}
+%\label{formatfixpoint}
+%\end{figure}
+%\bigskip
+
 \begin{figure}[h]
 \centering
-\scalebox{0.9}{\includegraphics{obrazky/pevna_rad_carka.eps}}
+\subfloat{\label{formatfixpointa} \includegraphics[width=0.44\linewidth]{obrazky/pevna_rad_carkaa.eps}} \hspace{0.6cm}
+\subfloat{\label{formatfixpointb} \includegraphics[width=0.405\linewidth]{obrazky/pevna_rad_carkab.eps}} \\ \bigskip
+\subfloat{\label{formatfixpointc} \includegraphics[width=0.405\linewidth]{obrazky/pevna_rad_carkac.eps}} \hspace{1.2cm}
+\subfloat{\label{formatfixpointd} \includegraphics[width=0.405\linewidth]{obrazky/pevna_rad_carkad.eps}}
 \caption{Rôzne formáty fixed point aritmetiky \cite{KrausDisP}}
 \label{formatfixpoint}
 \end{figure}

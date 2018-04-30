@@ -8,21 +8,21 @@
 \contentsline {subsection}{\numberline {2.3.2}Runge-Kutta 4. r\IeC {\'a}du}{5}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c Taylorovou radou}{6}{chapter.3}
 \contentsline {section}{\numberline {3.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{7}{section.3.2}
-\contentsline {chapter}{\numberline {4}Reprezent\IeC {\'a}cia operandov}{8}{chapter.4}
-\contentsline {section}{\numberline {4.1}Pevn\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{8}{section.4.1}
-\contentsline {section}{\numberline {4.2}Pohybliv\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{9}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}S\IeC {\'u}\IeC {\v c}et a rozdiel}{11}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}N\IeC {\'a}sobenie a delenie}{12}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Numerick\IeC {\'e} integr\IeC {\'a}tory}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Deliaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{14}{section.5.2}
-\contentsline {section}{\numberline {5.3}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{16}{section.5.3}
-\contentsline {section}{\numberline {5.4}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{17}{section.5.4}
-\contentsline {chapter}{\numberline {6}Z\IeC {\'a}ver}{19}{chapter.6}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{20}{chapter*.2}
+\contentsline {section}{\numberline {3.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{8}{section.3.2}
+\contentsline {chapter}{\numberline {4}Reprezent\IeC {\'a}cia operandov}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Pevn\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Pohybliv\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{10}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}S\IeC {\'u}\IeC {\v c}et a rozdiel}{12}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}N\IeC {\'a}sobenie a delenie}{13}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Numerick\IeC {\'e} integr\IeC {\'a}tory}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{14}{section.5.1}
+\contentsline {section}{\numberline {5.2}Deliaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{15}{section.5.2}
+\contentsline {section}{\numberline {5.3}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{17}{section.5.3}
+\contentsline {section}{\numberline {5.4}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{18}{section.5.4}
+\contentsline {chapter}{\numberline {6}Z\IeC {\'a}ver}{20}{chapter.6}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{21}{chapter*.15}
 \ttl@starttoc {chapters@1}
-\contentsline {chapter}{\numberline {A}Rie\IeC {\v s}enie r\IeC {\^o}znych typov diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{21}{appendix.A}
-\contentsline {subsection}{\numberline {A.0.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{21}{subsection.A.0.1}
-\contentsline {subsection}{\numberline {A.0.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{22}{subsection.A.0.2}
+\contentsline {chapter}{\numberline {A}Rie\IeC {\v s}enie r\IeC {\^o}znych typov diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{22}{appendix.A}
+\contentsline {subsection}{\numberline {A.0.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{22}{subsection.A.0.1}
+\contentsline {subsection}{\numberline {A.0.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{23}{subsection.A.0.2}
 \contentsfinish 
