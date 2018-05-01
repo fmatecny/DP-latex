@@ -12,7 +12,7 @@
 %pevná rádová čiarka obrázok je česky....mám rperobiť na slovenský?netreba
 
 \chapter{Úvod}
-Hlavným cieľom tejto práce je návrh harvérových komponentov na riešenie rozsiahlych diferenciálnych rovníc. Diferenciálne rovnice sa väčšinou riešia pomocou numerickej integrácie, a teda s~použitím vhodných numerických metód. Hardvérový komponent využívajúci numerickú integráciu sa nazýva numerický integrátor.
+Hlavným cieľom tejto práce je návrh hardvérových komponentov na riešenie rozsiahlych diferenciálnych rovníc. Diferenciálne rovnice sa väčšinou riešia pomocou numerickej integrácie, a teda s~použitím vhodných numerických metód. Hardvérový komponent využívajúci numerickú integráciu sa nazýva numerický integrátor.
 
 V~kapitole~\ref{NUM_INTEGRACIA} sú predstavené rôzne numerické metódy - Eulerova metóda, metóda Runge-Kutta a Taylorov rad. Najväčšia pozornosť je venovaná metóde Taylorovej rady, ktorá poskytuje vhodný pomer medzi rýchlosťou a presnosťou \cite{KunovskyH}. Bližší popis a práca s~toutou metódou sú uvedené v~kapitole~\ref{SOLUTION_WITH_TAYLOR}. Ukážeme si rozdelenie Taylorovej rady na jednotlivé členy a následne úpravu týchto členov tak, aby bolo možné výpočet čo najviac paralelizovať a optimalizovať. Táto úprava bude realizovaná na obyčajných diferenciálych rovniciach s~operáciou násobenia a delenia. Takto upravené a vytvorené rovnice budú následne použité pri návrhu rôznych typov numerických integrátorov.
 
@@ -113,7 +113,7 @@ y_{i + 1} = y_{i} + h y_{i} + \dfrac{h^{2}}{2!}y_{i} + \dfrac{h^{3}}{3!}y_{i} + 
 
 To je možné prepísať na:
 \begin{eqnarray}
-y_{i + 1} = y_{i} + DY1_{i} + DY2_{i} + DY3_{i} + DY4_{i} + \cdots + DY(N)_{i}
+y_{i + 1} = y_{i} + DY1_{i} + DY2_{i} + DY3_{i} + DY4_{i} + \cdots + DY(N)_{i} \label{TaylorDYcleny}
 \end{eqnarray}
 
 kde je význam jednotlivých členov nasledujúci:
@@ -141,7 +141,15 @@ Všeobecný zápis pre diferenciálnu rovnicu s operáciou násobenia je nasledu
 y' & = & qr \, , \quad y(0) = y_{0} \label{dif_nasobenie}
 \end{eqnarray}
 
-Spočítame jednotlivé derivácie:
+Pre výpočet každej premennej v rovnici je potrebné použiť Taylorovu radu v tvare \eqref{TaylorDYcleny}. Jednotlivé Taylorove rady vyzerajú nasledovne:
+\begin{eqnarray}
+y_{i + 1} & = & y_{i} + DY1_{i} + DY2_{i} + DY3_{i} + DY4_{i} + \cdots + DY(n)_{i}\\
+q_{i+1} & = & q_i + DQ1_i + DQ2_i + DQ3_i + DQ4_i + \cdots + DQ(n)_i\\
+r_{i+1} & = & r_i + DR1_i + DR2_i + DR3_i + DR4_i + \cdots + DR(n)_i
+\end{eqnarray}
+
+
+Spočítame jednotlivé derivácie rovnice \eqref{dif_nasobenie}:
 \begin{eqnarray}
 y' & = & qr \nonumber \\
 y'' & = & q'r + qr' \nonumber \\
@@ -151,14 +159,24 @@ y^{(4)} & = & q'''r + 3q''r'+ 3q'r'' + qr''' \nonumber \\
 \end{eqnarray}
 
 
-ktoré vytvárajú Pascalov trojuholník. Derivácie možeme všeobecne zápísať ako:
+Ako je vidieť, derivácie vytvárajú Pascalov trojuholník a možeme ich všeobecne zápísať ako:
 \begin{equation}
 y^{(n+1)} = \sum_{k=0}^n \binom{n}{k} q^{(n-k)} r^{(k)} \nonumber
 \end{equation}
 \bigskip
 
 Z derivácií odvodíme jednotlivé členy Taylorovej rady \eqref{Taylor}, ktoré majú nasledujúci význam:
+\begin{eqnarray}
+\dfrac{DY1_{i}}{h} & = & DQ0_i DR0_i \\
+\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} & = & \dfrac{DQ1_i}{h} DR0_i + DQ0_i \dfrac{DR1_i}{h} \nonumber \\
+\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} & = & \dfrac{DQ2_i}{\frac{h^{2}}{2!}} DR0_i + 2 \dfrac{DQ1_i}{h} \dfrac{DR1_i}{h} + DQ0_i \dfrac{DR2_i}{\frac{h^{2}}{2!}} \nonumber \\
+\dfrac{DY4_{i}}{\frac{h^{4}}{4!}} & = & \dfrac{DQ3_i}{\frac{h^{3}}{3!}} DR0_i + 3 \dfrac{DQ2_i}{\frac{h^{2}}{2!}} \dfrac{DR1_i}{h} + 3 \dfrac{DQ1_i}{h} \dfrac{DR2_i}{\frac{h^{2}}{2!}} + DQ0_i \dfrac{DR3_i}{\frac{h^{3}}{3!}} \nonumber \\
+& \vdots \nonumber & 
+\end{eqnarray}
 
+
+
+Po úprave dostaneme konečný tvar jednotlivých členov:
 \begin{eqnarray}
 DY1_{i} & = & hq_{i}r_{i} \label{DY1_cleny_nasobenia} \\
 DY2_{i} & = & \frac{h}{2} (DQ1_{i}DR0_{i} + DQ0_{i}DR1_{i}) \label{DY2_cleny_nasobenia} \\
@@ -172,16 +190,58 @@ Všeobecný zápis:
 DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
 \end{equation}
 
-Uvedený prevod vychádza z práce \cite{ZavadaBP}.
+Uvedený prevod vychádza z práce \cite{ZavadaBP}. Jednotlivé rovnice členov Taylorovej rady budú slúžiť pri návrhu a implementácií násobiacich integrátorov.
 
 
 \section{Riešenie diferenciálnej rovnice s~operáciou delenia}
-Podobne, ako v~predchádzajúcom prípade pri použití diferenciálnej rovnice s~operáciou delenia
+Podobne, ako v~predchádzajúcom prípade, zapíšme diferenciálnu rovnicu s~operáciou delenia nasledovne:
 \begin{eqnarray}
 y' & = & \dfrac{u}{v} \, , \quad y(0) = y_{0} \label{dif_delenie}
 \end{eqnarray}
 
-majú jednotlivé členy Taylorovej rady nasledovný tvar:
+
+
+Jednotlivé Taylorove rady pre premenné v rovnici vyzerajú nasledovne:
+\begin{eqnarray}
+y_{i + 1} & = & y_{i} + DY1_{i} + DY2_{i} + DY3_{i} + DY4_{i} + \cdots + DY(n)_{i}\\
+u_{i+1} & = & u_i + DU1_i + DU2_i + DU3_i + DU4_i + \cdots + DU(n)_i\\
+v_{i+1} & = & v_i + DV1_i + DV2_i + DV3_i + DV4_i + \cdots + DV(n)_i
+\end{eqnarray}
+
+
+
+Ďalšie derivácie rovnice \eqref{dif_delenie} sú:
+\begin{eqnarray}
+y'' = \dfrac{u'v - uv'}{v^{2}} & = & \dfrac{1}{v} (u' - y'v') \label{derivacie_delenie} \\
+y''' = \left( \dfrac{1}{v} (u' - y'v') \right)' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
+y^{(4)} = \left( \dfrac{1}{v} (u'' - 2y''v' - y'v') \right)' & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
+ & \vdots \nonumber &
+\end{eqnarray}
+
+Aj tu je vidieť, že jednotlivé derivácie tvoria Pascalov trojuholník. Všeobecný zápis je nasledovný:
+\begin{equation}
+y^{(n+1)} = \dfrac{1}{v} \left( u^{(n)} - \left( \sum_{k=1}^n \binom{n}{k} y^{(n-k+1)} v^{(k)} \right) \right) \nonumber
+\end{equation}
+\bigskip
+
+Po dosadení jednotlivých členov $ DV(n)_{i} $ a $ DU(n)_{i} $ do derivácií \eqref{derivacie_delenie} dostaneme:
+\begin{eqnarray}
+\dfrac{DY1_{i}}{h} & = & \frac{1}{v} u~\\
+\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} & = & \dfrac{1}{v} ( \dfrac{DU1_{i}}{h} - \dfrac{DY1_{i}}{h}\dfrac{DV1_{i}}{h} ) \nonumber \\
+\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} & = & \dfrac{1}{v} 
+( \dfrac{DU2_{i}}{\frac{h^{2}}{2!}} - 
+2\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV1_{i}}{h} - 
+\dfrac{DY1_{i}}{h} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} ) \nonumber \\
+\dfrac{DY4_{i}}{\frac{h^{4}}{4!}} & = & \dfrac{1}{v} 
+( \dfrac{DU3_{i}}{\frac{h^{3}}{3!}} - 
+3\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} \dfrac{DV1_{i}}{h} - 
+3\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} -
+\dfrac{DY1_{i}}{h} \dfrac{DV3_{i}}{\frac{h^{3}}{3!}} ) \nonumber \\
+& \vdots \nonumber & 
+\end{eqnarray}
+
+
+Po úprave majú jednotlivé členy Taylorovej rady nasledovný tvar:
 \begin{eqnarray}
 DY1_{i} & = & \frac{1}{v_{i}} (hu_{i}) \label{DY1_cleny_delenia} \\
 DY2_{i} & = & \dfrac{1}{2v_{i}} (DU1_{i}h - DY1_{i}DV1_{i}) \label{DY2_cleny_delenia} \\
@@ -190,19 +250,24 @@ DY4_{i} & = & \dfrac{1}{4v_{i}} ( DU3_{i}h - 3DY3_{i}DV1_{i} - 2DY2_{i}DV2_{i} -
 & \vdots \nonumber & 
 \end{eqnarray}
 
-Podrobný prevod je uvedený v~prílohe~\ref{priloha_delenie} a je prevzatý z~mojej bakalárskej práce~\cite{MatecnyBP}. Aj tu je vidieť, že jednotlivé členy tvoria Pascalov trojuholník. Takto upravené členy sú následne použité na návrh jednotlivých typov integrátorov popísaných v~kapitole~\ref{NUM_INTEGRATORY}.
+Všeobecný zápis:
+\begin{equation}
+DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \nonumber
+\end{equation}
+\bigskip
+
+Vyjadrenie jednotlivých členov Taylorovej rady vychádza z~mojej bakalárskej práce~\cite{MatecnyBP}. Takto upravené členy sú následne použité na návrh jednotlivých typov integrátorov popísaných v~kapitole~\ref{NUM_INTEGRATORY}.
 
 
 
 \chapter{Reprezentácia operandov} \label{REPREZENTACIA_OPERANDOV}
-Čísla v~počítači môžeme reprezentovať rôznymi spôsobmi v~závislosti od zvolenej aritmetiky. Reprezentáciu čísiel v~počítači je možné vykonať v~pevnej a v~pohyblivej rádovej čiarke (ang. fixed point (FX) a floating point (FP)). Obe aritmetiky sú popísané nižšie. Informácie v~tejto kapitole sú čerpané z~\cite{FXOnline}, \cite{FPOnline}, \cite{KrausDisP}, \cite{inpFP}, \cite{inpRepDat}.
+Čísla vo výpočtových systémoch sú reprezentované rôznymi spôsobmi v~závislosti od zvolenej aritmetiky. Najpoužívanjšie sú reprezentácie čísiel v~pevnej a v~pohyblivej rádovej čiarke (ang. fixed point (FX) a floating point (FP)). Obe aritmetiky sú popísané v nasledujúcich podkapitolách. Informácie v~tejto kapitole sú čerpané z~\cite{FXOnline}, \cite{FPOnline}, \cite{KrausDisP}, \cite{inpFP}, \cite{inpRepDat}.
 
 
 \section{Pevná rádová čiarka}
 Pri počítaní v~pevnej rádovej čiarke sú čísla reprezentované na $ k $ bitoch v~tvare $ n.m $, kde prvých $ n $ bitov tvorí časť čísla pred desatinnou čiarkou, a zostávajúcich $ m $ bitov tvorí číslo za desatinnou čiarkou. Pozícia desatinnej čiarky je dopredu známa. V~závislosti od jej pozície sa používajú rôzne formáty pevnej rádovej čiarky. Tie najpoužívanejšie sú znázornené na obrázku~\ref{formatfixpoint}. \\
-Obrázok \ref{formatfixpointa} zobrazuje aritmetiku s nulovým počtom bitov za desatinnou čiarkou a teda sa jedná o celočíselnú arimtetiku na $ n $ bitoch. \ref{formatfixpointb} zobrazuje aritmetiku s $ n $ bitmi pred desatinnou čiarkou a $ m $ bitmi za desatinou čiarkou. Ďalšia časť obrázku \ref{formatfixpointc} je opakom \ref{formatfixpointa}, kde je číslo reprezentované len za desatinou čiarkou. Posledná časť \ref{formatfixpointd} je podobná ako \ref{formatfixpointc}, ale s pridaným znamienkovým bitom $ S $.
-V tejto práci budem používať FP aritemtiku v tvare \ref{formatfixpointb} s pridaním znamienkovým bitom na pozícii MSB.
- TODO -popísať obrázok!!
+Obrázok \ref{formatfixpointa} zobrazuje aritmetiku s nulovým počtom bitov za desatinnou čiarkou a teda sa jedná o celočíselnú arimtetiku na $ n $ bitoch. Vedľajší obrázok \ref{formatfixpointb} zobrazuje aritmetiku s $ n $ bitmi pred desatinnou čiarkou a s $ m $ bitmi za desatinou čiarkou. Ďalšia časť obrázku \ref{formatfixpointc} je opakom \ref{formatfixpointa}, kde je číslo reprezentované len za desatinou čiarkou na $ m $ bitoch. Posledný obrázok \ref{formatfixpointd} je podobný ako \ref{formatfixpointc}, ale s pridaným znamienkovým bitom $ S $.
+V tejto práci budem používať FX aritemtiku v tvare \ref{formatfixpointb} s pridaním znamienkovým bitom na pozícii MSB (most significant bit).
 
 %\bigskip
 %\begin{figure}[h]
@@ -478,11 +543,37 @@ Operácie násobenia a sčítania sa vykonávajú rovnako ako v~paralelnom náso
 \end{figure}
 \bigskip
 
+\section{Sústava diferenciálnych rovníc}
+Integrátory, ktoré sme si popísali je možné medzi sebou zapojiť a riešiť tak diferenciálnu rovnicu. Po zapojení integrátorov nebude nutné predpočítavať vstupné hodnoty, ale stačí zadať počiatočné podmienky na naštartovanie výpočtu a všetky ostatné hodnoty sa dopočítajú.
+Zvoľme konkrétnu diferenciálnu rovnciu s operáciou násobenia v tvare:
+\begin{eqnarray}
+y' & = & sin(t) e^{-t} \, , \quad y(0) = 1 \label{dif_sint_et}
+\end{eqnarray}
+\bigskip
 
-%\chapter{Implementácia integrátorv vo VHDL}
-%\chapter{Analýza}
-%\section{Porovanie Taylorovej rady s metódou Runge-Kutta 2. radu}
-%\section{Porovanie Taylorovej rady s metódou Runge-Kutta 4. radu}
+Rovnicu prevedieme do sústavy diferenciálnych rovníc:
+\begin{eqnarray}
+y' & = & qr \, , \quad y(0) = 1 \nonumber \\
+r' & = & -r \, , \quad r(0) = 1 \nonumber \\
+q' & = & s \, , \quad q(0) = 0 \nonumber \\
+s' & = & -q \, , \quad s(0) = 1 \nonumber \\
+\end{eqnarray}
+
+Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov.
+
+
+\chapter{Implementácia integrátorv vo VHDL}
+Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a simulované v Model Sim. 
+FX - paralelná násobička, sčítačka.
+
+
+FP
+Naprogramovanie FPGA VRTEX-5. Pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit.
+
+
+\chapter{Analýza}
+\section{Porovanie Taylorovej rady s metódou Runge-Kutta 2. radu}
+\section{Porovanie Taylorovej rady s metódou Runge-Kutta 4. radu}
 
 \chapter{Záver}
 V~tejto práci sme sa zaoberali numerickou integráciou pomocou metódy Taylorovej rady. Úpravou jej členov sme získali potrebné rovnice, z~ktorých boli vytvorené jednotlivé návrhy integrátorov.

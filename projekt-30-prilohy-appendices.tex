@@ -13,202 +13,206 @@
 
 %\chapter{Plakát} % poster
 
-\chapter{Riešenie rôznych typov diferenciálnych rovníc}
-
-\subsection{Riešenie diferenciálnej rovnice s~operáciou násobenia} \label{priloha_nasobenie}
-Předpokládejme zadanou obecnou diferenciální rovnici se zadanou počáteční podmínkou:
-\begin{equation}
-\label{nasobeni_integrace}
-y'= q \cdot r~,~~~~~~y(0)=y_0
-\end{equation}
-
-Pro každou proměnnou v~rovnici je potřeba vytvořit Taylorovu řadu. Taylorovy řady pro zadanou rovnici vypadají následovně:
-\begin{eqnarray}
-y_{i+1} = DY0_i + DY1_i + DY2_i + DY3_i + \cdots + DY(n)_i\\
-q_{i+1} = DQ0_i + DQ1_i + DQ2_i + DQ3_i + \cdots + QZ(n)_i\\
-r_{i+1} = DR0_i + DR1_i + DR2_i + DR3_i + \cdots + DR(n)_i
-\end{eqnarray}
-
-Výpočet Taylorovy řady pro rovnici součinu se počítá následujícím způsobem:\\\\
-Nultý člen Taylorovy řady je roven počáteční podmínce:
-\begin{equation}
-DY0 = y_0
-\end{equation}
-
-Vyjádření prvního členu Taylorovy řady je následující:
-\begin{equation}
-DY1 = h \cdot y' 
-\end{equation}
-Podle vztahu (\ref{nasobeni_integrace}) je $y'$ na hrazen vztahem $q \cdot r$:
-\begin{equation}
-\label{h*q*r}
-DY1 = h \cdot q \cdot r
-\end{equation}
 
 
-Zderivujeme počáteční funkci (\ref{nasobeni_integrace}) a dostaneme vztah: 
-\begin{equation}
-y'' = q' \cdot r + q \cdot r'
-\end{equation}
 
-Nahradíme derivace pomocí prvků Taylorovy řady.
-\begin{equation}
-DY2 = \frac{h^2}{2!} \cdot ( \frac{DQ1}{h} \cdot r + q \cdot \frac{DR1}{h})
-\end{equation}
 
-Obdobně postupujeme u~třetího prvku další derivací funkce:
-\begin{equation}
-y''' = q'' \cdot r + 2 \cdot q' \cdot r' + q \cdot r''
-\end{equation}
-
-Opět nahradíme derivace členy Taylorovy řady a vyjádříme třetí člen:
-\begin{equation}
-DY3 = \frac{h^3}{3!} (\frac{DQ2}{\frac{h^2}{2!}} \cdot r + 2 \cdot \frac{DQ1}{h} \cdot \frac{DR1}{h} + q \cdot \frac{DR2}{\frac{h^2}{2!}})
-\end{equation}
-\\
-Obdobně postupujeme při vyjadřování dalších členů.
-Jednotlivé členy lze následně upravit pokrácením. Zde jsou uvedeny první čtyři členy:
-\begin{eqnarray}
-DY1 &=& h \cdot q \cdot r\\
-DY2 &=& \frac{h}{2} \cdot ( DQ1 \cdot DR0 + DQ0 \cdot DR1)\\
-DY3 &=& \frac{h}{3} ( DQ2 \cdot DR0 + DQ1 \cdot DR1 + DQ0 \cdot DR2)\\
-DY4 &=& \frac{h}{4} (DQ3 \cdot DR0 + DQ2 \cdot DR1 + DQ1 \cdot DR2 + DQ0 \cdot DR3)
-\end{eqnarray}
-
-Z~těchto vztahů je patrné, že jednotlivé členy se rozvíjejí a tento rozvoj lze algoritmizovat.\\ 
-%Výsledný vztah pro výpočet i-tého členu vypadá následovně
+%\chapter{Riešenie rôznych typov diferenciálnych rovníc}
 %
+%\subsection{Riešenie diferenciálnej rovnice s~operáciou násobenia} \label{priloha_nasobenie}
+%Předpokládejme zadanou obecnou diferenciální rovnici se zadanou počáteční podmínkou:
 %\begin{equation}
-%\begin{split}
-%\label{rovnice_clenu_Tay_nasobeni}
-%DY_{i} = \frac{h}{i} (DQ_{i-1} \cdot DR_{i-i} + DQ_{i-2} \cdot DR_{i-(i-1)} +  \\  + DQ_{i-(i-1)}\cdot DQ_{i-2} + DQ_{i-i} \cdot DR_{i-1})
-%\end{split}
+%\label{nasobeni_integrace}
+%y'= q \cdot r~,~~~~~~y(0)=y_0
 %\end{equation}
-
-
-\subsection{Riešenie diferenciálnej rovnice s~operáciou delenia} \label{priloha_delenie}
-
-Diferenciálna rovnica s~operáciou delenia:
-\begin{eqnarray}
-y' & = & \dfrac{u}{v}
-\end{eqnarray}
-
-Ďalšie derivácie rovnice \eqref{dif_delenie} sú:
-\begin{eqnarray}
-y'' = \dfrac{u'v - uv'}{v^{2}} & = & \dfrac{1}{v} (u' - y'v') \label{priloha_derivacie_delenie} \\
-y''' = \left( \dfrac{1}{v} (u' - y'v') \right)' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
-y^{(4)} = \left( \dfrac{1}{v} (u'' - 2y''v' - y'v') \right)' & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
- & \vdots \nonumber &
-\end{eqnarray}
-
-
-Podobne ako členy \ref{DY_cleny}, aj členy $ DV(n)_{i} $ a členy $ DU(n)_{i} $:
-\begin{align}
-DV1_{i} &= h v_{i}					& DU1_{i} &= h u_{i} \ \\ 
-DV2_{i} &= \dfrac{h}{2} DV1_{i} 	& DU2_{i} &= \dfrac{h}{2} DU1_{i} \nonumber \\
-DV3_{i} &= \dfrac{h}{3} DV2_{i} 	& DU3_{i} &= \dfrac{h}{3} DU2_{i} \nonumber \\
-DV4_{i} &= \dfrac{h}{4} DV3_{i} 	& DU4_{i} &= \dfrac{h}{4} DU3_{i} \nonumber \\
-&\hspace{2mm}\vdots					& &\hspace{2mm}\vdots \nonumber \\
-DV(N)_{i} &= \dfrac{h}{n} DV(N-1)_{i} & DU(N)_{i} &= \dfrac{h}{n} DU(N-1)_{i} \nonumber
-\end{align}
-
-Po dosadení jednotlivých členov $ DV(n)_{i} $ a $ DU(n)_{i} $ do derivácií \ref{priloha_derivacie_delenie} dostaneme:
-\begin{eqnarray}
-\dfrac{DY1_{i}}{h} & = & \frac{1}{v} u~\\
-\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} & = & \dfrac{1}{v} ( \dfrac{DU1_{i}}{h} - \dfrac{DY1_{i}}{h}\dfrac{DV1_{i}}{h} ) \nonumber \\
-\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} & = & \dfrac{1}{v} 
-( \dfrac{DU2_{i}}{\frac{h^{2}}{2!}} - 
-2\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV1_{i}}{h} - 
-\dfrac{DY1_{i}}{h} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} ) \nonumber \\
-\dfrac{DY4_{i}}{\frac{h^{4}}{4!}} & = & \dfrac{1}{v} 
-( \dfrac{DU3_{i}}{\frac{h^{3}}{3!}} - 
-3\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} \dfrac{DV1_{i}}{h} - 
-3\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} -
-\dfrac{DY1_{i}}{h} \dfrac{DV3_{i}}{\frac{h^{3}}{3!}} ) \nonumber \\
-& \vdots \nonumber & 
-\end{eqnarray}
-
-Po úprave vyzerajú jednotlivé členy Taylorovej rady \eqref{Taylor} pre riešenie diferenciálnej rovnice \eqref{dif_delenie} nasledovne:
-\begin{eqnarray}
-DY1_{i} & = & \frac{1}{v} (hu)  \\
-DY2_{i} & = & \dfrac{1}{2v} (DU1_{i}h - DY1_{i}DV1_{i}) \\
-DY3_{i} & = & \dfrac{1}{3v} ( DU2_{i}h - 2DY2_{i}DV1_{i} - DY1_{i}DV2_{i} ) \\
-DY4_{i} & = & \dfrac{1}{4v} ( DU3_{i}h - 3DY3_{i}DV1_{i} - 2DY2_{i}DV2_{i} - DY1_{i}DV3_{i} ) \\ 
-& \vdots \nonumber & 
-\end{eqnarray}
-
-
-Formuly jednotlivých členov tvoria Pascalov trojuholník a sú základom pre tvorbu návrhu deliaceho integrátora.
-
-
-
-\newpage
-
-Derivácie diferenciálnej rovnice s~operáciou násobenia:
-\begin{eqnarray}
-y' & = & qr \nonumber \\
-y'' & = & q'r + qr' \nonumber \\
-y''' & = & q''r + 2q'r' + qr'' \nonumber \\
-y^{(4)} & = & q'''r + 3q''r'+ 3q'r'' + qr''' \nonumber \\
- & \vdots \nonumber &
-\end{eqnarray}
-
-Všeobecný zápis:
-\begin{equation}
-y^{(n+1)} = \sum_{k=0}^n \binom{n}{k} q^{(n-k)} r^{(k)} \nonumber
-\end{equation}
-
-\bigskip
-\bigskip
-
-Členy Taylorovej rady:
-\begin{eqnarray}
-DY1_{i} &=& h \cdot ( DQ0_{i} \cdot DR0_{i} ) \nonumber \\
-DY2_{i} &=& \frac{h}{2} \cdot ( DQ1_{i} \cdot DR0_{i} + DQ0_{i} \cdot DR1_{i}) \nonumber \\
-DY3_{i} &=& \frac{h}{3} \cdot ( DQ2_{i} \cdot DR0_{i} + DQ1_{i} \cdot DR1_{i} + DQ0_{i} \cdot DR2_{i}) \nonumber \\
-DY4_{i} &=& \frac{h}{4} \cdot (DQ3_{i} \cdot DR0_{i} + DQ2_{i} \cdot DR1_{i} + DQ1_{i} \cdot DR2_{i} + DQ0_{i} \cdot DR3_{i}) \nonumber \\
- & \vdots \nonumber &
-\end{eqnarray}
-
-Všeobecný zápis:
-\begin{equation}
-DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
-\end{equation}
-
-\newpage
-
-Derivácie diferenciálnej rovnice s~operáciou delenia:
-\begin{eqnarray}
-y' & = & \dfrac{u}{v} \nonumber \\
-y'' & = & \dfrac{1}{v} (u' - y'v') \nonumber \\
-y''' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
-y^{(4)} & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
- & \vdots \nonumber &
-\end{eqnarray}
-
-Všeobecný zápis:
-\begin{equation}
-y^{(n+1)} = \dfrac{1}{v} \left( u^{(n)} - \left( \sum_{k=1}^n \binom{n}{k} y^{(n-k+1)} v^{(k)} \right) \right) \nonumber
-\end{equation}
-
-\bigskip
-\bigskip
-
-Členy Taylorovej rady:
-\begin{eqnarray}
-DY1_{i} & = & \frac{1}{DV0_{i}} \cdot (DU0_{i} \cdot h) \nonumber \\
-DY2_{i} & = & \dfrac{1}{2DV0_{i}} \cdot (DU1_{i} \cdot h - DY1_{i} \cdot DV1_{i}) \nonumber \\
-DY3_{i} & = & \dfrac{1}{3DV0_{i}} \cdot ( DU2_{i} \cdot h - 2 \cdot DY2_{i} \cdot DV1_{i} - DY1_{i} \cdot DV2_{i} ) \nonumber \\
-DY4_{i} & = & \dfrac{1}{4DV0_{i}} \cdot ( DU3_{i} \cdot h - 3 \cdot DY3_{i} \cdot DV1_{i} - 2DY2_{i} \cdot DV2_{i} - DY1_{i} \cdot DV3_{i} ) \nonumber \\
-& \vdots \nonumber & 
-\end{eqnarray}
-
-Všeobecný zápis:
-\begin{equation}
-DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \nonumber
-\end{equation}
-
-
-
+%
+%Pro každou proměnnou v~rovnici je potřeba vytvořit Taylorovu řadu. Taylorovy řady pro zadanou rovnici vypadají následovně:
+%\begin{eqnarray}
+%y_{i+1} = DY0_i + DY1_i + DY2_i + DY3_i + \cdots + DY(n)_i\\
+%q_{i+1} = DQ0_i + DQ1_i + DQ2_i + DQ3_i + \cdots + QZ(n)_i\\
+%r_{i+1} = DR0_i + DR1_i + DR2_i + DR3_i + \cdots + DR(n)_i
+%\end{eqnarray}
+%
+%Výpočet Taylorovy řady pro rovnici součinu se počítá následujícím způsobem:\\\\
+%Nultý člen Taylorovy řady je roven počáteční podmínce:
+%\begin{equation}
+%DY0 = y_0
+%\end{equation}
+%
+%Vyjádření prvního členu Taylorovy řady je následující:
+%\begin{equation}
+%DY1 = h \cdot y' 
+%\end{equation}
+%Podle vztahu (\ref{nasobeni_integrace}) je $y'$ na hrazen vztahem $q \cdot r$:
+%\begin{equation}
+%\label{h*q*r}
+%DY1 = h \cdot q \cdot r
+%\end{equation}
+%
+%
+%Zderivujeme počáteční funkci (\ref{nasobeni_integrace}) a dostaneme vztah: 
+%\begin{equation}
+%y'' = q' \cdot r + q \cdot r'
+%\end{equation}
+%
+%Nahradíme derivace pomocí prvků Taylorovy řady.
+%\begin{equation}
+%DY2 = \frac{h^2}{2!} \cdot ( \frac{DQ1}{h} \cdot r + q \cdot \frac{DR1}{h})
+%\end{equation}
+%
+%Obdobně postupujeme u~třetího prvku další derivací funkce:
+%\begin{equation}
+%y''' = q'' \cdot r + 2 \cdot q' \cdot r' + q \cdot r''
+%\end{equation}
+%
+%Opět nahradíme derivace členy Taylorovy řady a vyjádříme třetí člen:
+%\begin{equation}
+%DY3 = \frac{h^3}{3!} (\frac{DQ2}{\frac{h^2}{2!}} \cdot r + 2 \cdot \frac{DQ1}{h} \cdot \frac{DR1}{h} + q \cdot \frac{DR2}{\frac{h^2}{2!}})
+%\end{equation}
+%\\
+%Obdobně postupujeme při vyjadřování dalších členů.
+%Jednotlivé členy lze následně upravit pokrácením. Zde jsou uvedeny první čtyři členy:
+%\begin{eqnarray}
+%DY1 &=& h \cdot q \cdot r\\
+%DY2 &=& \frac{h}{2} \cdot ( DQ1 \cdot DR0 + DQ0 \cdot DR1)\\
+%DY3 &=& \frac{h}{3} ( DQ2 \cdot DR0 + DQ1 \cdot DR1 + DQ0 \cdot DR2)\\
+%DY4 &=& \frac{h}{4} (DQ3 \cdot DR0 + DQ2 \cdot DR1 + DQ1 \cdot DR2 + DQ0 \cdot DR3)
+%\end{eqnarray}
+%
+%Z~těchto vztahů je patrné, že jednotlivé členy se rozvíjejí a tento rozvoj lze algoritmizovat.\\ 
+%%Výsledný vztah pro výpočet i-tého členu vypadá následovně
+%%
+%%\begin{equation}
+%%\begin{split}
+%%\label{rovnice_clenu_Tay_nasobeni}
+%%DY_{i} = \frac{h}{i} (DQ_{i-1} \cdot DR_{i-i} + DQ_{i-2} \cdot DR_{i-(i-1)} +  \\  + DQ_{i-(i-1)}\cdot DQ_{i-2} + DQ_{i-i} \cdot DR_{i-1})
+%%\end{split}
+%%\end{equation}
+%
+%
+%\subsection{Riešenie diferenciálnej rovnice s~operáciou delenia} \label{priloha_delenie}
+%
+%Diferenciálna rovnica s~operáciou delenia:
+%\begin{eqnarray}
+%y' & = & \dfrac{u}{v}
+%\end{eqnarray}
+%
+%Ďalšie derivácie rovnice \eqref{dif_delenie} sú:
+%\begin{eqnarray}
+%y'' = \dfrac{u'v - uv'}{v^{2}} & = & \dfrac{1}{v} (u' - y'v') \label{priloha_derivacie_delenie} \\
+%y''' = \left( \dfrac{1}{v} (u' - y'v') \right)' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
+%y^{(4)} = \left( \dfrac{1}{v} (u'' - 2y''v' - y'v') \right)' & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
+% & \vdots \nonumber &
+%\end{eqnarray}
+%
+%
+%Podobne ako členy \ref{DY_cleny}, aj členy $ DV(n)_{i} $ a členy $ DU(n)_{i} $:
+%\begin{align}
+%DV1_{i} &= h v_{i}					& DU1_{i} &= h u_{i} \ \\ 
+%DV2_{i} &= \dfrac{h}{2} DV1_{i} 	& DU2_{i} &= \dfrac{h}{2} DU1_{i} \nonumber \\
+%DV3_{i} &= \dfrac{h}{3} DV2_{i} 	& DU3_{i} &= \dfrac{h}{3} DU2_{i} \nonumber \\
+%DV4_{i} &= \dfrac{h}{4} DV3_{i} 	& DU4_{i} &= \dfrac{h}{4} DU3_{i} \nonumber \\
+%&\hspace{2mm}\vdots					& &\hspace{2mm}\vdots \nonumber \\
+%DV(N)_{i} &= \dfrac{h}{n} DV(N-1)_{i} & DU(N)_{i} &= \dfrac{h}{n} DU(N-1)_{i} \nonumber
+%\end{align}
+%
+%Po dosadení jednotlivých členov $ DV(n)_{i} $ a $ DU(n)_{i} $ do derivácií \ref{priloha_derivacie_delenie} dostaneme:
+%\begin{eqnarray}
+%\dfrac{DY1_{i}}{h} & = & \frac{1}{v} u~\\
+%\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} & = & \dfrac{1}{v} ( \dfrac{DU1_{i}}{h} - \dfrac{DY1_{i}}{h}\dfrac{DV1_{i}}{h} ) \nonumber \\
+%\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} & = & \dfrac{1}{v} 
+%( \dfrac{DU2_{i}}{\frac{h^{2}}{2!}} - 
+%2\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV1_{i}}{h} - 
+%\dfrac{DY1_{i}}{h} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} ) \nonumber \\
+%\dfrac{DY4_{i}}{\frac{h^{4}}{4!}} & = & \dfrac{1}{v} 
+%( \dfrac{DU3_{i}}{\frac{h^{3}}{3!}} - 
+%3\dfrac{DY3_{i}}{\frac{h^{3}}{3!}} \dfrac{DV1_{i}}{h} - 
+%3\dfrac{DY2_{i}}{\frac{h^{2}}{2!}} \dfrac{DV2_{i}}{\frac{h^{2}}{2!}} -
+%\dfrac{DY1_{i}}{h} \dfrac{DV3_{i}}{\frac{h^{3}}{3!}} ) \nonumber \\
+%& \vdots \nonumber & 
+%\end{eqnarray}
+%
+%Po úprave vyzerajú jednotlivé členy Taylorovej rady \eqref{Taylor} pre riešenie diferenciálnej rovnice \eqref{dif_delenie} nasledovne:
+%\begin{eqnarray}
+%DY1_{i} & = & \frac{1}{v} (hu)  \\
+%DY2_{i} & = & \dfrac{1}{2v} (DU1_{i}h - DY1_{i}DV1_{i}) \\
+%DY3_{i} & = & \dfrac{1}{3v} ( DU2_{i}h - 2DY2_{i}DV1_{i} - DY1_{i}DV2_{i} ) \\
+%DY4_{i} & = & \dfrac{1}{4v} ( DU3_{i}h - 3DY3_{i}DV1_{i} - 2DY2_{i}DV2_{i} - DY1_{i}DV3_{i} ) \\ 
+%& \vdots \nonumber & 
+%\end{eqnarray}
+%
+%
+%Formuly jednotlivých členov tvoria Pascalov trojuholník a sú základom pre tvorbu návrhu deliaceho integrátora.
+%
+%
+%
+%\newpage
+%
+%Derivácie diferenciálnej rovnice s~operáciou násobenia:
+%\begin{eqnarray}
+%y' & = & qr \nonumber \\
+%y'' & = & q'r + qr' \nonumber \\
+%y''' & = & q''r + 2q'r' + qr'' \nonumber \\
+%y^{(4)} & = & q'''r + 3q''r'+ 3q'r'' + qr''' \nonumber \\
+% & \vdots \nonumber &
+%\end{eqnarray}
+%
+%Všeobecný zápis:
+%\begin{equation}
+%y^{(n+1)} = \sum_{k=0}^n \binom{n}{k} q^{(n-k)} r^{(k)} \nonumber
+%\end{equation}
+%
+%\bigskip
+%\bigskip
+%
+%Členy Taylorovej rady:
+%\begin{eqnarray}
+%DY1_{i} &=& h \cdot ( DQ0_{i} \cdot DR0_{i} ) \nonumber \\
+%DY2_{i} &=& \frac{h}{2} \cdot ( DQ1_{i} \cdot DR0_{i} + DQ0_{i} \cdot DR1_{i}) \nonumber \\
+%DY3_{i} &=& \frac{h}{3} \cdot ( DQ2_{i} \cdot DR0_{i} + DQ1_{i} \cdot DR1_{i} + DQ0_{i} \cdot DR2_{i}) \nonumber \\
+%DY4_{i} &=& \frac{h}{4} \cdot (DQ3_{i} \cdot DR0_{i} + DQ2_{i} \cdot DR1_{i} + DQ1_{i} \cdot DR2_{i} + DQ0_{i} \cdot DR3_{i}) \nonumber \\
+% & \vdots \nonumber &
+%\end{eqnarray}
+%
+%Všeobecný zápis:
+%\begin{equation}
+%DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
+%\end{equation}
+%
+%\newpage
+%
+%Derivácie diferenciálnej rovnice s~operáciou delenia:
+%\begin{eqnarray}
+%y' & = & \dfrac{u}{v} \nonumber \\
+%y'' & = & \dfrac{1}{v} (u' - y'v') \nonumber \\
+%y''' & = & \dfrac{1}{v} (u'' - 2y''v' - y'v'') \nonumber \\
+%y^{(4)} & = & \dfrac{1}{v} (u''' - 3y'''v' - 3y''v'' - y'v''') \nonumber \\
+% & \vdots \nonumber &
+%\end{eqnarray}
+%
+%Všeobecný zápis:
+%\begin{equation}
+%y^{(n+1)} = \dfrac{1}{v} \left( u^{(n)} - \left( \sum_{k=1}^n \binom{n}{k} y^{(n-k+1)} v^{(k)} \right) \right) \nonumber
+%\end{equation}
+%
+%\bigskip
+%\bigskip
+%
+%Členy Taylorovej rady:
+%\begin{eqnarray}
+%DY1_{i} & = & \frac{1}{DV0_{i}} \cdot (DU0_{i} \cdot h) \nonumber \\
+%DY2_{i} & = & \dfrac{1}{2DV0_{i}} \cdot (DU1_{i} \cdot h - DY1_{i} \cdot DV1_{i}) \nonumber \\
+%DY3_{i} & = & \dfrac{1}{3DV0_{i}} \cdot ( DU2_{i} \cdot h - 2 \cdot DY2_{i} \cdot DV1_{i} - DY1_{i} \cdot DV2_{i} ) \nonumber \\
+%DY4_{i} & = & \dfrac{1}{4DV0_{i}} \cdot ( DU3_{i} \cdot h - 3 \cdot DY3_{i} \cdot DV1_{i} - 2DY2_{i} \cdot DV2_{i} - DY1_{i} \cdot DV3_{i} ) \nonumber \\
+%& \vdots \nonumber & 
+%\end{eqnarray}
+%
+%Všeobecný zápis:
+%\begin{equation}
+%DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \nonumber
+%\end{equation}
+%
+%
+%
 
 

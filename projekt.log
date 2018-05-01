@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  30 APR 2018 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  1 MAY 2018 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**projekt.tex
+**projekt
 (./projekt.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 7 language(s) loaded.
@@ -1402,7 +1402,7 @@ File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 \@vyskaobr=\skip87
 \@sirkaobr=\skip88
 
-<template-fig/VUT_symbol_barevne_CMYK_CZ.pdf, id=105, 167.13641pt x 165.87971pt
+<template-fig/VUT_symbol_barevne_CMYK_CZ.pdf, id=113, 167.13641pt x 165.87971pt
 >
 File: template-fig/VUT_symbol_barevne_CMYK_CZ.pdf Graphic file (type pdf)
  <use template-fig/VUT_symbol_barevne_CMYK_CZ.pdf>
@@ -1477,18 +1477,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 96--97
 [6
 
 ] [7pdfTeX warning (ext4): destination with the same identifier (name{equation.
-3.1.7}) has been already used, duplicate ignored
+3.1.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.182 \end{eqnarray}
+l.186 \end{eqnarray}
                     pdfTeX warning (ext4): destination with the same identifier
- (name{equation.3.1.7}) has been already used, duplicate ignored
+ (name{equation.3.1.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.182 \end{eqnarray}
-                    ] [8]
+l.186 \end{eqnarray}
+                    ] [8] [9pdfTeX warning (ext4): destination with the same id
+entifier (name{equation.3.2.20}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.263 \chapter
+              {Reprezentácia operandov} \label{REPREZENTACIA_OPERANDOV}]
 Kapitola 4.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkaa.eps>
 (epstopdf)                    date: 2018-04-29 21:24:35
@@ -1499,15 +1505,15 @@ pdf>
 (epstopdf)                    size: 9900 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkaa-e
 ps-converted-to.pdf obrazky/pevna_rad_carkaa.eps>
-(epstopdf)             \includegraphics on input line 218.
+(epstopdf)             \includegraphics on input line 283.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=274, 427.5975pt x 85.31876pt
+<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=298, 427.5975pt x 85.31876pt
 >
 File: obrazky/pevna_rad_carkaa-eps-converted-to.pdf Graphic file (type pdf)
  <use obrazky/pevna_rad_carkaa-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkaa-eps-converted-to.pdf used on 
-input line 218.
+input line 283.
 (pdftex.def)             Requested size: 190.29305pt x 37.96866pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkab.eps>
 (epstopdf)                    date: 2018-04-29 21:25:55
@@ -1518,15 +1524,15 @@ pdf>
 (epstopdf)                    size: 11305 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkab-e
 ps-converted-to.pdf obrazky/pevna_rad_carkab.eps>
-(epstopdf)             \includegraphics on input line 219.
+(epstopdf)             \includegraphics on input line 284.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=275, 192.72pt x 43.16125pt>
+<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=299, 192.72pt x 43.16125pt>
 File: obrazky/pevna_rad_carkab-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkab-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkab-eps-converted-to.pdf used on 
-input line 219.
+input line 284.
 (pdftex.def)             Requested size: 175.15459pt x 39.22739pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkac.eps>
 (epstopdf)                    date: 2018-04-29 21:25:31
@@ -1537,15 +1543,15 @@ pdf>
 (epstopdf)                    size: 9116 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkac-e
 ps-converted-to.pdf obrazky/pevna_rad_carkac.eps>
-(epstopdf)             \includegraphics on input line 220.
+(epstopdf)             \includegraphics on input line 285.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=276, 200.75pt x 44.165pt>
+<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=300, 200.75pt x 44.165pt>
 File: obrazky/pevna_rad_carkac-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkac-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkac-eps-converted-to.pdf used on 
-input line 220.
+input line 285.
 (pdftex.def)             Requested size: 175.15459pt x 38.53642pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkad.eps>
 (epstopdf)                    date: 2018-04-29 22:15:37
@@ -1556,16 +1562,16 @@ pdf>
 (epstopdf)                    size: 11186 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkad-e
 ps-converted-to.pdf obrazky/pevna_rad_carkad.eps>
-(epstopdf)             \includegraphics on input line 221.
+(epstopdf)             \includegraphics on input line 286.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=277, 193.72375pt x 44.165pt>
+<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=301, 193.72375pt x 44.165pt>
 File: obrazky/pevna_rad_carkad-eps-converted-to.pdf Graphic file (type pdf)
 <use obrazky/pevna_rad_carkad-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkad-eps-converted-to.pdf used on 
-input line 221.
+input line 286.
 (pdftex.def)             Requested size: 175.15459pt x 39.93208pt.
- [9
+ [10
 
  <./obrazky/pevna_rad_carkaa-eps-converted-to.pdf> <./obrazky/pevna_rad_carkab-
 eps-converted-to.pdf> <./obrazky/pevna_rad_carkac-eps-converted-to.pdf> <./obra
@@ -1578,15 +1584,15 @@ Package epstopdf Info: Source file: <obrazky/IEEE754_32b.eps>
 (epstopdf)                    size: 13064 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/IEEE754_32b-eps-co
 nverted-to.pdf obrazky/IEEE754_32b.eps>
-(epstopdf)             \includegraphics on input line 251.
+(epstopdf)             \includegraphics on input line 316.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_32b-eps-converted-to.pdf, id=301, 1372.12625pt x 271.0125pt>
+<obrazky/IEEE754_32b-eps-converted-to.pdf, id=327, 1372.12625pt x 271.0125pt>
 File: obrazky/IEEE754_32b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_32b-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/IEEE754_32b-eps-converted-to.pdf used on input
- line 251.
+ line 316.
 (pdftex.def)             Requested size: 1372.12292pt x 271.01183pt.
 Package epstopdf Info: Source file: <obrazky/IEEE754_64b.eps>
 (epstopdf)                    date: 2017-11-22 15:00:36
@@ -1596,75 +1602,83 @@ Package epstopdf Info: Source file: <obrazky/IEEE754_64b.eps>
 (epstopdf)                    size: 12528 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/IEEE754_64b-eps-co
 nverted-to.pdf obrazky/IEEE754_64b.eps>
-(epstopdf)             \includegraphics on input line 262.
+(epstopdf)             \includegraphics on input line 327.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_64b-eps-converted-to.pdf, id=302, 1372.12625pt x 274.02374pt>
+<obrazky/IEEE754_64b-eps-converted-to.pdf, id=328, 1372.12625pt x 274.02374pt>
 File: obrazky/IEEE754_64b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_64b-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/IEEE754_64b-eps-converted-to.pdf used on input
- line 262.
+ line 327.
 (pdftex.def)             Requested size: 1372.12292pt x 274.02307pt.
- [10 <./obrazky/IEEE754_32b-eps-converted-to.pdf> <./obrazky/IEEE754_64b-eps-co
-nverted-to.pdf>] [11] [12]
-[13]
+ [11 <./obrazky/IEEE754_32b-eps-converted-to.pdf> <./obrazky/IEEE754_64b-eps-co
+nverted-to.pdf>] [12] [13]
+[14]
 Kapitola 5.
-<obrazky/del_nas_integrator.pdf, id=363, 268.8975pt x 227.5333pt>
+<obrazky/del_nas_integrator.pdf, id=387, 268.8975pt x 227.5333pt>
 File: obrazky/del_nas_integrator.pdf Graphic file (type pdf)
 
 <use obrazky/del_nas_integrator.pdf>
-Package pdftex.def Info: obrazky/del_nas_integrator.pdf used on input line 399.
+Package pdftex.def Info: obrazky/del_nas_integrator.pdf used on input line 464.
 
 (pdftex.def)             Requested size: 268.89685pt x 227.53273pt.
 
-<obrazky/ppni_fx20.png, id=369, 718.685pt x 398.288pt>
+<obrazky/ppni_fx20.png, id=393, 718.685pt x 398.288pt>
 File: obrazky/ppni_fx20.png Graphic file (type png)
 
 <use obrazky/ppni_fx20.png>
-Package pdftex.def Info: obrazky/ppni_fx20.png used on input line 413.
+Package pdftex.def Info: obrazky/ppni_fx20.png used on input line 478.
 (pdftex.def)             Requested size: 718.68324pt x 398.28702pt.
- [14
+ [15
 
  <./obrazky/del_nas_integrator.pdf>]
-<obrazky/ppdi_fx20.png, id=398, 774.895pt x 502.678pt>
+<obrazky/ppdi_fx20.png, id=422, 774.895pt x 502.678pt>
 File: obrazky/ppdi_fx20.png Graphic file (type png)
 
 <use obrazky/ppdi_fx20.png>
-Package pdftex.def Info: obrazky/ppdi_fx20.png used on input line 426.
+Package pdftex.def Info: obrazky/ppdi_fx20.png used on input line 491.
 (pdftex.def)             Requested size: 774.89311pt x 502.67676pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15 <./obrazky/ppni_fx20.png>] [16 <./obrazky/ppdi_fx20.png>]
-<obrazky/ppdi_fp_exp.png, id=414, 353.32pt x 216.81pt>
+[16 <./obrazky/ppni_fx20.png>] [17 <./obrazky/ppdi_fx20.png>]
+<obrazky/ppdi_fp_exp.png, id=439, 353.32pt x 216.81pt>
 File: obrazky/ppdi_fp_exp.png Graphic file (type png)
 
 <use obrazky/ppdi_fp_exp.png>
-Package pdftex.def Info: obrazky/ppdi_fp_exp.png used on input line 443.
+Package pdftex.def Info: obrazky/ppdi_fp_exp.png used on input line 508.
 (pdftex.def)             Requested size: 353.31914pt x 216.80946pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--455
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
 
  []
 
-<obrazky/ppni_fp40.png, id=418, 718.685pt x 529.98pt>
+<obrazky/ppni_fp40.png, id=443, 718.685pt x 529.98pt>
 File: obrazky/ppni_fp40.png Graphic file (type png)
 
 <use obrazky/ppni_fp40.png>
-Package pdftex.def Info: obrazky/ppni_fp40.png used on input line 460.
+Package pdftex.def Info: obrazky/ppni_fp40.png used on input line 525.
 (pdftex.def)             Requested size: 718.68324pt x 529.97868pt.
- [17 <./obrazky/ppdi_fp_exp.png>] [18 <./obrazky/ppni_fp40.png>] <obrazky/ppdi_
-fp40.png, id=431, 778.107pt x 574.145pt>
+ [18 <./obrazky/ppdi_fp_exp.png>] [19 <./obrazky/ppni_fp40.png>] <obrazky/ppdi_
+fp40.png, id=456, 778.107pt x 574.145pt>
 File: obrazky/ppdi_fp40.png Graphic file (type png)
 
 <use obrazky/ppdi_fp40.png>
-Package pdftex.def Info: obrazky/ppdi_fp40.png used on input line 475.
+Package pdftex.def Info: obrazky/ppdi_fp40.png used on input line 540.
 (pdftex.def)             Requested size: 778.10509pt x 574.1436pt.
- [19 <./obrazky/ppdi_fp40.png>]
+ [20 <./obrazky/ppdi_fp40.png>] [21]
 Kapitola 6.
-) (./projekt.bbl [20
+[22
+
+]
+Kapitola 7.
+[23
+
+]
+Kapitola 8.
+) (./projekt.bbl [24
 
 ]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 44.
@@ -1673,145 +1687,29 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ))
 \c@ttl@toc@chapters=\count313
 
-(./projekt-30-prilohy-appendices.tex [21
-
-]
-Pr\IeC {\'\i }loha A.
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 18.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 32--34
-
- []
-
-[22
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 78--87
-
- []
-
-[23] [24] [25pdfTeX warning (ext4): destination with the same identifier (name{
-equation.A.0.24}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.178 \newpage
-              pdfTeX warning (ext4): destination with the same identifier (name
-{equation.A.0.24}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.178 \newpage
-              pdfTeX warning (ext4): destination with the same identifier (name
-{equation.A.0.24}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.178 \newpage
-              ]pdfTeX warning (ext4): destination with the same identifier (nam
-e{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.181 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.181 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.181 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.181 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.190 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.190 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.190 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.190 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.198 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.198 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.198 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.198 \begin{eqnarray}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.207 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.207 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.207 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.A.0.24}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.207 \begin{equation}
-                      )
+(./projekt-30-prilohy-appendices.tex)
 \tf@ptc=\write5
 \openout5 = `projekt.ptc'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 298.
- [26]
+ [25
+
+]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 298.
  (./projekt.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 298.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 298.
 Package rerunfilecheck Info: File `projekt.out' has not changed.
-(rerunfilecheck)             Checksum: 255F4136CFF7CBDF7326AB7CE3BA456A;5283.
+(rerunfilecheck)             Checksum: ACF6B7FC5ADB23C7F0AAEB3E647710D4;5524.
  ) 
 Here is how much of TeX's memory you used:
- 23340 strings out of 494878
- 382434 string characters out of 6178664
- 459935 words of memory out of 5000000
+ 23333 strings out of 494878
+ 382291 string characters out of 6178664
+ 457735 words of memory out of 5000000
  26145 multiletter control sequences out of 15000+600000
  109339 words of font info for 80 fonts, out of 8000000 for 9000
  46 hyphenation exceptions out of 8191
- 44i,11n,45p,10404b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,11n,45p,10400b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist
 /fonts/enc/dvips/opensans/opensans-02.enc}{/usr/share/texlive/texmf-dist/fonts/
 enc/dvips/opensans/opensans-04.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvi
@@ -1828,10 +1726,10 @@ t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public
 /lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/t
 exmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 ri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on projekt.pdf (29 pages, 863686 bytes).
+Output written on projekt.pdf (28 pages, 861586 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 480 compressed objects within 5 object streams
- 129 named destinations out of 1000 (max. 500000)
- 292 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 570 PDF objects out of 1000 (max. 8388607)
+ 474 compressed objects within 5 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 308 words of extra memory for PDF output out of 10000 (max. 10000000)
 
