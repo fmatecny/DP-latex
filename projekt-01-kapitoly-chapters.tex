@@ -456,19 +456,24 @@ kladné/záporné FP číslo & +/- 0 & +/- $ \infty $ \\ \hline
 \end{table}
 
 \chapter{Numerické integrátory} \label{NUM_INTEGRATORY}
-Numerický integrátor je hardvérový komponent, ktorý slúži na výpočet numerickej integrácie. Podľa spôsobu výpočtu a komunikácie medzi komponentmi integrátora sa numerické integrátory delia na sériové, sériovo-paralelné a paralelné. My sa budeme zaoberať paralelnými numerickými integrátormi, kvôli ich jednoduchosti a rýchlosti výpočtu. V~nasledujúcich podkapitolách predstavíme jednotlivé návrhy paralelných násobiacich a paralelných deliacich integrátorov, oba typy v~pevnej a v~pohyblivej rádovej čiarke. Tieto integrátory obsahujú jeden vstup pre počiatočnú podmienku, dva vstupy pre prívod operandov a jeden výstup pre výsledok výpočtu. Schéma integrátora je znázornená na obrázku~\ref{schema_ndi}.
+Numerický integrátor je hardvérový komponent, ktorý slúži na výpočet numerickej integrácie. Podľa spôsobu výpočtu a komunikácie medzi komponentmi integrátora sa numerické integrátory delia na sériové, sériovo-paralelné a paralelné. My sa budeme zaoberať paralelnými numerickými integrátormi, kvôli ich jednoduchosti a rýchlosti výpočtu. Ďalej môžeme numerické integrátory rozdeliť na jednovstupé a dvojvstupé. Jedno vstupý integrátor vykonáva integráciu vstupnej hodnoty a posiela ju na výstup. Schéma integrátora je znázornená na obrázku \ref{schema_i} a ako z názvu vyplýva obsahuje jeden vstup pre vstupnú hodntotu. Ďalej obsahuje jeden vstup pre počiatočnú podmienku a jeden výstup pre výsledok výpočtu. Dvojvstupové integrátory obsahujú jeden vstup pre počiatočnú podmienku, dva vstupy pre prívod operandov a jeden výstup pre výsledok výpočtu. Schéma integrátora je znázornená na obrázku \ref{schema_ndi}. Tieto integrátory rozdeľujeme podľa použitej operácie na násobiace a deliace integrátory.
+
+V nasledujúcich podkapitolách predstavíme jednotlivé návrhy paralelných násobiacich a paralelných deliacich integrátorov, oba typy v pevnej a v pohyblivej rádovej čiarke. Predstvíme taktiež jednovstupý paralelný integrátor v pohyblivéj rádovej čiarke.
+\bigskip
 
 
 \begin{figure}[h]
 \centering
-\scalebox{0.6}{\includegraphics{obrazky/del_nas_integrator.pdf}}
-\caption{Schéma násobiaceho/deliaceho integrátora}
-\label{schema_ndi}
+\subfloat[Schéma jednovstupého integrátora]{\label{schema_i} \includegraphics[width=0.4\linewidth]{obrazky/jednoduchy_integrator.pdf}} \hspace{1.0cm}
+\subfloat[Schéma dvojvstupého násobiaceho/deliaceho integrátora]{\label{schema_ndi} \includegraphics[width=0.4\linewidth]{obrazky/del_nas_integrator.pdf}}
+\label{schema_i_ndi}
+\caption{Schéma jendovstupého a dvojvstupého integrátora}
 \end{figure}
 
 
+
 \section{Násobiaci integrátor v~pevnej rádovej čiarke}
-Násobiaci integrátor počíta rovnicu \eqref{dif_nasobenie} pomocou \eqref{DY1_cleny_nasobenia} -- \eqref{DY4_cleny_nasobenia}. Na základe týchto rovníc bol vytvorený návrh paralelného násobiacého integrátora, ktorý je na obrázku~\ref{ppni}. Návrh vychádza z~práce V. Závadu \cite{ZavadaBP} a bol upravený a rozšírený o~počet registrov $ DRn $ a $ DQn $, ktoré slúžia na ukladanie prichádzajúcich členov. Počet týchto registorov bol stanovený na 20. V~praxi sa používa podobný počet členov Tylorovej rady, ktorý vychádza z~toho, že poskytuje dobrý pomer medzi rýchlosťou a presnosťou.
+Násobiaci integrátor počíta rovnicu \eqref{dif_nasobenie} pomocou \eqref{DY1_cleny_nasobenia} -- \eqref{DY4_cleny_nasobenia}. Na základe týchto rovníc bol vytvorený návrh paralelného násobiacého integrátora, ktorý je na obrázku~\ref{ppni}. Návrh vychádza z~práce V. Závadu \cite{ZavadaBP} a bol upravený a rozšírený o~počet registrov $ DRn $ a $ DQn $, ktoré slúžia na ukladanie prichádzajúcich členov. Počet týchto registorov je stanovený podľa použitej aritmetiky a použadvanej presnosti.
 
 Každý člen $ DYn $ obsahuje postupné delenie integračného kroku $ h $. Tieto hodnoty sú predpočítané a uložené v~sade registrov $ h $. Avšak nie je potrebné uložiť všetkých 20 hodnôt, stačí uložiť len tie hodnoty, ktorých deliteľ je nepárne číslo. Ostatné hodnoty je možné vypočítať jednoduchým posunom registra doprava, čo je vlastne delenie číslom 2. Týmto spôsobom znížime počet registrov o~polovicu. Počet operácií potrebných na výpočet sa nezvýši, keďže posun registra je možné vykonávať v~predstihu a paralelne s~inými operáciami.
 
@@ -484,7 +489,7 @@ Na začiatku výpočtu sú pomocou signálu \textit{RESET} vynulované všetky r
 
 
 \section{Deliaci integrátor v~pevnej rádovej čiarke}
-Tento integrátor počíta rovnicu \eqref{dif_delenie} pomocou členov \eqref{DY1_cleny_delenia} - \eqref{DY4_cleny_delenia}. Podobne, ako u~násobiaceho integrátora, bol z~týchto rovníc vytvorený návrh paralelného deliaceho integrátora. Návrh vychádza z~bakalárskej práce \cite{MatecnyBP} a bol upravený podobne ako predošlí násobiaci integrátor zvýšením počtu registrov $ DUn $ a $ DVn $. Taktiež sa zvýšil počet registrov $ DYn $, ktoré slúžia na uloženie jednotlivých členov Taylorovej rady. Deliaci integrátor, narozdiel od násobiaceho integrátora, nepoužíva sadu registrov $ h $, ale podobnú sadu registrov, ktorá obsahuje hodnoty $ 1/n $. Podobne ako u~násobiaceho integrátora je možné zmenšiť počet týchto registrov na polovicu s~využitím operácie \textit{shift}. Register \textit{const} obsahuje \textit{counter}, ktorý sa postupne inkrementuje, a s~ktorým sa násobí hodnota $ DYn $. Výsledná hodnota je uložená do daného registra $ DYn $ a znova použitá v~ďalšom výpočte, čím sa ušetrí operácia násobenia.
+Tento integrátor počíta rovnicu \eqref{dif_delenie} pomocou členov \eqref{DY1_cleny_delenia} - \eqref{DY4_cleny_delenia}. Podobne, ako u~násobiaceho integrátora, bol z~týchto rovníc vytvorený návrh paralelného deliaceho integrátora. Návrh vychádza z~bakalárskej práce \cite{MatecnyBP} a bol upravený podobne ako predošlí násobiaci integrátor zvýšením počtu registrov $ DUn $ a $ DVn $. Taktiež sa zvýšil počet registrov $ DYn $, ktoré slúžia na uloženie jednotlivých členov Taylorovej rady, kedže na výpočet nasledujúceho člena je použitý predchádzajúci člen. Deliaci integrátor, narozdiel od násobiaceho integrátora, nepoužíva sadu registrov $ h $, ale podobnú sadu registrov, ktorá obsahuje hodnoty $ 1/n $. Podobne ako u~násobiaceho integrátora je možné zmenšiť počet týchto registrov na polovicu s~využitím operácie \textit{shift}. Register \textit{const} obsahuje \textit{counter}, ktorý sa postupne inkrementuje, a s~ktorým sa násobí hodnota $ DYn $. Výsledná hodnota je uložená do daného registra $ DYn $ a znova použitá v~ďalšom výpočte, čím sa ušetrí operácia násobenia.
 
 \begin{figure}[h]
 \centering
@@ -494,11 +499,23 @@ Tento integrátor počíta rovnicu \eqref{dif_delenie} pomocou členov \eqref{DY
 \end{figure}
 \bigskip
 
-\newpage
 Podobne ako pri násobiacom integrátore, aj pri paralelnom deliacom integrátore sú na začiatku výpočtu vynulované registre pomocou signálu \textit{RESET} a nastavené signály multiplexorov \textit{MPX}. Ďalej je do registra \textit{RV} nahraná počiatočná podmienka a do registra $ h $ je nahraný integračný krok. Do registrov $ 1/n $ sú uložené predpočítané konštanty. Po prijatí hodnôt $ U $ a $ V $ sa začne výpočet. Hodnota $ V $ je privedená do deličky $ DIV $ a spustí sa výpočet $ 1/v $ s~použitím deliaceho algoritmu \textit{SRT}. Delenie je realizované len raz počas celého výpočtu, keďže ide o~veľmi náročnú operáciu. Kvôli optimalizácii je paralelne s~delením realizovaný výpočet násobenia $ uh $.
 Po skončení výpočtu je výsledok uložený do registra $ RV $. 
 
 \newpage
+\section{Jendovstupý integrátor v pohyblivéj rádovej čiarke}
+Tento integrátor bol navrhnutý podľa rovníc \eqref{DY_cleny} na zálade ktorých počíta difernciálnu rovnucu \eqref{jednoducha_rovnica}. Z toho vyplýva, že vykonáva numerickú integráciu vstupnej hodnoty a následne výslednú hodnotu posiela na výstup. Na naštartovanie výpočtu slúži počiatočna podmienka. Tá je nahraná na začiatku výpočtu do registra RV.RD.
+Schéma integrátora je na obrázku \ref{ppi_fp} a vychádza z práce J. Opálku \cite{OpalkaBP}.
+
+\bigskip
+\begin{figure}[h]
+\centering
+\scalebox{0.4}{\includegraphics{obrazky/integrator_paralelny.pdf}}
+\caption{Paralelný jednovstupový integrátor v pohyblivej rádovej čiarke}
+\label{ppi_fp}
+\end{figure}
+\bigskip
+
 \section{Násobiaci integrátor v~pohyblivej rádovej čiarke}
 Blokové schémy zapojenia integrátorov pracujúcich v~pohyblivej rádovej čiarke vychádzajú z~predchádzajúcich návrhov, ale boli rozšírené o~prácu so znamienkami, s~mantisou a s~exponentmi. Samotný výpočet exponenta sa deje v~komponente \textit{EXP}, ktorého návrh je zobrazený na obrázku~\ref{ppi_fp_exp}.
 
@@ -543,6 +560,7 @@ Operácie násobenia a sčítania sa vykonávajú rovnako ako v~paralelnom náso
 \end{figure}
 \bigskip
 
+\newpage
 \section{Sústava diferenciálnych rovníc}
 Integrátory, ktoré sme si popísali je možné medzi sebou zapojiť a riešiť tak diferenciálnu rovnicu. Po zapojení integrátorov nebude nutné predpočítavať vstupné hodnoty, ale stačí zadať počiatočné podmienky na naštartovanie výpočtu a všetky ostatné hodnoty sa dopočítajú.
 Zvoľme konkrétnu diferenciálnu rovnciu s operáciou násobenia v tvare:
@@ -561,9 +579,19 @@ s' & = & -q \, , \quad s(0) = 1 \nonumber \\
 
 Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov.
 
+\begin{figure}[h]
+\centering
+\scalebox{0.5}{\includegraphics{obrazky/sustava_integratorov.pdf}}
+\caption{Schéma zapojenia integrátorov \cite{MatecnyBP}}
+\label{ppdi_fp}
+\end{figure}
+\bigskip
+
 
 \chapter{Implementácia integrátorv vo VHDL}
-Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a simulované v Model Sim. 
+Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a simulované v Model Sim pou6it9m testbanchu.
+
+Paralelný jednovstupový integrátor je tvorený 
 FX - paralelná násobička, sčítačka.
 
 
