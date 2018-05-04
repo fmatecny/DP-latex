@@ -577,25 +577,37 @@ q' & = & s \, , \quad q(0) = 0 \nonumber \\
 s' & = & -q \, , \quad s(0) = 1 \nonumber \\
 \end{eqnarray}
 
-Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov.
+Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpočet na fpga. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu. V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
+\bigskip
 
 \begin{figure}[h]
 \centering
 \scalebox{0.5}{\includegraphics{obrazky/sustava_integratorov.pdf}}
 \caption{Schéma zapojenia integrátorov \cite{MatecnyBP}}
-\label{ppdi_fp}
+\label{ppi_fp_sustava}
 \end{figure}
 \bigskip
 
 
 \chapter{Implementácia integrátorv vo VHDL}
-Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a simulované v Model Sim pou6it9m testbanchu.
+Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a následne odsimulované v Model Sim požitím testbanchu.
 
-Paralelný jednovstupový integrátor je tvorený 
-FX - paralelná násobička, sčítačka.
+\section{Integrátory vo pevnej rádovej čiarke}
+Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov je nutné upraviť aj počet registrov h/i kde i >= 2.
+Pre 32 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, xx bitami pred desatinnou čiatkou a xx bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou xx rádu a teda pri výpočte sa počíta x členov Taylorovej rady. 
+Podobne 64 bitová verzia pracuje s aritmetikou s jedným znaminekovým bitom, xx bitmi pred desatinou čiarkou a xx bitmi za desatinou čiarkou. V tejto verzií sa počíta Taylorova rada xx. rádu. 
+
+Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podobne ako násobiaci integrátor.
 
 
-FP
+\section{Integrátory v pohyblivej rádovej čiarke}
+Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Honoty kroku h a jeho podielov nie sú uložené v komponent eintegrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
+
+
+Násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke boli taktiež implementované vo verziách s 32 a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenia a delenie v troch hodinovcýh taktoch. Pri výpočte 
+
+\section{Sústava integrátorv}
+
 Naprogramovanie FPGA VRTEX-5. Pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit.
 
 
