@@ -29,9 +29,9 @@ Vzájomným zapojením navrhnutých numerických integrátorov je možné rieši
 
 
 Diferenciálne rovnice sú matematické rovnice, v~ktorých ako premenné vystupujú derivácie funkcií. Najvyššia derivácia v~rovnici udáva rád rovnice. Rovnice, ktoré obsahujú derivácie len podľa jednej premennej, sa nazývajú obyčajné diferenciálne rovnice (ODR). Rovnice, ktoré obsahujú derivácie podľa viacerých premenných, sú takzvané parciálne diferenciálne rovnice (PDR).
-Diferenciálnu rovnicu je možné riešiť analyticky alebo použitím numerickej metódy. Pri väčšine praktických úloh je analytické riešenie veľmi zložité, preto sa používa skôr riešenie numerické. Základným princípom numerického riešenia je diskretizácia premenných, keď spojitú veličinu nahradíme postupnosťou diskrétnych bodov. Pri použití dostatočne hustom rozložení bodov môžeme približne reprezentovať spojitú veličinu. Vzdialenosť medzi dvoma susednými bodmi sa nazýva krok metódy. Numerické metódy pri svojom výpočte používajú niekoľko predchádzajúcich krokov. Podľa počtu týchto krokov rozdeľujeme numerické metódy na metódy jednokrokové a viackrokové. Jednokrokové metódy pri svojom výpočte používajú len jeden predchádzajúci krok, viackrokové využívajú niekoľko predchádzajúcich krokov. Pri numerických metódach je teda potrebné zvoliť počiatočný stav t.j. počiatočnú podmienku riešenej úlohy \cite{NumMetody}.
+Diferenciálnu rovnicu je možné riešiť analyticky alebo použitím numerickej metódy. Pri väčšine praktických úloh je analytické riešenie veľmi zložité, preto sa používa skôr riešenie numerické. Základným princípom numerického riešenia je diskretizácia premenných, keď spojitú veličinu nahradíme postupnosťou diskrétnych bodov. Pri použití dostatočne hustom rozložení bodov môžeme približne reprezentovať spojitú veličinu. Vzdialenosť medzi dvoma susednými bodmi sa nazýva krok metódy. Numerické metódy pri svojom výpočte používajú niekoľko predchádzajúcich krokov. Podľa počtu týchto krokov rozdeľujeme numerické metódy na metódy jednokrokové a viackrokové. Jednokrokové metódy pri svojom výpočte používajú len jeden predchádzajúci krok, viackrokové využívajú niekoľko predchádzajúcich krokov. Pri numerických metódach je teda potrebné zvoliť počiatočný stav t.j. počiatočnú podmienku riešenej úlohy. Od nej sa následne počita hodnota funkcie v ďalšom bode \cite{NumMetody}. 
 
-Najhlavnejšími kritériami pri numerických metodách je ich presnosť a rýchlosť. Tie je možné ovplyvniť veľkosťou integračného kroku a rádom integračnej metódy. Pri počítaní numerickými metódami nedostávame teoreticky presné riešenie, ale výsledok konverguje k~správnemu riešeniu, a teda dostávame výsledok s~určitou presnosťou. Výsledná chyba výpočtu je súčet lokálnej a akumulovanej chyby.  Lokálna chyba zahŕňa chybu numerickej metódy a zaokrúhľovaciu chybu, ktorá môže byť spôsobená typom hardvérovej architektúry, ako napríklad použitím pevnej alebo pohyblivej rádovej čiarky, ktoré sú bližšie popísané v~kapitole \ref{REPREZENTACIA_OPERANDOV}. Akumulovaná chyba je súčtom lokálnych chýb, a teda sa počas výpočtu zvyšuje.
+Najhlavnejšími kritériami pri numerických metodách je ich presnosť a rýchlosť. Tie je možné ovplyvniť veľkosťou integračného kroku a rádom integračnej metódy. Pri počítaní numerickými metódami nedostávame teoreticky presné riešenie, ale výsledok konverguje k~správnemu riešeniu, a teda dostávame výsledok s~určitou presnosťou. Výsledná chyba výpočtu je súčet lokálnej a akumulovanej chyby.  Lokálna chyba zahŕňa chybu numerickej metódy a zaokrúhľovaciu chybu, ktorá môže byť spôsobená typom hardvérovej architektúry, ako napríklad použitím pevnej alebo pohyblivej rádovej čiarky, ktoré sú bližšie popísané v~kapitole \ref{REPREZENTACIA_OPERANDOV}. Akumulovaná chyba je súčtom lokálnych chýb, a teda sa počas výpočtu zvyšuje. Chyba v jednom kroku tak ovplivňuje výsledky krokov nasledujúcich.
 
 
 \section{Taylorova rada}
@@ -46,13 +46,13 @@ kde $ h $ je veľkosť integračného kroku a $ i $ označuje krok diskretizovan
 
 
 \section{Eulerova metóda}
-Najjednoduchšou jednokrokovou metódou je Eulerova metóda. Je to Taylorova rada 1. rádu, keďže používa len prvé dva členy Taylorovej rady. Preto je rýchla, ale menej presná. Zapisuje sa nasledovne:
+Najjednoduchšou jednokrokovou metódou pre riešenie obyčajných diferenciálych rovníc je Eulerova metóda. Je to Taylorova metóda 1. rádu, keďže používa len prvé dva členy Taylorovej rady. Preto je rýchla, ale menej presná. Zapisuje sa nasledovne:
 
 \begin{eqnarray}
 y_{i+1} = y_{i} + hy'_{i}
 \end{eqnarray}
 
-Zvolením dostatočne malého integračného kroku $ h $ môžeme zvýšiť jej presnosť.
+Zvolením dostatočne malého integračného kroku $ h $ môžeme zvýšiť jej presnosť. Čím je však krok menší, tým je výpočet pomaľší.
 
 
 \section{Runge-Kutta}
@@ -187,7 +187,7 @@ DY4_{i} & = & \frac{h}{4} (DQ3_{i}DR0_{i} + DQ2_{i}DR1_{i} + DQ1_{i}DR2_{i} + DQ
 
 Všeobecný zápis:
 \begin{equation}
-DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \nonumber
+DY(N)_{i} = \dfrac{h}{N} \cdot \left( \sum_{k=1}^N DQ(N-k)_{i} \cdot DR(k-1)_{i} \right) \label{suma_mul}
 \end{equation}
 
 Uvedený prevod vychádza z práce \cite{ZavadaBP}. Jednotlivé rovnice členov Taylorovej rady budú slúžiť pri návrhu a implementácií násobiacich integrátorov.
@@ -252,7 +252,7 @@ DY4_{i} & = & \dfrac{1}{4v_{i}} ( DU3_{i}h - 3DY3_{i}DV1_{i} - 2DY2_{i}DV2_{i} -
 
 Všeobecný zápis:
 \begin{equation}
-DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \nonumber
+DY(N)_{i} = \dfrac{1}{N DV0_{i}} \cdot \left( DU(N-1)_{i} \cdot h - \left( \sum_{k=1}^{N-1} (N-k) \cdot DY(N-k)_{i} \cdot DV(k)_{i} \right) \right) \label{suma_div}
 \end{equation}
 \bigskip
 
@@ -577,7 +577,8 @@ q' & = & s \, , \quad q(0) = 0 \nonumber \\
 s' & = & -q \, , \quad s(0) = 1 \nonumber \\
 \end{eqnarray}
 
-Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpočet na fpga. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu. V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
+Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Schému tvoria tri jednovstupové integrátori \textit{r}, \textit{q} a \textit{s}, dvojvstupový násobaici integrátor \textit{y} a dva inverotri. Invertor je komponenta, ktorá ivertuje prichádzajúcu hodnotu. Integrátor r a invertor tvoria spolu funkciu $ e^{-t} $. Integrátory \textit{r}, \textit{s} a invertor tvoria spolu funkciu $ sin(t) $. Nakoniec sú tieto hodnoty privádzané na vstup násobiaceho integrátora \textit{y}, ktorý počíta spočíta diferenciálnu rovnicu \ref{dif_sint_et}.
+Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpočet na fpga. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu. V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
 \bigskip
 
 \begin{figure}[h]
@@ -590,9 +591,9 @@ Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na 
 
 
 \chapter{Implementácia integrátorv vo VHDL}
-Jednotlivé integrítory boli implementované v prostredí Xilinx ISE a následne odsimulované v Model Sim požitím testbanchu.
+Jednotlivé integrítory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim požitím \textit{testbanchu}. U každého integrátora sú jednotlivé ktorky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplíva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so sväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu. 
 
-\section{Integrátory vo pevnej rádovej čiarke}
+\section{Integrátory v pevnej rádovej čiarke}
 Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov je nutné upraviť aj počet registrov h/i kde i >= 2.
 Pre 32 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, xx bitami pred desatinnou čiatkou a xx bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou xx rádu a teda pri výpočte sa počíta x členov Taylorovej rady. 
 Podobne 64 bitová verzia pracuje s aritmetikou s jedným znaminekovým bitom, xx bitmi pred desatinou čiarkou a xx bitmi za desatinou čiarkou. V tejto verzií sa počíta Taylorova rada xx. rádu. 
@@ -600,15 +601,166 @@ Podobne 64 bitová verzia pracuje s aritmetikou s jedným znaminekovým bitom, x
 Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podobne ako násobiaci integrátor.
 
 
+
+\begin{landscape}
+\begin{table}[]
+\scriptsize
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|l|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Stav}                                 & \textbf{SELy0} & \textbf{SEL1} & \textbf{SEL2} & \textbf{SEL3} & \textbf{SELQ} & \textbf{SELR} & \textbf{SELH} & \textbf{RWacc} & \textbf{RWrv} & \textbf{BLOK}           & \textbf{}                                                                             \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{Reset}        & 0              & 0             & 0             & 0             & 0             & 0             & 0             & 0              & 0             & 0                       & \begin{tabular}[c]{@{}l@{}}count = 0;\\ countQ = 0;\end{tabular}                      \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{Init}         & 1              & X             & X             & X             & X             & X             & X             & 0              & 1             & X                       & \begin{tabular}[c]{@{}l@{}}count = 0;\\ countQ = 0;\end{tabular}                      \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{MulDQxDRx}    & X              & 1             & 0             & 0             & countQ        & count-countQ  & X             & 0              & 0             & If countQ=count ? 1 : 0 & \begin{tabular}[c]{@{}l@{}}If count \textless N ? \\ WriteToAcc : Result\end{tabular} \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{WriteToAcc}   & X              & 1             & 0             & 0             & countQ        & count-countQ  & X             & 1              & 0             & If countQ=count ? 1 : 0 & \begin{tabular}[c]{@{}l@{}}If countQ = 0 ?\\ MulAccH\_RV : SetupCounter\end{tabular}  \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{SetupCounter} & X              & X             & X             & X             & X             & X             & X             & 0              & 0             & X                       & countQ--;                                                                             \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{MulAccH\_RV}  & X              & 0             & 1             & 1             & X             & X             & count         & 0              & 0             & X                       &                                                                                       \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{SaveToAcc}    & X              & 0             & 1             & 1             & X             & X             & count         & 1              & 0             & X                       & countQ++;                                                                             \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{SaveToRv}     & 0              & 0             & X             & X             & X             & X             & X             & 0              & 1             & X                       & count++;                                                                              \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{Result}       & X              & X             & X             & X             & X             & X             & X             & 0              & 0             & X                       & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}                   \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\scriptsize
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|c|c|c|c|c|c|l|}
+\hline
+\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SELy0} & \cellcolor[HTML]{C0C0C0}\textbf{SEL1} & \cellcolor[HTML]{C0C0C0}\textbf{SEL2} & \cellcolor[HTML]{C0C0C0}\textbf{SEL3} & \cellcolor[HTML]{C0C0C0}\textbf{SELQ} & \cellcolor[HTML]{C0C0C0}\textbf{SELR} & \cellcolor[HTML]{C0C0C0}\textbf{SELH} & \cellcolor[HTML]{C0C0C0}\textbf{RWacc} & \cellcolor[HTML]{C0C0C0}\textbf{RWrv} & \cellcolor[HTML]{C0C0C0}\textbf{BLOK} & \cellcolor[HTML]{C0C0C0} \\ \hline
+\textbf{Reset} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 &  \\ \hline
+\textbf{Init} & 1 & X & X & X & X & X & X & 0 & 1 & X & \begin{tabular}[c]{@{}l@{}}count = 0;\\ countQ = 0;\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}MulDQxDRx1\\ MulDQxDRx2\end{tabular}} & X & 1 & 0 & 0 & countQ & count-countQ & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If countQ=count ?\\ 1 : 0\end{tabular}} &  \\ \hline
+\textbf{MulDQxDRx} & X & 1 & 0 & 0 & countQ & count-countQ & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If countQ=count ?\\ 1 : 0\end{tabular}} & \begin{tabular}[c]{@{}l@{}}If count \textless 8 ?\\ WriteToAcc1 : Result\end{tabular} \\ \hline
+\textbf{WriteToACC1} & X & 1 & 0 & 0 & countQ & count-countQ & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If countQ=count ?\\ 1 : 0\end{tabular}} &  \\ \hline
+\textbf{WriteToACC} & X & 1 & 0 & 0 & countQ & count-countQ & X & 1 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If countQ=count ?\\ 1 : 0\end{tabular}} & \begin{tabular}[c]{@{}l@{}}If countQ = 0 ?\\ MulAccH\_RV1 : SetupCounter\end{tabular} \\ \hline
+\textbf{SetupCounter} & X & X & X & X & X & X & X & 0 & 0 & X & countQ--; \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}MulACCh\_RV1\\ MulACCh\_RV2\\ MulACCh\_RV\end{tabular}} & X & 0 & 1 & 1 & X & X & count & 0 & 0 & X &  \\ \hline
+\textbf{SaveToAcc1} & X & 0 & 1 & 1 & X & X & count & 0 & 0 & X &  \\ \hline
+\textbf{SaveToAcc} & X & 0 & 1 & 1 & X & X & count & 1 & 0 & X & counQ++; \\ \hline
+\textbf{SaveToRV} & 0 & 0 & X & X & X & X & X & 0 & 1 & X & count++; \\ \hline
+\textbf{Result} & X & X & X & X & X & X & X & X & X & X & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular} \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
+\end{landscape}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \usepackage{lscape}
+\begin{landscape}
+\begin{table}[]
+\scriptsize
+\catcode`\-=12
+\setlength\tabcolsep{1.5pt}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|c|c|c|c|c|c|l|}
+\hline
+\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SEL2} & \cellcolor[HTML]{C0C0C0}\textbf{SEL3} & \cellcolor[HTML]{C0C0C0}\textbf{SEL4} & \cellcolor[HTML]{C0C0C0}\textbf{SEL5} & \cellcolor[HTML]{C0C0C0}\textbf{SEL6}                                                                 & \cellcolor[HTML]{C0C0C0}\textbf{SEL7} & \cellcolor[HTML]{C0C0C0}\textbf{SEL8} & \cellcolor[HTML]{C0C0C0}\textbf{ClkAcc} & \cellcolor[HTML]{C0C0C0}\textbf{ClkY} & \cellcolor[HTML]{C0C0C0}\textbf{BLOK}                                               & \cellcolor[HTML]{C0C0C0}\textbf{}                                                                             \\ \hline
+\textbf{Reset}                        & 000                                   & 00                                    & 000                                   & 000                                   & 00                                                                                                    & 0                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
+\textbf{Init}                         & 000                                   & 00                                    & X                                     & 000                                   & 01                                                                                                    & 0                                     & X                                     & 0                                       & 1                                     & 1                                                                                   &                                                                                                               \\ \hline
+\textbf{MulUH}                        & 000                                   & 00                                    & X                                     & 000                                   & 01                                                                                                    & 0                                     & X                                     & 0                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
+\textbf{WaitDiv}                      & 000                                   & X                                     & X                                     & X                                     & 00                                                                                                    & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & \begin{tabular}[c]{@{}l@{}}If done = 1 ?\\ SaveDiv : WaitDiv\end{tabular}                                     \\ \hline
+\textbf{SaveDiv}                      & 000                                   & X                                     & X                                     & 001                                   & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
+\textbf{CalculationDY1}               & 000                                   & X                                     & X                                     & 001                                   & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 1                                     & 0                                                                                   &                                                                                                               \\ \hline
+\textbf{WriteToAcc}                   & 001                                   & X                                     & X                                     & const\_int+1                          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If const\_int \textgreater 0 ?\\ 10 : 00\end{tabular}} & X                                     & X                                     & 0                                       & 0                                     & 1                                                                                   & \begin{tabular}[c]{@{}l@{}}RWrv = 1;\\ If count \textless 7 ?\\ SetupCounters : Result\end{tabular}           \\ \hline
+\textbf{SetupCounters}                & 001                                   & X                                     & X                                     & X                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If const\_int \textgreater 0 ?\\ 10 : 00\end{tabular}} & 0                                     & X                                     & 0                                       & 0                                     & 1                                                                                   & \begin{tabular}[c]{@{}l@{}}count = 1;\\ If const\_int \textgreater 0 ?\\ MulCountDYx : MulDYxDVx\end{tabular} \\ \hline
+\textbf{MulCountDYx}                  & X                                     & X                                     & X                                     & const\_int                            & 10                                                                                                    & 0                                     & X                                     & 0                                       & 1                                     & 1                                                                                   &                                                                                                               \\ \hline
+\textbf{SetupDYxDVx}                  & count                                 & X                                     & X                                     & const\_int-count+1                    & 00                                                                                                    & 0                                     & 1                                     & 0                                       & 0                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count = 1 ?\\ 1 : 0\end{tabular}} &                                                                                                               \\ \hline
+\textbf{MulDYxDVx}                    & count                                 & X                                     & X                                     & const\_int-count+1                    & 00                                                                                                    & 0                                     & 1                                     & 1                                       & 0                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count = 1 ?\\ 1 : 0\end{tabular}} & \begin{tabular}[c]{@{}l@{}}If count \textless const\_int ?\\ SetupCount : SetupDUxH\end{tabular}              \\ \hline
+\textbf{SetupCount}                   & X                                     & X                                     & X                                     & X                                     & X                                                                                                     & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & count++;                                                                                                      \\ \hline
+\textbf{SetupDUxH}                    & X                                     & const\_int                            & X                                     & 000                                   & 01                                                                                                    & 0                                     & 1                                     & 0                                       & 0                                     & 0                                                                                   & XOR = 1;                                                                                                      \\ \hline
+\textbf{MulDUxH}                      & X                                     & const\_int                            & X                                     & 000                                   & 01                                                                                                    & 0                                     & 1                                     & 1                                       & 0                                     & 0                                                                                   & XOR = 1;                                                                                                      \\ \hline
+\textbf{SetupACCdivX}                 & X                                     & X                                     & const\_int-1                          & X                                     & 11                                                                                                    & 1                                     & X                                     & 0                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
+\textbf{MulACCdivX}                   & X                                     & X                                     & const\_int-1                          & X                                     & 11                                                                                                    & 1                                     & X                                     & 1                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
+\textbf{SetupCalcDYx}                 & 000                                   & X                                     & X                                     & const\_int+1                          & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
+\textbf{CalculationDYx}               & 000                                   & X                                     & X                                     & const\_int+1                          & 00                                                                                                    & 1                                     & 0                                     & 1                                       & 1                                     & 0                                                                                   &                                                                                                               \\ \hline
+\textbf{Result}                       & X                                     &                                       &                                       & X                                     & X                                                                                                     & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}                                           \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
+\end{landscape}
+
+
 \section{Integrátory v pohyblivej rádovej čiarke}
-Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Honoty kroku h a jeho podielov nie sú uložené v komponent eintegrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
+Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Honoty kroku h a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
 
 
-Násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke boli taktiež implementované vo verziách s 32 a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenia a delenie v troch hodinovcýh taktoch. Pri výpočte 
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SELy0} & \cellcolor[HTML]{C0C0C0}\textbf{SEL} & \cellcolor[HTML]{C0C0C0}\textbf{SELh} & \cellcolor[HTML]{C0C0C0}\textbf{RWrd} & \cellcolor[HTML]{C0C0C0}\textbf{RWrv} & \cellcolor[HTML]{C0C0C0}\textbf{} \\ \hline
+\textbf{Reset} & 1 & 0 & 0 & 1 & 1 &  \\ \hline
+\textbf{Init} & X & X & count & 0 & 0 &  \\ \hline
+\textbf{MulDYxH} & X & X & count & 0 & 0 &  \\ \hline
+\textbf{SetupToRD} & 0 & 1 & count & 0 & 0 &  \\ \hline
+\textbf{SaveToRD} & 0 & 1 & count & 1 & 0 & \multicolumn{1}{l|}{count++} \\ \hline
+\textbf{SaveToRV} & X & X & count & 0 & 1 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count \textless 8 ?\\ Init : Result\end{tabular}} \\ \hline
+\textbf{Result} & X & X & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}} \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
 
-\section{Sústava integrátorv}
 
-Naprogramovanie FPGA VRTEX-5. Pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit.
+
+Ďalej bol im plementovaný násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež vo verziách s 32 bitmi a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinovcýh taktoch, kedže pracujeme v pohyblivej rádovej čiarke. Jednotlivé operácie boli popísané v kapitole xx. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt.
+
+\section{Sústava integrátorv} \label{impl_rovnice}
+Podľa schémy zapojenia xx bola imeplementovaná komponenta počítajúca diferenciálnu rovnicu xx. Boli použité integrátory v pohyblivej rádovej čiarke so 64 bitmi - konkrétne jednovstupový integrátor a násobiaci integrátor. Ďalej bola použitá komponenta invertor. Kedže pracujeme vo FP, invertor vykonáva jednouché invertovanie znamienkového bitu. 
+Každý integrátor je riadneý svojim vlastným kontrolérom, celé zapojenie je potom ovládané hlavným kontrolérom pomocou signálov RESET a EN. Na začiatku výpočtu sú nahrané počiatočné podmienky do integrátorov. Následne je pomocou povolovacieho signálu EN spustený výpočet na všetkých integrátorch naraz. Všetky integrátory používajú pri výpočte hodnoty h a h/i. Pre optimalizáciu priestorovej zložitosti bola použitá iba jedna sada registrov h. Výber registru h je riadený pomocou signálu SELH. Jeho hodnota je určená podľa čítača cyklov. Hodnota čítača je inkrementovaná na kocni každého cyklu. Pri začatí nového cyklu je táto hodnota použitá pre signál SELH.
+Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s po dokončení výpočtu čakajú na násobiaci integrátor. Ten po dokončení výpočtu aktivuje signál OEN na 1. Kontrolér následne spustí výpočet každého integrátora odznova. Toto sa opakuje až kým výpočet jedného kroku metódy neskončí. Pri výpočte ďalšieho kroku výpočtu sú obnovené počiatočné podmienky a výpočet sa znova vykoná.
+
+\begin{figure}[h]
+\centering
+\scalebox{0.5}{\includegraphics{obrazky/sustava_integratorov.pdf}}
+\caption{Schéma zapojenia integrátorov}
+\label{ppi_fp_sustava_impl}
+\end{figure}
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SELy0} & \cellcolor[HTML]{C0C0C0}\textbf{SEL} & \cellcolor[HTML]{C0C0C0}\textbf{RWrd} & \cellcolor[HTML]{C0C0C0}\textbf{RWrv} \\ \hline
+\textbf{Reset} & 1 & 0 & 1 & 0 \\ \hline
+\textbf{Init} & X & X & 0 & 1 \\ \hline
+\textbf{MulDYxH} & X & X & 0 & 0 \\ \hline
+\textbf{SetupToRD} & 0 & 1 & 0 & 0 \\ \hline
+\textbf{SaveToRD} & 0 & 1 & 1 & 0 \\ \hline
+\textbf{SaveToRV} & X & X & 0 & 1 \\ \hline
+\cellcolor[HTML]{EFEFEF} & X & X & 0 & 0 \\ \cline{2-5} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Result}} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}if ENDyx = 0 ?\\      if en = 0 ? Result : MulDYxh\\ : InitDy\end{tabular}} \\ \hline
+\end{tabular}
+\caption{My caption}
+\label{my-label}
+\end{table}
+
+
+Naprogramovanie FPGA VRTEX-5. Pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit. Na Fitkite bola odskúšaný jednovstupový integrátor s 32 bitivou aritmetikou. Tento integrátor bol vybraný kvôli jeho najmenšej priestrorovej zložisti. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA použité vo Fitkite. I kvôli tomuto bola snaha otestovania integrátorov na väčšom FPGA Virtex-5.
 
 
 \chapter{Analýza}
