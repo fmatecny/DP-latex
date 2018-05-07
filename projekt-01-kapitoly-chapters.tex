@@ -594,12 +594,14 @@ Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpoč
 Jednotlivé integrítory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim požitím \textit{testbanchu}. U každého integrátora sú jednotlivé ktorky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplíva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so sväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu. 
 
 \section{Integrátory v pevnej rádovej čiarke}
-Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov je nutné upraviť aj počet registrov h/i kde i >= 2.
-Pre 32 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, xx bitami pred desatinnou čiatkou a xx bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou xx rádu a teda pri výpočte sa počíta x členov Taylorovej rady. 
-Podobne 64 bitová verzia pracuje s aritmetikou s jedným znaminekovým bitom, xx bitmi pred desatinou čiarkou a xx bitmi za desatinou čiarkou. V tejto verzií sa počíta Taylorova rada xx. rádu. 
+Násobiaci aj deliaci integrátor v pevnej rádovej čiarke kódujú čísla v dvojkovom kóde.
+Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov je nutné upraviť aj počet registrov $ \frac{h}{i} $ kde $ i >= 2 $.
+Pre 32 i 64 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, s 1 bitom pred desatinnou čiatkou a s 30 bitmi respektívne 62 bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou 8. rádu a teda výpočet prebieha až po 8. člen Taylorovej rady t.j. DY8.
 
-Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podobne ako násobiaci integrátor.
 
+Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný, podobne ako násobiaci integrátor, v 32 a 64 bitovej verzií. Pri návrhu integrátorov sa kládol dvôraz nie len na rýchlosť výpočtu ale aj na priestorovú zložitosť. 
+Z rovnice xx vyplýva že členy DYx sú násobené číslom N-k, kde k je minimálne 1 a teda najväčšie číslo je N-1. Aby bolo možné toto číslo zobrzaiť bolo potrené zvoliť vhodnú aritmetiku t.j. vhodný počet čísel pred a za desatinnou čiarkou. Čím väčší počet bitov sa nachádza pred desatinou čiarku tým sa zväčšuje interval zobraziteľných čísel, avšak sa zmenšuje počet bitov za desatinnou čiarkou a tým pádaom hustota zobrazenia čísel a v konečnom dôsledku presnosť. V dvojkovom doplnkovom kóde pri 1 bite pred desatinou čiarkou sme schopný výpočitať maximálne dva členy Taylorovej rady pri dvoch bitoch 4 členy, pri troch bitoch 8 členov Taylorovej rady a pri piatich bitoch 16 členov Taylorovej rady. Kedže pri použití Taylorovej metódy 4 rádu nemusí byť riešenie dostatočné presné, v 32 bitová verzia počíta s Taylorovou metódou 8. rádu a je teda použitá aritmetika s jedným znamienkovým bitom, s tromi bitmi pred desatinnou čiarkou a zvýšných 28 bitov tvorí časť za desatinnou čiarkou. Vyšší rád metódy nie je použiteľný, keďže hodnoty vyšších členov by boli veľmi malé a teda nezobraziteľné v danej aritmetike. 
+V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou zväčšená o jeden bit. Za desatinnou čiarkou sa potom nachádza 59 bitov. V tejto verzií deliaceho integrátora sme teda schopný vypočítať v danej aritmetike až 16 členov Taylorovej rady.
 
 
 \begin{landscape}
@@ -620,13 +622,11 @@ Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podob
 \cellcolor[HTML]{EFEFEF}\textbf{SaveToRv}     & 0              & 0             & X             & X             & X             & X             & X             & 0              & 1             & X                       & count++;                                                                              \\ \hline
 \cellcolor[HTML]{EFEFEF}\textbf{Result}       & X              & X             & X             & X             & X             & X             & X             & 0              & 0             & X                       & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}                   \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{Kontrolér násobiaceho integrátora v FX}
 \label{my-label}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% --------------------------------------------
 \begin{table}[]
 \scriptsize
 \centering
@@ -647,16 +647,13 @@ Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podob
 \textbf{SaveToRV} & 0 & 0 & X & X & X & X & X & 0 & 1 & X & count++; \\ \hline
 \textbf{Result} & X & X & X & X & X & X & X & X & X & X & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular} \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{Kontrolér násobiaceho integrátora v FP}
 \label{my-label}
 \end{table}
 \end{landscape}
 
 
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-% \usepackage{lscape}
+% --------------------------------------
 \begin{landscape}
 \begin{table}[]
 \scriptsize
@@ -666,28 +663,28 @@ Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podob
 \begin{tabular}{|
 >{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|c|c|c|c|c|c|l|}
 \hline
-\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SEL2} & \cellcolor[HTML]{C0C0C0}\textbf{SEL3} & \cellcolor[HTML]{C0C0C0}\textbf{SEL4} & \cellcolor[HTML]{C0C0C0}\textbf{SEL5} & \cellcolor[HTML]{C0C0C0}\textbf{SEL6}                                                                 & \cellcolor[HTML]{C0C0C0}\textbf{SEL7} & \cellcolor[HTML]{C0C0C0}\textbf{SEL8} & \cellcolor[HTML]{C0C0C0}\textbf{ClkAcc} & \cellcolor[HTML]{C0C0C0}\textbf{ClkY} & \cellcolor[HTML]{C0C0C0}\textbf{BLOK}                                               & \cellcolor[HTML]{C0C0C0}\textbf{}                                                                             \\ \hline
-\textbf{Reset}                        & 000                                   & 00                                    & 000                                   & 000                                   & 00                                                                                                    & 0                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
-\textbf{Init}                         & 000                                   & 00                                    & X                                     & 000                                   & 01                                                                                                    & 0                                     & X                                     & 0                                       & 1                                     & 1                                                                                   &                                                                                                               \\ \hline
-\textbf{MulUH}                        & 000                                   & 00                                    & X                                     & 000                                   & 01                                                                                                    & 0                                     & X                                     & 0                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
-\textbf{WaitDiv}                      & 000                                   & X                                     & X                                     & X                                     & 00                                                                                                    & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & \begin{tabular}[c]{@{}l@{}}If done = 1 ?\\ SaveDiv : WaitDiv\end{tabular}                                     \\ \hline
-\textbf{SaveDiv}                      & 000                                   & X                                     & X                                     & 001                                   & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
-\textbf{CalculationDY1}               & 000                                   & X                                     & X                                     & 001                                   & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 1                                     & 0                                                                                   &                                                                                                               \\ \hline
-\textbf{WriteToAcc}                   & 001                                   & X                                     & X                                     & const\_int+1                          & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If const\_int \textgreater 0 ?\\ 10 : 00\end{tabular}} & X                                     & X                                     & 0                                       & 0                                     & 1                                                                                   & \begin{tabular}[c]{@{}l@{}}RWrv = 1;\\ If count \textless 7 ?\\ SetupCounters : Result\end{tabular}           \\ \hline
-\textbf{SetupCounters}                & 001                                   & X                                     & X                                     & X                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If const\_int \textgreater 0 ?\\ 10 : 00\end{tabular}} & 0                                     & X                                     & 0                                       & 0                                     & 1                                                                                   & \begin{tabular}[c]{@{}l@{}}count = 1;\\ If const\_int \textgreater 0 ?\\ MulCountDYx : MulDYxDVx\end{tabular} \\ \hline
-\textbf{MulCountDYx}                  & X                                     & X                                     & X                                     & const\_int                            & 10                                                                                                    & 0                                     & X                                     & 0                                       & 1                                     & 1                                                                                   &                                                                                                               \\ \hline
-\textbf{SetupDYxDVx}                  & count                                 & X                                     & X                                     & const\_int-count+1                    & 00                                                                                                    & 0                                     & 1                                     & 0                                       & 0                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count = 1 ?\\ 1 : 0\end{tabular}} &                                                                                                               \\ \hline
-\textbf{MulDYxDVx}                    & count                                 & X                                     & X                                     & const\_int-count+1                    & 00                                                                                                    & 0                                     & 1                                     & 1                                       & 0                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count = 1 ?\\ 1 : 0\end{tabular}} & \begin{tabular}[c]{@{}l@{}}If count \textless const\_int ?\\ SetupCount : SetupDUxH\end{tabular}              \\ \hline
-\textbf{SetupCount}                   & X                                     & X                                     & X                                     & X                                     & X                                                                                                     & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & count++;                                                                                                      \\ \hline
-\textbf{SetupDUxH}                    & X                                     & const\_int                            & X                                     & 000                                   & 01                                                                                                    & 0                                     & 1                                     & 0                                       & 0                                     & 0                                                                                   & XOR = 1;                                                                                                      \\ \hline
-\textbf{MulDUxH}                      & X                                     & const\_int                            & X                                     & 000                                   & 01                                                                                                    & 0                                     & 1                                     & 1                                       & 0                                     & 0                                                                                   & XOR = 1;                                                                                                      \\ \hline
-\textbf{SetupACCdivX}                 & X                                     & X                                     & const\_int-1                          & X                                     & 11                                                                                                    & 1                                     & X                                     & 0                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
-\textbf{MulACCdivX}                   & X                                     & X                                     & const\_int-1                          & X                                     & 11                                                                                                    & 1                                     & X                                     & 1                                       & 0                                     & 1                                                                                   &                                                                                                               \\ \hline
-\textbf{SetupCalcDYx}                 & 000                                   & X                                     & X                                     & const\_int+1                          & 00                                                                                                    & 1                                     & 0                                     & 0                                       & 0                                     & 0                                                                                   &                                                                                                               \\ \hline
-\textbf{CalculationDYx}               & 000                                   & X                                     & X                                     & const\_int+1                          & 00                                                                                                    & 1                                     & 0                                     & 1                                       & 1                                     & 0                                                                                   &                                                                                                               \\ \hline
-\textbf{Result}                       & X                                     &                                       &                                       & X                                     & X                                                                                                     & X                                     & X                                     & 0                                       & 0                                     & X                                                                                   & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}                                           \\ \hline
+\cellcolor[HTML]{C0C0C0}\textbf{Stav} & \cellcolor[HTML]{C0C0C0}\textbf{SEL2} & \cellcolor[HTML]{C0C0C0}\textbf{SEL3} & \cellcolor[HTML]{C0C0C0}\textbf{SEL4} & \cellcolor[HTML]{C0C0C0}\textbf{SEL5} & \cellcolor[HTML]{C0C0C0}\textbf{SEL6} & \cellcolor[HTML]{C0C0C0}\textbf{SEL7} & \cellcolor[HTML]{C0C0C0}\textbf{SEL8} & \cellcolor[HTML]{C0C0C0}\textbf{ClkAcc} & \cellcolor[HTML]{C0C0C0}\textbf{ClkY} & \cellcolor[HTML]{C0C0C0}\textbf{BLOK} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}\textbf{}} \\ \hline
+\textbf{Reset} & 000 & 00 & 000 & 000 & 00 & 0 & 0 & 0 & 0 & 0 & \begin{tabular}[c]{@{}l@{}}count = 1;\\const\_int = 1;\end{tabular} \\ \hline
+\textbf{Init} & 000 & 00 & X & 000 & 01 & 0 & X & 0 & 1 & 1 &  \\ \hline
+\textbf{MulUH} & 000 & 00 & X & 000 & 01 & 0 & X & 0 & 0 & 1 &  \\ \hline
+\textbf{WaitDiv} & 000 & X & X & X & 00 & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}done = 1 ?\\ SaveDiv : WaitDiv;\end{tabular} \\ \hline
+\textbf{SaveDiv} & 000 & X & X & 001 & 00 & 1 & 0 & 0 & 0 & 0 &  \\ \hline
+\textbf{CalculationDY1} & 000 & X & X & 001 & 00 & 1 & 0 & 0 & 1 & 0 &  \\ \hline
+\textbf{WriteToAcc} & 001 & X & X & const\_int+1 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}const\_int > 0 ?\\ 10 : 00;\end{tabular}} & X & X & 0 & 0 & 1 & \begin{tabular}[c]{@{}l@{}}RWrv = 1;\\ count \textless 7 ?\\ SetupCounters : Result;\end{tabular} \\ \hline
+\textbf{SetupCounters} & 001 & X & X & X & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}const\_int > 0 ?\\ 10 : 00;\end{tabular}} & 0 & X & 0 & 0 & 1 & \begin{tabular}[c]{@{}l@{}}count = 1;\\ const\_int \textgreater 0 ?\\ MulCountDYx : MulDYxDVx;\end{tabular} \\ \hline
+\textbf{MulCountDYx} & X & X & X & const\_int & 10 & 0 & X & 0 & 1 & 1 &  \\ \hline
+\textbf{SetupDYxDVx} & count & X & X & const\_int-count+1 & 00 & 0 & 1 & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}count = 1 ?\\ 1 : 0;\end{tabular}} &  \\ \hline
+\textbf{MulDYxDVx} & count & X & X & const\_int-count+1 & 00 & 0 & 1 & 1 & 0 & \multicolumn{1}{l|}{count = 1 ? 1 : 0;} & \begin{tabular}[c]{@{}l@{}}count \textless const\_int ?\\ SetupCount : SetupDUxH;\end{tabular} \\ \hline
+\textbf{SetupCount} & X & X & X & X & X & X & X & 0 & 0 & X & count++; \\ \hline
+\textbf{SetupDUxH} & X & const\_int & X & 000 & 01 & 0 & 1 & 0 & 0 & 0 & XOR = 1; \\ \hline
+\textbf{MulDUxH} & X & const\_int & X & 000 & 01 & 0 & 1 & 1 & 0 & 0 & XOR = 1; \\ \hline
+\textbf{SetupACCdivX} & X & X & const\_int-1 & X & 11 & 1 & X & 0 & 0 & 1 &  \\ \hline
+\textbf{MulACCdivX} & X & X & const\_int-1 & X & 11 & 1 & X & 1 & 0 & 1 &  \\ \hline
+\textbf{SetupCalcDYx} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 0 & 0 & 0 &  \\ \hline
+\textbf{CalculationDYx} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 1 & 1 & 0 &  \\ \hline
+\textbf{Result} & X &  &  & X & X & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}en = 0 ? Result : Init;\end{tabular} \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{Kontrolér deliaceho integrátora v FP}
 \label{my-label}
 \end{table}
 \end{landscape}
@@ -696,10 +693,7 @@ Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný podob
 \section{Integrátory v pohyblivej rádovej čiarke}
 Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Honoty kroku h a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
 
-
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\bigskip
 \begin{table}[H]
 \centering
 \begin{tabular}{|
@@ -714,7 +708,7 @@ Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 3
 \textbf{SaveToRV} & X & X & count & 0 & 1 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If count \textless 8 ?\\ Init : Result\end{tabular}} \\ \hline
 \textbf{Result} & X & X & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}} \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{Kontrolér jednovstupového integrátora v FP}
 \label{my-label}
 \end{table}
 
@@ -755,7 +749,7 @@ Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s 
 \cellcolor[HTML]{EFEFEF} & X & X & 0 & 0 \\ \cline{2-5} 
 \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Result}} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}if ENDyx = 0 ?\\      if en = 0 ? Result : MulDYxh\\ : InitDy\end{tabular}} \\ \hline
 \end{tabular}
-\caption{My caption}
+\caption{Kontrolér jednovstupového integrátora v FP v zapojení do sústavy}
 \label{my-label}
 \end{table}
 
