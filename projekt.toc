@@ -1,33 +1,34 @@
 \select@language {slovak}
-\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}Numerick\IeC {\'a} integr\IeC {\'a}cia}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Taylorova rada}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Eulerova met\IeC {\'o}da}{4}{section.2.2}
-\contentsline {section}{\numberline {2.3}Runge-Kutta}{4}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Runge-Kutta 2. r\IeC {\'a}du}{4}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Runge-Kutta 4. r\IeC {\'a}du}{5}{subsection.2.3.2}
-\contentsline {chapter}{\numberline {3}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c Taylorovou radou}{6}{chapter.3}
-\contentsline {section}{\numberline {3.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{8}{section.3.2}
-\contentsline {chapter}{\numberline {4}Reprezent\IeC {\'a}cia operandov}{10}{chapter.4}
-\contentsline {section}{\numberline {4.1}Pevn\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{10}{section.4.1}
-\contentsline {section}{\numberline {4.2}Pohybliv\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{11}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}S\IeC {\'u}\IeC {\v c}et a rozdiel}{13}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}N\IeC {\'a}sobenie a delenie}{14}{subsection.4.2.2}
-\contentsline {chapter}{\numberline {5}Numerick\IeC {\'e} integr\IeC {\'a}tory}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{16}{section.5.1}
-\contentsline {section}{\numberline {5.2}Deliaci integr\IeC {\'a}tor v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{16}{section.5.2}
-\contentsline {section}{\numberline {5.3}Jendovstup\IeC {\'y} integr\IeC {\'a}tor v pohybliv\IeC {\'e}j r\IeC {\'a}dovej \IeC {\v c}iarke}{18}{section.5.3}
-\contentsline {section}{\numberline {5.4}N\IeC {\'a}sobiaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{18}{section.5.4}
-\contentsline {section}{\numberline {5.5}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{20}{section.5.5}
-\contentsline {section}{\numberline {5.6}S\IeC {\'u}stava diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{21}{section.5.6}
-\contentsline {chapter}{\numberline {6}Implement\IeC {\'a}cia integr\IeC {\'a}torv vo VHDL}{23}{chapter.6}
-\contentsline {section}{\numberline {6.1}Integr\IeC {\'a}tory v pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{23}{section.6.1}
-\contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{27}{section.6.2}
-\contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{27}{section.6.3}
-\contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{30}{chapter.7}
-\contentsline {section}{\numberline {7.1}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 2. radu}{30}{section.7.1}
-\contentsline {section}{\numberline {7.2}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 4. radu}{30}{section.7.2}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{31}{chapter.8}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{32}{chapter*.23}
+\contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Numerick\IeC {\'a} integr\IeC {\'a}cia}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Taylorova rada}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Eulerova met\IeC {\'o}da}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Runge-Kutta}{5}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Runge-Kutta 2. r\IeC {\'a}du}{5}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Runge-Kutta 4. r\IeC {\'a}du}{6}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c Taylorovou radou}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou delenia}{9}{section.3.2}
+\contentsline {chapter}{\numberline {4}Reprezent\IeC {\'a}cia operandov}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Pevn\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Pohybliv\IeC {\'a} r\IeC {\'a}dov\IeC {\'a} \IeC {\v c}iarka}{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}S\IeC {\'u}\IeC {\v c}et a rozdiel}{14}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}N\IeC {\'a}sobenie a delenie}{15}{subsection.4.2.2}
+\contentsline {chapter}{\numberline {5}Numerick\IeC {\'e} integr\IeC {\'a}tory}{16}{chapter.5}
+\contentsline {section}{\numberline {5.1}N\IeC {\'a}vrh n\IeC {\'a}sobiaceho integr\IeC {\'a}tora v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{17}{section.5.1}
+\contentsline {section}{\numberline {5.2}N\IeC {\'a}vrh deliaceho integr\IeC {\'a}tora v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{19}{section.5.2}
+\contentsline {section}{\numberline {5.3}N\IeC {\'a}vrh jendovstup\IeC {\'e}ho integr\IeC {\'a}tora}{20}{section.5.3}
+\contentsline {section}{\numberline {5.4}N\IeC {\'a}vrh komponentu pre spracovanie exponentov}{21}{section.5.4}
+\contentsline {section}{\numberline {5.5}N\IeC {\'a}vrh n\IeC {\'a}sobiaci integr\IeC {\'a}tora v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{23}{section.5.5}
+\contentsline {section}{\numberline {5.6}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{24}{section.5.6}
+\contentsline {section}{\numberline {5.7}S\IeC {\'u}stava diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{25}{section.5.7}
+\contentsline {chapter}{\numberline {6}Implement\IeC {\'a}cia integr\IeC {\'a}torv vo VHDL}{27}{chapter.6}
+\contentsline {section}{\numberline {6.1}Integr\IeC {\'a}tory v pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{27}{section.6.1}
+\contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{32}{section.6.2}
+\contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{32}{section.6.3}
+\contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{34}{chapter.7}
+\contentsline {section}{\numberline {7.1}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 2. radu}{34}{section.7.1}
+\contentsline {section}{\numberline {7.2}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 4. radu}{34}{section.7.2}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{35}{chapter.8}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{36}{chapter*.27}
 \contentsfinish 

@@ -456,13 +456,18 @@ kladné/záporné FP číslo & +/- 0 & +/- $ \infty $ \\ \hline
 \end{table}
 
 \chapter{Numerické integrátory} \label{NUM_INTEGRATORY}
-Numerický integrátor je hardvérový komponent, ktorý slúži na výpočet numerickej integrácie. Podľa spôsobu výpočtu a komunikácie medzi komponentmi integrátora sa numerické integrátory delia na sériové, sériovo-paralelné a paralelné. My sa budeme zaoberať paralelnými numerickými integrátormi, kvôli ich jednoduchosti a rýchlosti výpočtu. Ďalej môžeme numerické integrátory rozdeliť na jednovstupé a dvojvstupé. Jedno vstupý integrátor vykonáva integráciu vstupnej hodnoty a posiela ju na výstup. Schéma integrátora je znázornená na obrázku \ref{schema_i} a ako z názvu vyplýva obsahuje jeden vstup pre vstupnú hodntotu. Ďalej obsahuje jeden vstup pre počiatočnú podmienku a jeden výstup pre výsledok výpočtu. Dvojvstupové integrátory obsahujú jeden vstup pre počiatočnú podmienku, dva vstupy pre prívod operandov a jeden výstup pre výsledok výpočtu. Schéma integrátora je znázornená na obrázku \ref{schema_ndi}. Tieto integrátory rozdeľujeme podľa použitej operácie na násobiace a deliace integrátory.
+Numerický integrátor je hardvérový komponent, ktorý slúži na výpočet numerickej integrácie. Podľa spôsobu výpočtu a komunikácie medzi komponentmi integrátora sa numerické integrátory delia na:
 
-V nasledujúcich podkapitolách predstavíme jednotlivé návrhy paralelných násobiacich a paralelných deliacich integrátorov, oba typy v pevnej a v pohyblivej rádovej čiarke. Predstvíme taktiež jednovstupý paralelný integrátor v pohyblivéj rádovej čiarke.
-\bigskip
+\begin{itemize}
+\item sériovo-sériové integrátory, skrátene sériové integrátory (sériová komunikácia aj výpočet)
+\item sériovo-paralelné integrátory (sériová komunikácia a paralelný výpočet)
+\item paralelno-paralelné integrátory, skrátene paralelné integrátory (paralelná komunikácia aj výpočet)
+\end{itemize}
+
+V tejto práci sa budeme zaoberať paralelnými numerickými integrátormi, kvôli ich jednoduchosti a rýchlosti výpočtu. Ďalej môžeme numerické integrátory rozdeliť na jednovstupé a dvojvstupé. Jednovstupý integrátor vykonáva integráciu vstupnej hodnoty a posiela ju na výstup. Schéma tohto typu integrátora je znázornená na obrázku \ref{schema_i} a ako z názvu vyplýva obsahuje jeden vstup pre vstupnú hodntotu. Ďalej obsahuje jeden vstup pre počiatočnú podmienku a jeden výstup pre výsledok výpočtu. Dvojvstupové integrátory obsahujú jeden vstup pre počiatočnú podmienku, dva vstupy pre prívod operandov a jeden výstup pre výsledok výpočtu. Schéma integrátora je znázornená na obrázku \ref{schema_ndi}.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \subfloat[Schéma jednovstupého integrátora]{\label{schema_i} \includegraphics[width=0.4\linewidth]{obrazky/jednoduchy_integrator.pdf}} \hspace{1.0cm}
 \subfloat[Schéma dvojvstupého násobiaceho/deliaceho integrátora]{\label{schema_ndi} \includegraphics[width=0.4\linewidth]{obrazky/del_nas_integrator.pdf}}
@@ -470,72 +475,165 @@ V nasledujúcich podkapitolách predstavíme jednotlivé návrhy paralelných n�
 \caption{Schéma jendovstupého a dvojvstupého integrátora}
 \end{figure}
 
+Tieto integrátory rozdeľujeme podľa použitej operácie na násobiace a deliace integrátory. Násobiaci integrátor vykonáva deriváciu násobenia dvoch vstupných hodnôt. Deliaci integrátor zase deriváciu delenia dvoch vstupných hodnôt. Výsledná hodnota je poslaná na výstup.
+
+V nasledujúcich podkapitolách predstavíme jednotlivé návrhy paralelných násobiacich a paralelných deliacich integrátorov, oba typy v pevnej a v pohyblivej rádovej čiarke. Predstvíme taktiež jednovstupý paralelný integrátor v pevnéj a pohyblivéj rádovej čiarke.
+\bigskip
 
 
-\section{Násobiaci integrátor v~pevnej rádovej čiarke}
-Násobiaci integrátor počíta rovnicu \eqref{dif_nasobenie} pomocou \eqref{DY1_cleny_nasobenia} -- \eqref{DY4_cleny_nasobenia}. Na základe týchto rovníc bol vytvorený návrh paralelného násobiacého integrátora, ktorý je na obrázku~\ref{ppni}. Návrh vychádza z~práce V. Závadu \cite{ZavadaBP} a bol upravený a rozšírený o~počet registrov $ DRn $ a $ DQn $, ktoré slúžia na ukladanie prichádzajúcich členov. Počet týchto registorov je stanovený podľa použitej aritmetiky a použadvanej presnosti.
+\section{Návrh násobiaceho integrátora v~pevnej rádovej čiarke}
+Násobiaci integrátor počíta rovnicu \eqref{dif_nasobenie} pomocou \eqref{DY1_cleny_nasobenia} -- \eqref{DY4_cleny_nasobenia}. Na základe týchto rovníc bol vytvorený návrh paralelného násobiacého integrátora, ktorý je na obrázku~\ref{ppni}. Návrh vychádza z~práce V. Závadu \cite{ZavadaBP} a bol upravený a rozšírený o~počet registrov $ DR(N-1) $ a $ DQ(N-1) $, ktoré slúžia na ukladanie prichádzajúcich členov. Rozšírený bol aj počet registrov pre uloženie kroku $ h $ integračnej metódy a jeho podielov. Počet týchto registorov je o jeden menší ako rád $ ORD $ použitej Taylorovej metódy ($ N = ORD $), kedže pri výpočte sa používajú predchádzajúce členy Taylorovej metódy. Rád metódy je vhodné a potrebné zvoliť vzhľadom na použitú aritmetiku a požadovanú presnosť.
 
-Každý člen $ DYn $ obsahuje postupné delenie integračného kroku $ h $. Tieto hodnoty sú predpočítané a uložené v~sade registrov $ h $. Avšak nie je potrebné uložiť všetkých 20 hodnôt, stačí uložiť len tie hodnoty, ktorých deliteľ je nepárne číslo. Ostatné hodnoty je možné vypočítať jednoduchým posunom registra doprava, čo je vlastne delenie číslom 2. Týmto spôsobom znížime počet registrov o~polovicu. Počet operácií potrebných na výpočet sa nezvýši, keďže posun registra je možné vykonávať v~predstihu a paralelne s~inými operáciami.
+Každý člen $ DY(N-1) $ obsahuje postupné delenie integračného kroku $ h $. Tieto hodnoty sú predpočítané a uložené v~sade registrov $ h $. Pre optimalizáciu a ušetrenia miesta však nie je potrebné uložiť všetkých $ N $ hodnôt, stačí uložiť len tie hodnoty, ktorých deliteľ je nepárne číslo. Ostatné hodnoty je možné vypočítať jednoduchým posunom registra doprava, čo je vlastne delenie číslom 2. Je síce potrebné pridať riadice signály pre ovládanie posunu jednotlivých registrov avšak výsledkom je znížie počtu registrov $ h $ o~polovicu. Počet operácií potrebných na výpočet sa nezvýši, keďže posun registrov je možné vykonávať v~predstihu a paralelne s~inými operáciami.
 
 \bigskip
 \begin{figure}[h]
 \centering
-\scalebox{0.6}{\includegraphics{obrazky/ppni_fx20.png}}
-\caption{Paralelno-paralelný násobiaci integrátor \cite{ZavadaBP}}
+\scalebox{0.6}{\includegraphics{obrazky/ppni.png}}
+\caption{Paralelno-paralelný násobiaci integrátor \cite{ZavadaBP}.}
 \label{ppni}
 \end{figure}
 
-Na začiatku výpočtu sú pomocou signálu \textit{RESET} vynulované všetky registre, a nastavia sa potrebné signály na multiplexory \textit{MPX}. Následne je do registra \textit{RV} nahraná počiatočná podmienka, do registra \textit{h} je nahraný integračný krok metódy a do registrov \textit{h/i, i=3,5..19} sú nahrané predpočítané konštanty. Po prijatí hodnôt \textit{R} a \textit{Q} sa začne výpočet. Výsledok výpočtu je uložený v~registri \textit{RV}.
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{DAE8FC}}l |l|}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Skratka}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Popis}}} \\ \hline
+\textbf{R, Q} & vstupné operandy integrátora \\ \hline
+\textbf{Y0} & počiatočná podmienka \\ \hline
+\textbf{N} & maximálny rád metódy \\ \hline
+\textbf{h, h/2...h/N} & sada registrov s integračním krokom metódy a jeho podielov \\ \hline
+\textbf{r0, DR1, ...DR(N-1)} & sada registrov jednotlivých členov vstupného operandu R \\ \hline
+\textbf{q0, DQ1, ...DQ(N-1)} & sada registrov jednotlivých členov vstupného operandu Q \\ \hline
+\textbf{MUL} & paralelná násobička \\ \hline
+\textbf{SUM} & paralelná sčítačka \\ \hline
+\textbf{ACC} & akumulátor - register pre priebežné ukladanie medzivýsledkov \\ \hline
+\textbf{RD} & register pre uloženie jednotlivých členov Taylorovej rady \\ \hline
+\textbf{RV} & register pre uloženie celkového výsledku \\ \hline
+\textbf{MPX} & multiplexor 2-1 \\ \hline
+\textbf{SEL1, SEL2, SEL3} & riadiace signály multiplexorov \\ \hline
+\textbf{SELh, SELr, SELq} & riadiace signály registrov \\ \hline
+\textbf{SELy0} & riadiaci signál pre zápis počiatočnej podmienky \\ \hline
+\textbf{RWr, RWq} & povoľovacie signály sád registrov (READ/WRITE) \\ \hline
+\textbf{RWrv, RWrd, RWacc} & povoľovacie signály registrov (READ/WRITE) \\ \hline
+\textbf{BLOK} & blokový signál multiplexora - na výstupu 0 \\ \hline
+\end{tabular}
+\caption{Význam skratiek použitých v obrázku \ref{ppni}.}
+\label{my-label}
+\end{table}
+
+Na začiatku výpočtu sú pomocou signálu \textit{RESET} vynulované všetky registre, a nastavia sa potrebné signály na multiplexoroch \textit{MPX}. Následne je do registrov \textit{RV} a \textit{RD} nahraná počiatočná podmienka, do registra \textit{h} je nahraný integračný krok metódy a do registrov \textit{h/i, i=2,3..N} sú nahrané predpočítané hodnoty podielov. Povolovacím signálom \textit{EN} sa spustí výpočet. Ako prvé sa uložia vstupné hodnoty \textit{R} a \textit{Q} do registrov. Na začiatku každého cyklu výpočtu sú vstupné hodnoty ukladané postupne do ďalších registorv. Po uložení sa začne samotný výpočet. Honota aktuálne počítaného člena Taylorovej rady sa postupne ukladá do registra \textit{RD} a odtial je privedená na výstup integrátora.
+Do registra \textit{RV} je ukladaný súčet jednotlivých členov Taylorovej rady - čiže celkový výsledok derivácie vstupných hodnôt. Táto hodnota nás bude zaujímať napríklad keď je integrátor "posledný" v zapojení, čiže jeho výstup nie je nikam pripojený a teda nepotrebujeme použiť hodnoty jednotlivých členov.
 
 
-\section{Deliaci integrátor v~pevnej rádovej čiarke}
-Tento integrátor počíta rovnicu \eqref{dif_delenie} pomocou členov \eqref{DY1_cleny_delenia} - \eqref{DY4_cleny_delenia}. Podobne, ako u~násobiaceho integrátora, bol z~týchto rovníc vytvorený návrh paralelného deliaceho integrátora. Návrh vychádza z~bakalárskej práce \cite{MatecnyBP} a bol upravený podobne ako predošlí násobiaci integrátor zvýšením počtu registrov $ DUn $ a $ DVn $. Taktiež sa zvýšil počet registrov $ DYn $, ktoré slúžia na uloženie jednotlivých členov Taylorovej rady, kedže na výpočet nasledujúceho člena je použitý predchádzajúci člen. Deliaci integrátor, narozdiel od násobiaceho integrátora, nepoužíva sadu registrov $ h $, ale podobnú sadu registrov, ktorá obsahuje hodnoty $ 1/n $. Podobne ako u~násobiaceho integrátora je možné zmenšiť počet týchto registrov na polovicu s~využitím operácie \textit{shift}. Register \textit{const} obsahuje \textit{counter}, ktorý sa postupne inkrementuje, a s~ktorým sa násobí hodnota $ DYn $. Výsledná hodnota je uložená do daného registra $ DYn $ a znova použitá v~ďalšom výpočte, čím sa ušetrí operácia násobenia.
+\section{Návrh deliaceho integrátora v~pevnej rádovej čiarke}
+Tento integrátor počíta rovnicu \eqref{dif_delenie} pomocou členov \eqref{DY1_cleny_delenia} - \eqref{DY4_cleny_delenia}. Podobne, ako u~násobiaceho integrátora, bol z~týchto rovníc vytvorený návrh paralelného deliaceho integrátora. Návrh vychádza z mojej bakalárskej práce \cite{MatecnyBP} a bol upravený podobne ako predošlí násobiaci integrátor zvýšením počtu registrov $ DU(N-1) $ a $ DV(N-1) $. Taktiež sa zvýšil počet registrov $ DY(N-1) $, ktoré slúžia na uloženie jednotlivých členov Taylorovej rady, kedže na výpočet nasledujúceho člena je použitý predchádzajúci člen. Sada týchto registrov okrem hodnôt $ DY(n-1) $ obsahuje register pre uloženie kroku $ h $ integračenj metódy. Deliaci integrátor, narozdiel od násobiaceho integrátora, nepotrebuje pri výpočte hodnoty podielov kroku numerickej metódy a teda stačí uložiť len jednu hodnotu $ h $. Deliaci integrátor ale používa sadu registrov, ktorá obsahuje hodnoty $ 1/N $. Podobne ako u~násobiaceho integrátora je možné zmenšiť počet týchto registrov na polovicu s~využitím aritmetického posunu (operácia \textit{shift}). Register \textit{count} obsahuje \textit{counter}, ktorý sa postupne inkrementuje v každom cykle výpočtu, a s~ktorým sa násobí hodnota $ DY(N-1) $. Vyplíva to z rovnic \eqref{DY1_cleny_delenia} - \eqref{DY4_cleny_delenia} a \eqref{suma_div}, kde pri výpočte každého člena Taylorovej rady sa hodnota $ DY(N - k) $ násobí hodnotou $ N - k $. Výsledná vynásobená hodnota je uložená opätovne do daného registra $ DY(N-1) $ a znova použitá v~ďalšom výpočte. Tým sa ušetrí operácia násobenia v ďalšom cykle výpočtu.
 
 \begin{figure}[h]
 \centering
-\scalebox{0.5}{\includegraphics{obrazky/ppdi_fx20.png}}
-\caption{Paralelno-paralelný deliaci integrátor \cite{MatecnyBP}}
+\scalebox{0.5}{\includegraphics{obrazky/ppdi.png}}
+\caption{Paralelno-paralelný deliaci integrátor \cite{MatecnyBP}.}
 \label{ppdi}
 \end{figure}
 \bigskip
 
-Podobne ako pri násobiacom integrátore, aj pri paralelnom deliacom integrátore sú na začiatku výpočtu vynulované registre pomocou signálu \textit{RESET} a nastavené signály multiplexorov \textit{MPX}. Ďalej je do registra \textit{RV} nahraná počiatočná podmienka a do registra $ h $ je nahraný integračný krok. Do registrov $ 1/n $ sú uložené predpočítané konštanty. Po prijatí hodnôt $ U $ a $ V $ sa začne výpočet. Hodnota $ V $ je privedená do deličky $ DIV $ a spustí sa výpočet $ 1/v $ s~použitím deliaceho algoritmu \textit{SRT}. Delenie je realizované len raz počas celého výpočtu, keďže ide o~veľmi náročnú operáciu. Kvôli optimalizácii je paralelne s~delením realizovaný výpočet násobenia $ uh $.
-Po skončení výpočtu je výsledok uložený do registra $ RV $. 
 
-\newpage
-\section{Jendovstupý integrátor v pohyblivéj rádovej čiarke}
-Tento integrátor bol navrhnutý podľa rovníc \eqref{DY_cleny} na zálade ktorých počíta difernciálnu rovnucu \eqref{jednoducha_rovnica}. Z toho vyplýva, že vykonáva numerickú integráciu vstupnej hodnoty a následne výslednú hodnotu posiela na výstup. Na naštartovanie výpočtu slúži počiatočna podmienka. Tá je nahraná na začiatku výpočtu do registra RV.RD.
-Schéma integrátora je na obrázku \ref{ppi_fp} a vychádza z práce J. Opálku \cite{OpalkaBP}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{DAE8FC}}l |l|}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Skratka}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Popis}}} \\ \hline
+\textbf{V, U} & vstupné operandy integrátora \\ \hline
+\textbf{1/v, DV1, ... DV(N-1)} & sada registrov jednotlivých členov vstupného operandu V \\ \hline
+\textbf{u0, DU1, ... DU(N-1)} & sada registrov jednotlivých členov vstupného operandu U \\ \hline
+\textbf{count} & čítač cyklov výpočtu - N \\ \hline
+\textbf{1/2, 1/3, ... 1/N} & sada registrov s jednotlivými podielmi \\ \hline
+\textbf{h, DY1, ... DY(N-1)} & sada registrov s krokom metódy a s vypočítanými členmi \\ \hline
+\textbf{DIV} & delička \\ \hline
+\textbf{XOR} & invertovanie hodnoty v dvojkovom doplnku (xor +1) \\ \hline
+\textbf{MPX} & multiplexor 2-1, 4-1 \\ \hline
+\textbf{START} & povoľovací signál na spustenie výpočtu \\ \hline
+\textbf{SEL1, SEL6, SEL7, SEL8} & riadiace signály multiplexorov \\ \hline
+\textbf{SEL2, SEL3, SEL4, SEL5} & riadiace signály registrov \\ \hline
+\textbf{SELxor} & signál na invertovanie vstupnej hodnoty \\ \hline
+\textbf{CLKcount} & signál na zvýšenie hodnoty čítača \\ \hline
+\textbf{RWv, RWu, RWy} & povoľovacie signály sád registrov (READ/WRITE) \\ \hline
+\end{tabular}
+\caption{Význam skratiek v obrázku \ref{ppdi}.}
+\label{my-label}
+\end{table}
+
+
+
+
+Podobne ako pri násobiacom integrátore, aj pri paralelnom deliacom integrátore sú na začiatku výpočtu vynulované registre pomocou signálu \textit{RESET} a nastavené signály multiplexorov \textit{MPX}. Ďalej je do registrov \textit{RD} a \textit{RV} nahraná počiatočná podmienka a do registra $ h $ je nahraný integračný krok. Do registrov $ 1/n $ sú uložené predpočítané konštanty. Po prijatí hodnôt $ U $ a $ V $ sa začne výpočet. Hodnota $ V $ je privedená do deličky $ DIV $ a spustí sa výpočet $ 1/v $ s~použitím deliaceho algoritmu \textit{SRT}. Delenie je realizované len raz počas celého výpočtu, keďže ide o~veľmi náročnú operáciu. Po skončení operáce delenia je výseldok uložený do sady registrov $ DVN $ a to konkrétne do registra $ 1/v $. V ďalšom vykle výpočtu je vstupná hodnota $ V $, privedená priamo do sady registrov $ DVN $ bez delenia. Hodnota $ U $ je uložená do sady registrov $ DUN $. Kvôli optimalizácii je paralelne s~delením realizovaný výpočet násobenia $ uh $. Po skončení výpočtu je výsledok aktuálneho člena uložený do registra \textit{RD} a privedený na výstup deliaceho integrátora. Suma jednotlivých členov je postupne ukladaná v každom cykle do registra $ RV $, z ktorého, rovnako ako v násobiacom integrátore, je možné získať hodnotu privedeným na výstup.
+
+
+\section{Návrh jendovstupého integrátora}
+Tento integrátor bol navrhnutý podľa rovníc \eqref{DY_cleny} na zálade ktorých počíta difernciálnu rovnucu \eqref{jednoducha_rovnica}. Z toho vyplýva, že vykonáva numerickú integráciu vstupnej hodnoty a následne výslednú hodnotu posiela na výstup. Schéma integrátora je na obrázku \ref{ppi_fp} a vychádza z práce J. Opálku \cite{OpalkaBP}. Na naštartovanie výpočtu slúži počiatočna podmienka. Tá je nahraná na začiatku výpočtu do registra \textit{RV}. Následne je cez multiplexor \textit{MPX} privedená a uložená do registra \textit{RD}. V sade registrov $ h $ je uložený integračný krok metódy a jeho podiely. Rovnako ako vpredchádzajucich prípadoch je možné počet registrov znížiť na polovicu. Vstupnú hodnotu $ Z $ nie je potrebné ukladať do registrov, kedže sa nepoužíva pri výpočte ďalších členov. Jednotlivé hodnoty členov sú ukladané do registra \textit{RV} a poslané na výstup integrátora. Ak chceme získať výslednú hodnotu Taylorovej rady rovnice \eqref{jednoducha_rovnica}, stačí priviesť hodnotu z registra \textit{RV} cez multiplexor \textit{MPX} do registra \textit{RD}, kde je hodnota sprístupnená na výstupe integrátora.
+
 
 \bigskip
 \begin{figure}[h]
 \centering
-\scalebox{0.4}{\includegraphics{obrazky/integrator_paralelny.pdf}}
-\caption{Paralelný jednovstupový integrátor v pohyblivej rádovej čiarke}
+\scalebox{0.4}{\includegraphics{obrazky/ppi.png}}
+\caption{Paralelný jednovstupový integrátor v pohyblivej rádovej čiarke.}
 \label{ppi_fp}
 \end{figure}
 \bigskip
 
-\section{Násobiaci integrátor v~pohyblivej rádovej čiarke}
-Blokové schémy zapojenia integrátorov pracujúcich v~pohyblivej rádovej čiarke vychádzajú z~predchádzajúcich návrhov, ale boli rozšírené o~prácu so znamienkami, s~mantisou a s~exponentmi. Samotný výpočet exponenta sa deje v~komponente \textit{EXP}, ktorého návrh je zobrazený na obrázku~\ref{ppi_fp_exp}.
+\section{Návrh komponentu pre spracovanie exponentov}
+V pohyblivéj rádovej čiarke sú operácie násobenia, delenia a sčítania (odčítania) zložitejšie, nakoľko je k týmto operáciam pridaná aj práca s výpočtom znamienka, exponentu a mantisi. Výpočet exponentov je možné vykonávanať v každej z komponent (násobička, delička, sčítačka) samostane alebo pomocou jednej komponenty zdielanej medzi týmito komponentmi. Pri zdieľanom prístupe je možné znížiť priestorovú zložitosť zapojenia, ale zvýši sa tým náročnosť riadenie kontroléra a synchronizácia. V deliacom integrátore to môže spôsobiť zdržanie výpočtu, keď sa operácia delenia a násobenia vykonávajú paralelne. Avšak táto situácie nastane len raz na začiatku výpočtu. Predošlé popísané návrhy násobaiceho, deliaceho a jednovstupového integrátora je možné použiť ako pri implementácií v pevnej rádovej čiarke tak aj v pohyblivéj rádovej čiarke. Integrátory v pohyblivéj rádovej čiarke vychádzajúce z popísaných návrhov pracujú s exponentami v každej operácií samostatne.
+V nasledujúcich sekciách si popíšeme druhú variantu spracovania exponentu so sdielanýcm komponentom.
+
+Blokové schémy zapojenia integrátorov pracujúcich v~pohyblivej rádovej čiarke vychádzajú z~predchádzajúcich návrhov, ale boli rozšírené o~prácu so znamienkami, s~mantisou a s~exponentmi. Samotný výpočet exponenta sa deje v zdielanom komponente \textit{EXP}, ktorého návrh je zobrazený na obrázku~\ref{ppi_fp_exp}.
 
 \bigskip
 \begin{figure}[h]
 \centering
 \scalebox{0.8}{\includegraphics{obrazky/ppdi_fp_exp.png}}
-\caption{EXP - blok pracujúci s~exponentmi}
+\caption{EXP - blok pracujúci s~exponentmi.}
 \label{ppi_fp_exp}
 \end{figure}
 \bigskip
 
-Komponent \textit{EXP} slúži na vykonávanie výpočtov s~exponentmi, ktoré sú popísané v~sekciách~\ref{PlusMinusFP} a~\ref{MulDivFP}. Obsahuje dva vstupy, do ktorých sú privedené jednotlivé exponenty z~komponentov $ DIV $, $ MUL $ a $ SUM $. Výpočet sa uskutočňuje pomocou paralelnej sčítačky na 8 alebo 11 bitoch, podľa v~závislosti použitej aritmetiky.
-Pri vykonávaní operácie súčinu alebo rozdielu slúži komponent \textit{EXP} na výpočet rozdielu exponentov. Výsledná hodnota rozdielu je privedená naspäť do sčítačky \textit{SUM} cez register \textit{ACC}.
-Pri operácii násobenia alebo delenia slúži komponent \textit{EXP} na výpočet výsledného exponentu. Podľa typu operácie sa vykoná sučet alebo rozdiel prijatých exponentov. Táto hodnota je uložená v~registri \textit{ACC} a privedená naspäť do sčítačky $ SUM_{8bit} $ s~hodnotou z~registra $ BIAS $. Vykoná sa súčet alebo rozdiel týchto hodnôt a výsledná hodnota je privedená naspäť do násobičky $ MUL $ alebo deličky $ DIV $.
-Okrem spomenutých operácií slúži komponent $ EXP $ na zvýšenie alebo zníženie hodnoty exponenta na základe posunu mantisy pri pretečení/podtečení a pri normalizácii.
 
-Kvôli prehľadnosti neobsahuje schéma zapojenia  znázornenie výpočtu znamienka a rozdelenie operandov na znamienko, exponent a na mantisu, a ich opätovné zloženie. Tieto oberácie sa vykonávajú v~komponentoch \textit{DIV}, \textit{MUL} a \textit{SUM}.\\
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{DAE8FC}}l |l|}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Skratka}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{68CBD0}{\color[HTML]{000000} \textbf{Popis}}} \\ \hline
+\textbf{E1} & vstupná hodnota väčšieho exponenta \\ \hline
+\textbf{E2/shift} & vstupná hodnota menšieho exponenta/hodnota posunu \\ \hline
+\textbf{BIAS} & hodnota 127 alebo 2047 \\ \hline
+\textbf{SUM (8/11bit)} & paralelná 8 alebo 11 bitová sčítačka \\ \hline
+\textbf{INV} & invertor \\ \hline
+\end{tabular}
+\caption{Význam skratiek použitých v obrázku \ref{ppi_fp_exp}.}
+\label{my-label}
+\end{table}
 
-Návrh paraleného násobiaceho integrátora v~pohyblivej rádovej čiarke je na obrázku~\ref{ppni}. Čísla v~pohyblivej rádovej čiarke môžeme zobraziť presnejšie ako čísla v~pevnej rádovej čiarke, čiže pri uložení malých čísel v~pohyblivej rádovej čiarke dochádza k~menšej zaokrúhľovacej chybe. Z~tohto dôvodu je možné počítať Taylorovu radu s~použitím väčšieho počtu členov a zvýšiť tak presnoť výpočtu. Inegrátory v~pohyblivej rádovej čiarke sú teda navrhnuté tak, aby umožňovali výpočet až na 40 členov Taylorovej rady. Kvôli tomu, ako môžeme vidieť v~návrhu, je zvýšený počet registrov $ DRn $ a $ DQn $ na 40. Sada registrov $ h/i, i=3,5..39 $ obsahuje 20 registrov, kde sú zvyšné hodnoty dopočítané rovnako ako pri integrátoroch v~pevnej rádovej čiarke.
+Komponent \textit{EXP} slúži na vykonávanie výpočtov s~exponentmi, ktoré sú popísané v~sekciách~\ref{PlusMinusFP} a~\ref{MulDivFP}. Obsahuje dva vstupy, do ktorých sú privedené jednotlivé exponenty z~komponentov $ DIV $, $ MUL $ a $ SUM $ a jeden výstup. Celý komponent \textit{EXP} pracuje na počte bitov rovnému veľkosti exponenta, ktorá je závisla na použitej aritmetike. Pri jednoduchej presnosti (32 bitov) na 8 bitoch alebo na 11-bitoch pri dvojitej presnosti (64 bitov). Komponent teda obsahuje buď 8 bitovú alebo 11 bitovú sčítačku a ostatne komponenty v rovnakej bitovej šírke.
+Pri vykonávaní operácie súčinu alebo rozdielu slúži komponent \textit{EXP} na výpočet rozdielu exponentov. Výsledná hodnota rozdielu je privedená naspäť do sčítačky \textit{SUM} cez register \textit{ACC}. O túto hodnotu je následne v sčítačke posunutá hodnota mantisy menšieho čísla doprava. Výsledná hodnota mantisy je potom súčet/rozdiel mantisy väčšieho čísla a posunutej mantisy. Znamienko a exponent sú rovné hodnote väčšieho čísla z počítaných operantov.
+Pri operácii delenia alebo násobenia slúži komponent \textit{EXP} na výpočet výsledného exponentu. Podľa typu operácie sa vykoná sučet alebo rozdiel prijatých exponentov. Táto hodnota je uložená v~registri \textit{ACC} a privedená naspäť do sčítačky $ SUM_{8/11bit} $ s~hodnotou z~registra $ BIAS $. Vykoná sa súčet alebo rozdiel týchto hodnôt. Získame tak hodnotu nového exponent, ktorá je privedená naspäť do násobičky $ MUL $ alebo deličky $ DIV $. Ak však je po delení alebo násobení potrebné vykonať posun mantisy hodnota vypočítaného exponentu je privedená z \textit{ACC} cez multiplexor \textit{MPX} naspäť do sčítačky  $ SUM_{8/11bit} $ a na vstup \textit{E2/Shift} je privedená hodnota posunu. Vykoná sa rozdiel hodnôt, čím vykonáme posun exponenta. Následne je výsledná hodnota privedená do násobičky $ MUL $ alebo deličky $ DIV $ a použitá ako nová hodnota exponentu.
+
+Kvôli prehľadnosti neobsahuje schéma zapojenia znázornenie výpočtu znamienka a rozdelenie operandov na znamienko, exponent a na mantisu, a ich opätovné zloženie. Tieto oberácie sa vykonávajú v~komponentoch \textit{DIV}, \textit{MUL} a \textit{SUM}.\\
+
+\section{Návrh násobiaci integrátora v~pohyblivej rádovej čiarke}
+Návrh paraleného násobiaceho integrátora v~pohyblivej rádovej čiarke so zdielaným komponentom \textit{EXP} je na obrázku~\ref{ppni}. Čísla v~pohyblivej rádovej čiarke môžeme zobraziť presnejšie ako čísla v~pevnej rádovej čiarke, čiže pri uložení malých čísel v~pohyblivej rádovej čiarke dochádza k~menšej zaokrúhľovacej chybe. Z~tohto dôvodu je možné počítať Taylorovu radu s~použitím väčšieho počtu členov a zvýšiť tak presnoť výpočtu. Inegrátory v~pohyblivej rádovej čiarke teda môžu počítať viacej členov Taylorovej rady a teda počet registrov $ DR(N-1) $ a $ DQ(N-1) $ sa zvýši. Sada registrov $ h/i, i=2,3..N $ obsahuje \textit{N-1} registrov. Počet týchto registrov je možné znížiť rovnako ako pri integrátoroch v~pevnej rádovej čiarke.
 
 \begin{figure}[h]
 \centering
@@ -545,12 +643,12 @@ Návrh paraleného násobiaceho integrátora v~pohyblivej rádovej čiarke je na
 \end{figure}
 \bigskip
 
-Spôsob výpočtu paralelného násobiaceho integrátora v~pohyblivej rádovej čiarke je rovnaký ako pri násobiacom integrátore v~pevnej rádovej čiarke. Rozdielne sa vykonávajú operácie násobenia a sčítania. Po privedení hodnôt na vstupy násobičky $ MUL $ alebo sčítačky $ SUM $ sú čísla v~FP uložené do pomocných registrov v~týchto komponentoch. Z~týchto registrov sú jednotlivé časti FP čísla rozdistribuované do samostatných výpočetných obvodov. Znamienka sú privedené ku komponentu $ XOR $, ktorý vykonáva nonekvivalenciu. Exponenty, ako je popísané vyššie, spracúva komponent $ EXP $. Mantisy sú privedené do paralelnej násobičky alebo sčítačky. Výsledné hodnoty sú uložené do výstupného registra daného komponentu ($ MUL $ alebo $ SUM $) a poskytnuté na jeho výstupe k~ďalšiemu výpočtu.
+Spôsob výpočtu paralelného násobiaceho integrátora v~pohyblivej rádovej čiarke so zdielaným komponentom \textit{EXP} je takmer rovnaký ako pri násobiacom integrátore v~pevnej rádovej čiarke. Rozdielne sa vykonávajú operácie násobenia a sčítania. Po privedení hodnôt na vstupy násobičky $ MUL $ alebo sčítačky $ SUM $ sú čísla v~FP uložené do pomocných registrov v~týchto komponentoch. Z~týchto registrov sú jednotlivé časti FP čísla rozdistribuované do samostatných výpočetných obvodov. V komponente \textit{MUL} sú znamienka privedené ku komponentu $ XOR $, ktorý vykonáva nonekvivalenciu. V komponente \textit{SUM} je výsledné znamienko rovné znamienku väčšieho zo vstupných čísel. Exponenty, ako je popísané vyššie, spracúva komponent $ EXP $. Mantisy sú privedené do paralelnej násobičky alebo sčítačky. Veľkosť výsledku násobičky je dvojnásobná ako veľkosť mantisy so skrytou jednotkou t.j. 48 bitov pri jednoduchej presnosti a 106 bitov pri dvojitej presnosti. Veľkosť sčítačky je rovná veľkosti mantisy so skrytou jednotkou t.j. 24 alebo 53 bitov. Výsledné hodnoty jednotlivých častí čísla v pohyblivej rádovej čiarke sú na výstupe spojené do jedého čísla a uložené do výstupného registra daného komponentu ($ MUL $ alebo $ SUM $). Následne sú poskytnuté na jeho výstupe k~ďalšiemu výpočtu.
 
 \section{Deliaci integrátor v~pohyblivej rádovej čiarke}
-Paralelný deliaci integrátor v~pohyblivej rádovej čiarke je najzložitejší z~navrhnutých integrátorov. Obsahuje všetky spomínané operácie: sčítanie, odčítanie, násobenie a delenie; a všetky vykonáva v~pohyblivej rádovej čiarke.
-Operácie násobenia a sčítania sa vykonávajú rovnako ako v~paralelnom násobiacom integrátore v~pohyblivej rádovej čiarke. Operácia delenia sa vykonáva iba raz za celý výpočet a to paralelne s~operáciou násobenia, ako je tomu aj v~deliacom interátore v~FX aritmetikou. Tu však môže dôjsť ku kolízii v~použití komponentu $ EXP $. Keďže delenie je náročnou operáciou a jej vykonávanie je zdĺhavé, komponent $ EXP $ je poskytnutý najskôr na výpočet exponentov pri operácii násobenia. Po uvoľnení komponentu $ EXP $ násobičkou $ MUL $ je komponent $ EXP $ pridelený deličke $ DIV $ na výpočet exponentov. Po skončení delenia je podiel uložený do registra $ 1/v $ a pokračuje sa v~ďalšom výpočte.
-
+Paralelný deliaci integrátor v~pohyblivej rádovej čiarke so zdieľaým komponentom \textit{EXP} je najzložitejší z~navrhnutých integrátorov. Obsahuje všetky spomínané operácie: sčítanie, odčítanie, násobenie a delenie; a všetky vykonáva v~pohyblivej rádovej čiarke, kde práca s exponentami je vykonávanaá v jednej komponente \textit{EXP}.
+Operácie násobenia a sčítania sa vykonávajú rovnako ako v~paralelnom násobiacom integrátore v~pohyblivej rádovej čiarke. Operácia delenia sa vykonáva iba raz za celý výpočet a to paralelne s~operáciou násobenia, ako je tomu aj v~deliacom interátore v~FX aritmetikou. Tu však môže dôjsť ku kolízii v~použití komponentu $ EXP $. Keďže delenie je náročnou operáciou kde dĺžka výpočtu záleží na použití daného algoritmu. Podľa zvoleného algoritmu je potom potrebné zvoliť, ktorá operácia bude mať prednsoť v použití komponentu $ EXP $. Po uvoľnení $ EXP $ násobičkou $ MUL $ je komponent $ EXP $ pridelený deličke $ DIV $ na výpočet exponentov. Ak je použitý zdĺhavejší algoritmus pri výpočte delenia (napr. SRT algoritmus použitý v deliacom integrátore v FX aritmetike), čiže operácia delenia trvá dlhší čas ako  operácia násobenia, je vhodnejšie prenechať najprv komponentu \textit{EXP} operácií násobenia. Ak je deliaci algoritmus veľmi rýchli (napr. ) a čas výpočtu je podobný času výpočtu operácií násobnia, tak potom nezáleží ktorá z komponent bude prvá využívať \textit{EXP}. Po skončení delenia je podiel uložený do registra $ 1/v $ a pokračuje sa v~ďalšom výpočte.
+Výpočet prebieha podobne ako pri deliacom integrátore bez komponentu \textit{EXP}. Rozdielne sa vykonávajú operácie delenia, násobenia a sčítania. Ďalší rozdiel je v komponente \textit{XOR}, ktorá bola nahradená komponentom \textit{INV}. Prevrátenie hodnoty čísla sa v pevnej rádovej čiarke použitím doplnkového kódu deje operáciu $ XOR $ a pričítaním jednotky ako tomu je v predchádzajúcom delaicom integrátore. V pohyblivéj rádovej čiarke sa však inverovanie hodnoty čísla vykonáva jednoduchým ivertovaním znamienkového bitu $ S $ vstupného operandu. Toto invertovanie sa vykonáva v spomínanej komponente \textit{INV}.
 
 \begin{figure}[h]
 \centering
@@ -577,8 +675,9 @@ q' & = & s \, , \quad q(0) = 0 \nonumber \\
 s' & = & -q \, , \quad s(0) = 1 \nonumber \\
 \end{eqnarray}
 
-Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Schému tvoria tri jednovstupové integrátori \textit{r}, \textit{q} a \textit{s}, dvojvstupový násobaici integrátor \textit{y} a dva inverotri. Invertor je komponenta, ktorá ivertuje prichádzajúcu hodnotu. Integrátor r a invertor tvoria spolu funkciu $ e^{-t} $. Integrátory \textit{r}, \textit{s} a invertor tvoria spolu funkciu $ sin(t) $. Nakoniec sú tieto hodnoty privádzané na vstup násobiaceho integrátora \textit{y}, ktorý počíta spočíta diferenciálnu rovnicu \ref{dif_sint_et}.
-Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpočet na fpga. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu. V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
+Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Schému tvoria tri jednovstupové integrátori \textit{r}, \textit{q} a \textit{s}, dvojvstupový násobaici integrátor \textit{y} a dva inverotri. Invertor je komponenta, ktorá ivertuje prichádzajúcu hodnotu. Integrátor r a invertor tvoria spolu funkciu $ e^{-t} $. Integrátory \textit{r}, \textit{s} a invertor tvoria spolu funkciu $ sin(t) $. Nakoniec sú tieto hodnoty privádzané na vstup násobiaceho integrátora \textit{y}, ktorý počíta diferenciálnu rovnicu \ref{dif_sint_et}.
+Zo schémy zapojenia je možné následne vytvoriť VHDL kód a vykonať výpočet na FPGA. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu.
+V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
 \bigskip
 
 \begin{figure}[h]
@@ -590,17 +689,22 @@ Zo schémy zapojenia je možné následne vytvoriť vhdl kód a vykonať výpoč
 \bigskip
 
 
+
 \chapter{Implementácia integrátorv vo VHDL}
-Jednotlivé integrítory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim požitím \textit{testbanchu}. U každého integrátora sú jednotlivé ktorky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplíva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so sväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu. 
+Jednotlivé integrátory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim požitím \textit{testbanchu}. Následne niektoré z integrátorv boli otestované na programovateľnom hradlovom poli FPGA.
+Pre priestorovú zložitosť paralelných integrátorv bola snaha implementovať integrátory na rozsiahľejšom čipe FPGA a to konkrétne na VIRTEX-5 s čipom XCS50. Pre prácu s týmto čipom je potrebná plná verzia programu Xilinx ISE s licenciou. Poskytnutie licencie od školy pre študenta však nie je možné. Riešením bolo nakoniec použitie licencie pomocou pripojenia sa na fakultnú siet cez VPN. Následne bol integrátor implementovaný na VIRTEX-5, avšak skončenie výpočtu bolo možné detekoval len rozsvietením diódy, čo je nepoužiteľní spôsob pre získanie hodnoty výsledku. Preto bolo snahou výsledok zobraziť na LCD displeji. Po 
+pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit. Na Fitkite bola odskúšaný jednovstupový integrátor s 32 bitivou aritmetikou. Tento integrátor bol vybraný kvôli jeho najmenšej priestrorovej zložisti. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA použité vo Fitkite. I kvôli tomuto bola snaha otestovania integrátorov na väčšom FPGA Virtex-5.
+
+Jednotlivé časti integrátorov boli popísané samostante a následne vzájomným prepojením bola vytvorená štruktúra prepojenia, ktorá tvorí celý integrátor. Jednotlivé časti sú  U každého integrátora sú jednotlivé kroky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplíva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so zväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu a zadaným novéj počiatočnej podmienky začať nový výpočet.
 
 \section{Integrátory v pevnej rádovej čiarke}
 Násobiaci aj deliaci integrátor v pevnej rádovej čiarke kódujú čísla v dvojkovom kóde.
-Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov je nutné upraviť aj počet registrov $ \frac{h}{i} $ kde $ i >= 2 $.
+Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť, keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov $ N $ je nutné upraviť aj počet registrov $ h/i $, kde $ i = 2..N $. 
 Pre 32 i 64 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, s 1 bitom pred desatinnou čiatkou a s 30 bitmi respektívne 62 bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou 8. rádu a teda výpočet prebieha až po 8. člen Taylorovej rady t.j. DY8.
 
 
 Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný, podobne ako násobiaci integrátor, v 32 a 64 bitovej verzií. Pri návrhu integrátorov sa kládol dvôraz nie len na rýchlosť výpočtu ale aj na priestorovú zložitosť. 
-Z rovnice xx vyplýva že členy DYx sú násobené číslom N-k, kde k je minimálne 1 a teda najväčšie číslo je N-1. Aby bolo možné toto číslo zobrzaiť bolo potrené zvoliť vhodnú aritmetiku t.j. vhodný počet čísel pred a za desatinnou čiarkou. Čím väčší počet bitov sa nachádza pred desatinou čiarku tým sa zväčšuje interval zobraziteľných čísel, avšak sa zmenšuje počet bitov za desatinnou čiarkou a tým pádaom hustota zobrazenia čísel a v konečnom dôsledku presnosť. V dvojkovom doplnkovom kóde pri 1 bite pred desatinou čiarkou sme schopný výpočitať maximálne dva členy Taylorovej rady pri dvoch bitoch 4 členy, pri troch bitoch 8 členov Taylorovej rady a pri piatich bitoch 16 členov Taylorovej rady. Kedže pri použití Taylorovej metódy 4 rádu nemusí byť riešenie dostatočné presné, v 32 bitová verzia počíta s Taylorovou metódou 8. rádu a je teda použitá aritmetika s jedným znamienkovým bitom, s tromi bitmi pred desatinnou čiarkou a zvýšných 28 bitov tvorí časť za desatinnou čiarkou. Vyšší rád metódy nie je použiteľný, keďže hodnoty vyšších členov by boli veľmi malé a teda nezobraziteľné v danej aritmetike. 
+Z rovnice \ref{suma_div} vyplýva, že členy $ DYN $ sú násobené číslom $ N-k $, kde $ k $ je minimálne 1 a teda najväčšie číslo je $ N-1 $. Aby bolo možné toto číslo zobrzaiť bolo potrené zvoliť vhodnú aritmetiku t.j. vhodný počet čísel pred a za desatinnou čiarkou. Čím väčší počet bitov sa nachádza pred desatinou čiarku, tým sa zväčšuje interval zobraziteľných čísel, avšak sa zmenšuje počet bitov za desatinnou čiarkou. Pri zmenšovaní počtu čísel za desatinnou čiarkou sa zmenšuje hustota zobrazenia čísel a v konečnom dôsledku presnosť. V dvojkovom doplnkovom kóde pri 1 bite pred desatinou čiarkou sme schopný výpočitať maximálne dva členy Taylorovej rady. Pri dvoch bitoch sú to 4 členy, pri troch bitoch 8 členov Taylorovej rady a pri piatich bitoch 16 členov Taylorovej rady. Kedže pri použití Taylorovej metódy 4 rádu nemusí byť riešenie dostatočné presné, v 32 bitová verzia počíta s Taylorovou metódou 8. rádu a je teda použitá aritmetika s jedným znamienkovým bitom, s tromi bitmi pred desatinnou čiarkou a zvýšných 28 bitov tvorí časť za desatinnou čiarkou. Vyšší rád metódy nie je použiteľný, keďže hodnoty vyšších členov by boli veľmi malé a teda nezobraziteľné v danej aritmetike. 
 V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou zväčšená o jeden bit. Za desatinnou čiarkou sa potom nachádza 59 bitov. V tejto verzií deliaceho integrátora sme teda schopný vypočítať v danej aritmetike až 16 členov Taylorovej rady.
 
 
@@ -684,14 +788,58 @@ V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou z
 \textbf{CalculationDYx} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 1 & 1 & 0 &  \\ \hline
 \textbf{Result} & X &  &  & X & X & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}en = 0 ? Result : Init;\end{tabular} \\ \hline
 \end{tabular}
-\caption{Kontrolér deliaceho integrátora v FP}
+\caption{Kontrolér deliaceho integrátora v FX}
+\label{my-label}
+\end{table}
+\end{landscape}
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \usepackage{lscape}
+\begin{landscape}
+\begin{table}[]
+\scriptsize
+\catcode`\-=12
+\setlength\tabcolsep{1.5pt}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{DAE8FC}}l |c|c|c|c|c|c|c|c|c|c|l|}
+\hline
+\cellcolor[HTML]{68CBD0}\textbf{Stav} & \cellcolor[HTML]{68CBD0}\textbf{SEL2} & \cellcolor[HTML]{68CBD0}\textbf{SEL3} & \cellcolor[HTML]{68CBD0}\textbf{SEL4} & \cellcolor[HTML]{68CBD0}\textbf{SEL5} & \cellcolor[HTML]{68CBD0}\textbf{SEL6} & \cellcolor[HTML]{68CBD0}\textbf{SEL7} & \cellcolor[HTML]{68CBD0}\textbf{SEL8} & \cellcolor[HTML]{68CBD0}\textbf{ClkAcc} & \cellcolor[HTML]{68CBD0}\textbf{ClkY} & \cellcolor[HTML]{68CBD0}\textbf{BLOK} & \cellcolor[HTML]{68CBD0}\textbf{} \\ \hline
+\textbf{Reset} & 000 & 00 & 000 & 000 & 00 & 0 & 0 & 0 & 0 & 0 & \begin{tabular}[c]{@{}l@{}}count = 1;\\ const\_int = 1;\end{tabular} \\ \hline
+\textbf{Init} & 000 & 00 & X & 000 & 01 & 0 & X & 0 & 1 & 1 &  \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}MulUH\\ MulUH1\end{tabular}} & 000 & 00 & X & 000 & 01 & 0 & X & 0 & 0 & 1 &  \\ \hline
+\textbf{SaveDiv} & 000 & X & X & 001 & 00 & 1 & 0 & 0 & 0 & 0 & ClkV = 1; \\ \hline
+\textbf{SaveAcc} & 000 & X & X & 001 & 00 & 1 & 0 & 1 & 0 & 0 &  \\ \hline
+\textbf{CalculationDY1} & 000 & X & X & 001 & 00 & 1 & 0 & 0 & 1 & 0 &  \\ \hline
+\textbf{CalculationDY2} & 00 & X & X & 001 & 00 & 1 & 0 & 0 & 0 & 0 &  \\ \hline
+\textbf{CalculationDY3} & 00 & X & X & 001 & 00 & 1 & 0 & 1 & 0 & 0 &  \\ \hline
+\textbf{WriteToAcc} & 001 & X & X & const\_int+1 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}const\_int \textgreater 0 ?\\ 10 : 00;\end{tabular}} & X & X & 0 & 0 & 1 & \begin{tabular}[c]{@{}l@{}}RWrv = 1;\\ count \textless (N-1) ?\\ SetupCounters : Result;\end{tabular} \\ \hline
+\textbf{SetupCounters} & 001 & X & X & X & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}const\_int \textgreater 0 ?\\ 10 : 00;\end{tabular}} & 0 & X & 0 & 0 & 1 & \begin{tabular}[c]{@{}l@{}}count = 1;\\ const\_int \textgreater 0 ?\\ MulCountDYx : MulDYxDVx;\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}SetupCountDYx\\ MulCountDYx\end{tabular}} & X & X & X & const\_int & 10 & 0 & X & 0 & 0 & 1 &  \\ \hline
+\textbf{SaveCountDYx} & X & X & X & const\_int & 10 & 0 & X & 0 & 1 & 1 &  \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}SetupDYxDVx\\ SetupDYxDVx1\\ MulDYxDVx\\ SumDYxDVx\end{tabular}} & count & X & X & const\_int-count+1 & 00 & 0 & 1 & 0 & 0 & \multicolumn{1}{l|}{count = 1 ? 1 : 0;} &  \\ \hline
+\textbf{SaveDYxDVx} & count & X & X & \multicolumn{1}{l|}{const\_int-count+1} & 00 & 0 & 1 & 1 & 0 & count = 1 ? 1 : 0; & \begin{tabular}[c]{@{}l@{}}count \textless const\_int ?\\ SetupCount : SetupDUxH;\end{tabular} \\ \hline
+\textbf{SetupCount} & X & X & X & X & X & X & X & 0 & 0 & X & count++; \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}SetupDUxH\\ MulDUxH\\ SumMulAcc\\ SaveMulAcc\end{tabular}} & X & const\_int & X & 000 & 01 & 0 & 1 & 0 & 0 & 0 & XOR = 1; \\ \hline
+\textbf{SetupACCdivX} & X & X & const\_int-1 & X & 11 & 1 & X & 1 & 0 & 1 &  \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}MulACCdivX\\ MulACCdivX1\\ SumACCdivX\end{tabular}} & X & X & const\_int-1 & X & 11 & 1 & X & 0 & 0 & 1 &  \\ \hline
+\textbf{SaveACCdivX} & X & X & const\_int-1 & X & 11 & 1 & X & 1 & 0 & 1 &  \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}SetupCalcDYx\\ SetupCalcDYx1\end{tabular}} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 0 & 0 & 0 &  \\ \hline
+\textbf{CalculationDYx} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 1 & 1 & 0 &  \\ \hline
+\textbf{Result} & X & X & X & X & X & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}en = 0 ?\\ Result : Init;\end{tabular} \\ \hline
+\end{tabular}
+\caption{My caption}
 \label{my-label}
 \end{table}
 \end{landscape}
 
 
 \section{Integrátory v pohyblivej rádovej čiarke}
-Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Honoty kroku h a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
+Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Hodnoty kroku h a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
 
 \bigskip
 \begin{table}[H]
@@ -714,7 +862,7 @@ Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 3
 
 
 
-Ďalej bol im plementovaný násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež vo verziách s 32 bitmi a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinovcýh taktoch, kedže pracujeme v pohyblivej rádovej čiarke. Jednotlivé operácie boli popísané v kapitole xx. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt.
+Ďalej bol implementovaný násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež vo verziách s 32 bitmi a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinovcýh taktoch, kedže pracujeme v pohyblivej rádovej čiarke. Jednotlivé operácie boli popísané v kapitole xx. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt.
 
 \section{Sústava integrátorv} \label{impl_rovnice}
 Podľa schémy zapojenia xx bola imeplementovaná komponenta počítajúca diferenciálnu rovnicu xx. Boli použité integrátory v pohyblivej rádovej čiarke so 64 bitmi - konkrétne jednovstupový integrátor a násobiaci integrátor. Ďalej bola použitá komponenta invertor. Kedže pracujeme vo FP, invertor vykonáva jednouché invertovanie znamienkového bitu. 
@@ -723,7 +871,7 @@ Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s 
 
 \begin{figure}[h]
 \centering
-\scalebox{0.5}{\includegraphics{obrazky/sustava_integratorov.pdf}}
+\scalebox{0.5}{\includegraphics{obrazky/rovnica.png}}
 \caption{Schéma zapojenia integrátorov}
 \label{ppi_fp_sustava_impl}
 \end{figure}
@@ -754,7 +902,6 @@ Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s 
 \end{table}
 
 
-Naprogramovanie FPGA VRTEX-5. Pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit. Na Fitkite bola odskúšaný jednovstupový integrátor s 32 bitivou aritmetikou. Tento integrátor bol vybraný kvôli jeho najmenšej priestrorovej zložisti. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA použité vo Fitkite. I kvôli tomuto bola snaha otestovania integrátorov na väčšom FPGA Virtex-5.
 
 
 \chapter{Analýza}
