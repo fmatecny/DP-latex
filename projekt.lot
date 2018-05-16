@@ -1,0 +1,24 @@
+\select@language {slovak}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces \IeC {\v S}tandard IEEE 754 \cite {FPOnline}\relax }}{15}{table.caption.7}
+\contentsline {table}{\numberline {4.2}{\ignorespaces V\IeC {\'y}sledok oper\IeC {\'a}cie s\IeC {\v c}\IeC {\'\i }tania so \IeC {\v s}peci\IeC {\'a}lnymi hodnotami\relax }}{16}{table.caption.8}
+\contentsline {table}{\numberline {4.3}{\ignorespaces V\IeC {\'y}sledok oper\IeC {\'a}cie n\IeC {\'a}sobenia so \IeC {\v s}peci\IeC {\'a}lnymi hodnotami\relax }}{17}{table.caption.9}
+\contentsline {table}{\numberline {4.4}{\ignorespaces V\IeC {\'y}sledok oper\IeC {\'a}cie delenia so \IeC {\v s}peci\IeC {\'a}lnymi hodnotami\relax }}{17}{table.caption.10}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces V\IeC {\'y}znam skratiek pou\IeC {\v z}it\IeC {\'y}ch v obr\IeC {\'a}zku \ref {ppni}.\relax }}{20}{table.caption.13}
+\contentsline {table}{\numberline {5.2}{\ignorespaces V\IeC {\'y}znam skratiek v obr\IeC {\'a}zku \ref {ppdi}.\relax }}{22}{table.caption.15}
+\contentsline {table}{\numberline {5.3}{\ignorespaces V\IeC {\'y}znam skratiek pou\IeC {\v z}it\IeC {\'y}ch v obr\IeC {\'a}zku \ref {ppi_fp_exp}.\relax }}{24}{table.caption.18}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Kontrol\IeC {\'e}r n\IeC {\'a}sobiaceho integr\IeC {\'a}tora v FX\relax }}{33}{table.caption.27}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Kontrol\IeC {\'e}r n\IeC {\'a}sobiaceho integr\IeC {\'a}tora v FP\relax }}{33}{table.caption.28}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Kontrol\IeC {\'e}r deliaceho integr\IeC {\'a}tora v FX\relax }}{34}{table.caption.29}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Kontrol\IeC {\'e}r deliaceho integr\IeC {\'a}tora v FP.\relax }}{35}{table.caption.30}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Kontrol\IeC {\'e}r jednovstupov\IeC {\'e}ho integr\IeC {\'a}tora v FP\relax }}{36}{table.caption.32}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Kontrol\IeC {\'e}r jednovstupov\IeC {\'e}ho integr\IeC {\'a}tora v FP v zapojen\IeC {\'\i } do s\IeC {\'u}stavy\relax }}{37}{table.caption.34}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsfinish 

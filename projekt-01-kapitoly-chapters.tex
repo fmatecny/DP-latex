@@ -659,7 +659,7 @@ Výpočet prebieha podobne ako pri deliacom integrátore bez komponentu \textit{
 \bigskip
 
 \newpage
-\section{Sústava diferenciálnych rovníc}
+\section{Sústava diferenciálnych rovníc} \label{navrhSustava}
 Integrátory, ktoré sme si popísali je možné medzi sebou zapojiť a riešiť tak diferenciálnu rovnicu. Po zapojení integrátorov nebude nutné predpočítavať vstupné hodnoty, ale stačí zadať počiatočné podmienky na naštartovanie výpočtu a všetky ostatné hodnoty sa dopočítajú.
 Zvoľme konkrétnu diferenciálnu rovnciu s operáciou násobenia v tvare:
 \begin{eqnarray}
@@ -675,7 +675,8 @@ q' & = & s \, , \quad q(0) = 0 \nonumber \\
 s' & = & -q \, , \quad s(0) = 1 \nonumber \\
 \end{eqnarray}
 
-Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Schému tvoria tri jednovstupové integrátori \textit{r}, \textit{q} a \textit{s}, dvojvstupový násobaici integrátor \textit{y} a dva inverotri. Invertor je komponenta, ktorá ivertuje prichádzajúcu hodnotu. Integrátor r a invertor tvoria spolu funkciu $ e^{-t} $. Integrátory \textit{r}, \textit{s} a invertor tvoria spolu funkciu $ sin(t) $. Nakoniec sú tieto hodnoty privádzané na vstup násobiaceho integrátora \textit{y}, ktorý počíta diferenciálnu rovnicu \ref{dif_sint_et}.
+Zo sústavy rovníc vytvoríme schcému zapojenia integrátorov znázornenú na obrázku \ref{ppi_fp_sustava}. Schému tvoria tri jednovstupové integrátori \textit{r}, \textit{q} a \textit{s}, dvojvstupový násobaici integrátor \textit{y} a dva inverotri. Invertor je komponenta, ktorá ivertuje prichádzajúcu hodnotu. Integrátor \textit{r} a invertor tvoria spolu funkciu $ e^{-t} $. Integrátory \textit{r}, \textit{s} a invertor tvoria spolu funkciu $ sin(t) $. Nakoniec sú tieto hodnoty privádzané na vstup násobiaceho integrátora \textit{y}, ktorý počíta diferenciálnu rovnicu \ref{dif_sint_et}.
+TODO rovnicu s deliacim integrátorom.
 Zo schémy zapojenia je možné následne vytvoriť VHDL kód a vykonať výpočet na FPGA. Takýto postup je vhodný pre rozsiahle diferenciálne rovnice s väčším počtom operácií, ktorých výpočet by bol vykonávaný veľmi často. Vhodnejší spôsob použitia sa ponúka prepojovacia sieť medzi rôznimy integrátormi. Pred výpočtom by sa sieť nakonfigurovala podľa danej diferenciálnej rovnice a výpočet by mohol prebiehať bez nutnosti syntézy. Táto varianta je síce priestorovo náročná, ale ponúka variabilitu výpočtu.
 V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a taktiež implementáciu sústavy diferenciálnch rovníc pomocou metódy bez použitia prepojovacej siete.
 \bigskip
@@ -690,22 +691,60 @@ V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a 
 
 
 
-\chapter{Implementácia integrátorv vo VHDL}
+\chapter{Popísanie integrátorv vo VHDL}
 Jednotlivé integrátory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim požitím \textit{testbanchu}. Následne niektoré z integrátorv boli otestované na programovateľnom hradlovom poli FPGA.
-Pre priestorovú zložitosť paralelných integrátorv bola snaha implementovať integrátory na rozsiahľejšom čipe FPGA a to konkrétne na VIRTEX-5 s čipom XCS50. Pre prácu s týmto čipom je potrebná plná verzia programu Xilinx ISE s licenciou. Poskytnutie licencie od školy pre študenta však nie je možné. Riešením bolo nakoniec použitie licencie pomocou pripojenia sa na fakultnú siet cez VPN. Následne bol integrátor implementovaný na VIRTEX-5, avšak skončenie výpočtu bolo možné detekoval len rozsvietením diódy, čo je nepoužiteľní spôsob pre získanie hodnoty výsledku. Preto bolo snahou výsledok zobraziť na LCD displeji. Po 
-pre zložitú prácu a neúspešné sprevádzkovanie displeja, prípadne iných výstupných metód, boli integrátory naprogramované a otestované v FPGA Spartan na prípravku Fitkit. Na Fitkite bola odskúšaný jednovstupový integrátor s 32 bitivou aritmetikou. Tento integrátor bol vybraný kvôli jeho najmenšej priestrorovej zložisti. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA použité vo Fitkite. I kvôli tomuto bola snaha otestovania integrátorov na väčšom FPGA Virtex-5.
+Pre priestorovú zložitosť paralelných integrátorv bola snaha implementovať integrátory na rozsiahľejšom čipe FPGA a to konkrétne na VIRTEX-5 s čipom XC5VSX50T. Pre prácu s týmto čipom je potrebná plná verzia programu Xilinx ISE s licenciou. Poskytnutie licencie od školy pre študenta však nie je možné. Riešením nakoniec bolo použitie licencie pomocou pripojenia sa na fakultnú siet cez VPN. Následne bol integrátor implementovaný na VIRTEX-5, avšak skončenie výpočtu bolo možné detekoval len rozsvietením diódy, čo je nepoužiteľní spôsob pre získanie hodnoty výsledku. Preto bolo snahou výsledok zobraziť na LCD displeji, prípadne vytvoriť komunikáciu cez terminál. Sprevádzkovanie displeja podľa rôznych návodov bolo neúspešné a pre komunikáciu s terminálom bolo potrebné doinštalovať dalšie programy. Vzhľadom na dané komplikácie bolo teda nutné použiť iný čip a to konkrétne FPGA Spartan 3 XC3S50, kotrý je použitý v študíjnej pomôcke FitKit 2.0. Avšak veľkosť tohto FPGA je veľmi malá a ani jeden z navrhnutých integrátorov nie je možné naprogramovať na tento čip. Po konzultácií s Ing. Václavom Šimekom mi prepožičal prípravok FitKit 2.0 s vymenením FPGA za väčší a to za Spartan 3 XC3S400. Práca s týmto FPGA je kompatibilná z predchádzajúcim čipom a preto bolo možné na programovanie použiť nástroj QDevKit. Jedná sa o multiplatformový terminálový program pre jednoduchú prácu s FitKitom. Všetky parametre sú už v programe nastavené a komunikácia prebieha cez USB namiesto emulovaného sériového portu ako je to pri iných terminálových programoch. Informácie o FitKite, programe QDevKit a taktiež návody na vytvorenie vlastnej aplikácie boli čerpané z webstránky FitKitu \cite{fitkit}.
+Na Fitkite bol odskúšaný jednovstupový integrátor s 32 bitivou floating point aritmetikou. Tento integrátor bol vybraný kvôli jeho najmenšej priestrorovej zložisti. Ďalej bol implementovaný integrátor počítajúci rovnicu xx. Integrátor pracuje na 32 bitoch a používa FX aritmetiku. Rovnica je počítaná Taylorovou radou 4. rádu. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA použité vo Fitkite.
 
-Jednotlivé časti integrátorov boli popísané samostante a následne vzájomným prepojením bola vytvorená štruktúra prepojenia, ktorá tvorí celý integrátor. Jednotlivé časti sú  U každého integrátora sú jednotlivé kroky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplíva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so zväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu a zadaným novéj počiatočnej podmienky začať nový výpočet.
+Jednotlivé časti integrátorov boli popísané samostante a následne vytvorená štruktúra vzájomného prepojenia, ktorá tvorí celý integrátor. U každého integrátora sú jednotlivé kroky výpočtu riadené kontrolérom. Ten je tvorení cyklickím konečným automatom. Cyklus vyplýva z rovníc \eqref{suma_mul} a \eqref{suma_div}, kedže výpočet jednotlivých členov je podoboný, avšak so zväčšujúcim sa počtom operácií. Samozrejme po skončení výpočtu je možné signálom $ RESET $ prejsť do počiatočného stavu a zadaným novéj počiatočnej podmienky začať nový výpočet. Ďalej si popíšeme jednotlivé integrátory podrobnejšie.
 
 \section{Integrátory v pevnej rádovej čiarke}
-Násobiaci aj deliaci integrátor v pevnej rádovej čiarke kódujú čísla v dvojkovom kóde.
-Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť, keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov $ N $ je nutné upraviť aj počet registrov $ h/i $, kde $ i = 2..N $. 
-Pre 32 i 64 bitovú verziu bola použitá FX aritmetika s jedným znamienkovým bitov, s 1 bitom pred desatinnou čiatkou a s 30 bitmi respektívne 62 bitmi za desatinou čiarkou. Výpočet počíta s Taylorovou metódou 8. rádu a teda výpočet prebieha až po 8. člen Taylorovej rady t.j. DY8.
+Všetky integrátory v pevej rádovej čiarke (t.j. deliaci, násobiaci a jednovstupový) kódujú čísla v dvojkovom kóde. Použité sčítačky a násobičky sú paralelné a výpočet operácie trvá jeden hodinový takt. Pri výpočte je ale nutné použiť dva takty, aby došlo k ustáleniu signálov. Jeden na nastavenie signálov a druhý pre uloženie výsledku.
+
+\subsubsection*{Násobiaci integrátor}
+
+Paralelný dvojvstupový násobiaci integrátor vo fixpoint aritmetike bol implementovaný v dvoch verziách a to na 32 a 64 bitoch. Veľkosť použitej aritmetiky je však možné jednoducho zväžšiť, keďže celý kód je písaný genericky. Taktiež je možné zmeniť počet cyklov výpočtu, čiže počet počítaných členov Taylorovej rady, avšak v závislosti od počtu cyklov $ N $ je nutné upraviť počet registrov v registrovcýh sadách. U násobiaceho integrátora sú to sady registrov \textit{DQ(N-1)}, \textit{DR(N-1)} a počet registrov $ h/i $, kde $ i = 2..N $. U delaiceho integrátora je potrebé zväčšiť počet registrov \textit{DV(N-1)}, \textit{DU(N-1)} a \textit{1/i}, kde $ i = 2..N $. Taktiež s tým súvisí, že je potom potrebné zväčšiť bitovu šírku riadiacich signálov označovaných s prefixom \textit{SEL}. Bitovú šírku signálov je vhodné zvoliť z počtu $ N $ registrov podľa vzťahu \textit{šírka registrov} $ = \log_{2} N $ a využiť tak celú šírku a kombinácie binárneho kódovania.
+
+Pre 32 i 64 bitovú verziu bola použitá FX aritmetika, ktorá je je názorne zobrazená na obrázku \ref{fxmularitmetic}. Aritmetika je tvorená s jedným znamienkovým bitov, s 1 bitom pred desatinnou čiatkou a s $ m $ bitmi za desationou čiarkou. Pri jednoduchej rpesnosti je $ m $ rovné 30 bitom a pri dvojitej presnosti 62 bitom. Výpočet počíta s Taylorovou metódou 8. rádu a teda výpočet prebieha až po 8. člen Taylorovej rady t.j. DY8.
+
+\bigskip
+\begin{figure}[h]
+\centering
+\scalebox{0.3}{\includegraphics{obrazky/FXmularitmetika.png}}
+\caption{FX aritmetika numerického integrátora.}
+\label{fxmularitmetic}
+\end{figure}
+\bigskip
+
+Násobiaci integrátor je ovladaný pomocu kontroléru. Jednotlivé stavy kontroléru a nastavenia signálov sú uvedené v tabuľke \ref{kontrolermulfx}. Kontrolér obsahuje 9 stavov a dva čítače \textit{count} a \textit{countQ}. \textit{count} udáva číslo aktuálneho cyklu a \textit{countQ} je v každom cykle nastavený na hodnotu \textit{count} a postupne sa dekrementuje. Výpočet začína nastavením signálu \textit{reset} na logicku 1. To spôsobí prepnutie násobaicého integrátora do stavu s rovnakým názvom, čiže \textit{Reset}. V ňom sa integrátor uvedie do počiatočného stavu. Vynulujú sa počítadlá a čaká sa na povoľovací signál \textit{EN}, ktorým sa prepne integrátor do stavu \textit{Init}. V tomto stave je nahraná počiatočná podmienka a uložené vstupné hodnoty. Výpočet prejde do stavu \textit{MulDQxDRx}. V ňom sú vynásobené jednotlivé členy \textit{DQi} a \textit{DRj}, kde $ i, j $ značí aktuálne počítaný člen. Z rovnice xx plynie že sa vykonáva násobenie kombinácií týchto členov. K tomu slúžia spomenuté čítače \textit{count} a \textit{countQ}. Na základe nich sa nastavia signály \textit{SELR} a \textit{SELQ}. Po výnasobení členov je výsledok v stave \textit{WriteAcc} uložený do akumulátora. Zo stavu \textit{WriteAcc} je integrátor prepnutý buď do stavu \textit{SetupCounter} alebo do stavu \textit{MulAccH\_RV}. V stave \textit{SetupCounter} sa dekrementuje počítadlo \textit{countQ} a začína sa násobenie ďalšej kombinácie členov \textit{DQi} a \textit{DQj}. Ak sú vynásobené všetky kombinácie týchto členov, stačí už len obsah akumulátora vynásobiť hodnotou $ h/N $. Integrátor je teda prepnutý do stavu \textit{MulAccH\_RV} a vykoná sa operácia násobenia. Výsledok je uložení do registra \textit{RD} (nejedná sa o variantu "posledného" integrátora v zapojení). Potom v stave \textit{SaveToAcc} je hodnota sčítaná s hodnotou registra \textit{RV} a uložená do akumulátora. V ďalšom stave \textit{SaveToRv} je výsledok v \textit{ACC} uložený do registra \textit{RV}. Výpočet končí v stave \textit{Result} v ktorom je nastavený signál \textit{OEN} (output enable) na logickú jendotku. Po nastavený povolovacieho signálu \textit{EN} na logickú jednotku je výpočet znova spustený s novými hodnotami.
+
+\subsubsection*{Delaici integrátor}
+
+Paralelný delaici integrátor vo fixpoint aritmetike bol implementovaný, podobne ako násobiaci integrátor, v 32 a 64 bitovej verzií. Pri návrhu integrátorov sa kládol dvôraz nie len na rýchlosť výpočtu ale aj na priestorovú zložitosť. 
+Z rovnice \ref{suma_div} vyplýva, že členy $ DYN $ sú násobené číslom $ N-k $, kde $ k $ je minimálne 1 a teda najväčšie číslo je $ N-1 $. Aby bolo možné toto číslo zobrzaiť bolo potrené zvoliť vhodnú aritmetiku t.j. vhodný počet čísel pred a za desatinnou čiarkou. Čím väčší počet bitov sa nachádza pred desatinou čiarku, tým sa zväčšuje interval zobraziteľných čísel, avšak sa zmenšuje počet bitov za desatinnou čiarkou. Pri zmenšovaní počtu čísel za desatinnou čiarkou sa zmenšuje hustota zobrazenia čísel a v konečnom dôsledku presnosť. V dvojkovom doplnkovom kóde pri 1 bite pred desatinou čiarkou sme schopný výpočitať deliacim integrátorom maximálne dva členy Taylorovej rady. Pri dvoch bitoch sú to 4 členy, pri troch bitoch 8 členov Taylorovej rady a pri štiroch bitoch 16 členov Taylorovej rady. To je možné vyjadriť ako $ N = 2^{w} $, kde \textit{N - počet členov, w - bitová šírka}. Kedže pri použití Taylorovej metódy 4. rádu nemusí byť riešenie dostatočné presné, v 32 bitová verzia počíta s Taylorovou metódou 8. rádu a je teda použitá aritmetika s jedným znamienkovým bitom, s tromi bitmi pred desatinnou čiarkou a zvýšných 28 bitov tvorí časť za desatinnou čiarkou. Vyšší rád metódy nie je použiteľný, keďže hodnoty vyšších členov by boli veľmi malé a teda nezobraziteľné v danej aritmetike. Táto aritmetika je zobrazená na obrázku \ref{fxdivaritmetic32}.
+
+\bigskip
+\begin{figure}[h]
+\centering
+\scalebox{0.3}{\includegraphics{obrazky/FXdivaritmetika32.png}}
+\caption{FX aritemtika delaiceho integrátora na 32 bitoch.}
+\label{fxdivaritmetic32}
+\end{figure}
+\bigskip
 
 
-Paralelný delaici integrátor vo fixpoint arimtmetike bol implementovaný, podobne ako násobiaci integrátor, v 32 a 64 bitovej verzií. Pri návrhu integrátorov sa kládol dvôraz nie len na rýchlosť výpočtu ale aj na priestorovú zložitosť. 
-Z rovnice \ref{suma_div} vyplýva, že členy $ DYN $ sú násobené číslom $ N-k $, kde $ k $ je minimálne 1 a teda najväčšie číslo je $ N-1 $. Aby bolo možné toto číslo zobrzaiť bolo potrené zvoliť vhodnú aritmetiku t.j. vhodný počet čísel pred a za desatinnou čiarkou. Čím väčší počet bitov sa nachádza pred desatinou čiarku, tým sa zväčšuje interval zobraziteľných čísel, avšak sa zmenšuje počet bitov za desatinnou čiarkou. Pri zmenšovaní počtu čísel za desatinnou čiarkou sa zmenšuje hustota zobrazenia čísel a v konečnom dôsledku presnosť. V dvojkovom doplnkovom kóde pri 1 bite pred desatinou čiarkou sme schopný výpočitať maximálne dva členy Taylorovej rady. Pri dvoch bitoch sú to 4 členy, pri troch bitoch 8 členov Taylorovej rady a pri piatich bitoch 16 členov Taylorovej rady. Kedže pri použití Taylorovej metódy 4 rádu nemusí byť riešenie dostatočné presné, v 32 bitová verzia počíta s Taylorovou metódou 8. rádu a je teda použitá aritmetika s jedným znamienkovým bitom, s tromi bitmi pred desatinnou čiarkou a zvýšných 28 bitov tvorí časť za desatinnou čiarkou. Vyšší rád metódy nie je použiteľný, keďže hodnoty vyšších členov by boli veľmi malé a teda nezobraziteľné v danej aritmetike. 
-V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou zväčšená o jeden bit. Za desatinnou čiarkou sa potom nachádza 59 bitov. V tejto verzií deliaceho integrátora sme teda schopný vypočítať v danej aritmetike až 16 členov Taylorovej rady.
+\bigskip
+\begin{figure}[h]
+\centering
+\scalebox{0.3}{\includegraphics{obrazky/FXdivaritmetika64.png}}
+\caption{FX aritmetika delaiceho integrátora na 64 bitoch.}
+\label{fxdivaritmetic64}
+\end{figure}
+\bigskip
+
+V 64 bitovej verzií deliaceho integrátora ponúka väčšiu bitovú šírku a teda aj presnosť, preto bola veľkosť použitých bitov pred desatinnou čiarkou zväčšená o jeden bit. Za desatinnou čiarkou sa potom nachádza 59 bitov. V tejto verzií deliaceho integrátora sme teda schopný vypočítať v danej aritmetike až 16 členov Taylorovej rady. Použité aritmetika je na obrázku \ref{fxdivaritmetic64}.
+
+Postup výpočtu delaiceho integrátora je podobný ako v násobiacom integrátore. Jendotlivé stavy kontroléra a nastavenie signálov sú uvedené v tabuľke \ref{kontrolerdivfx}. Začiatok výpočtu je rovnaký ako u integrátora s operáciou násobenia. Integrátor je v počiatočnom stave t.j. v stave \textit{Reset}. Z neho prejde do stavu \textit{Init}. Následne v stave \textit{MulUH} je násobená hodnota člena \textit{DUi} a s integračným krokom \textit{h}. Výsledok je uložený do akumulátora \textit{ACC}. Výsledok násobenia je možné uložiť už v tomto kroku, kedže nastavenie signálov multiplexorov a výpočet násobenia bolo možné začať už v stave \textit{Init}. Paralelne s operáciou násobenia je signálom \textit{START} zahájené delenie \textit{1/v}, kde \textit{v} je vstupná hodnota operandu. Operácia delenia sa vkyonáva pomocou SRT algoritmu s radixom 2. Bližšie informácie o danom algoritme a implmementácií môžeme nájsť v \cite{MatecnyBP}. V stave \textit{WaitDiv} je integrátor niekoľko cyklov, až kým sa neskončí operácia delenia. Delička po vykonaní operácie delenia nastavý výstupný signál \textit{done} na 1, čím umožní prechod integrátora do nasledujúceho stavu \textit{SaveDiv}. V ňom je hodnota delenia uložená do registra \textit{1/v}. Tým dostaneme hodnotu prvého člena Tylorovej rady. Hodnota je sčítaná s hodnotou registra \textit{RV} a uložaná naspäť do registra.
 
 
 \begin{landscape}
@@ -722,12 +761,12 @@ V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou z
 \cellcolor[HTML]{EFEFEF}\textbf{WriteToAcc}   & X              & 1             & 0             & 0             & countQ        & count-countQ  & X             & 1              & 0             & If countQ=count ? 1 : 0 & \begin{tabular}[c]{@{}l@{}}If countQ = 0 ?\\ MulAccH\_RV : SetupCounter\end{tabular}  \\ \hline
 \cellcolor[HTML]{EFEFEF}\textbf{SetupCounter} & X              & X             & X             & X             & X             & X             & X             & 0              & 0             & X                       & countQ--;                                                                             \\ \hline
 \cellcolor[HTML]{EFEFEF}\textbf{MulAccH\_RV}  & X              & 0             & 1             & 1             & X             & X             & count         & 0              & 0             & X                       &                                                                                       \\ \hline
-\cellcolor[HTML]{EFEFEF}\textbf{SaveToAcc}    & X              & 0             & 1             & 1             & X             & X             & count         & 1              & 0             & X                       & countQ++;                                                                             \\ \hline
+\cellcolor[HTML]{EFEFEF}\textbf{SaveToAcc}    & X              & 0             & 1             & 1             & X             & X             & count         & 1              & 0             & X                       & countQ=count+1;                                                                             \\ \hline
 \cellcolor[HTML]{EFEFEF}\textbf{SaveToRv}     & 0              & 0             & X             & X             & X             & X             & X             & 0              & 1             & X                       & count++;                                                                              \\ \hline
 \cellcolor[HTML]{EFEFEF}\textbf{Result}       & X              & X             & X             & X             & X             & X             & X             & 0              & 0             & X                       & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}                   \\ \hline
 \end{tabular}
 \caption{Kontrolér násobiaceho integrátora v FX}
-\label{my-label}
+\label{kontrolermulfx}
 \end{table}
 
 % --------------------------------------------
@@ -747,12 +786,12 @@ V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou z
 \textbf{SetupCounter} & X & X & X & X & X & X & X & 0 & 0 & X & countQ--; \\ \hline
 \textbf{\begin{tabular}[c]{@{}l@{}}MulACCh\_RV1\\ MulACCh\_RV2\\ MulACCh\_RV\end{tabular}} & X & 0 & 1 & 1 & X & X & count & 0 & 0 & X &  \\ \hline
 \textbf{SaveToAcc1} & X & 0 & 1 & 1 & X & X & count & 0 & 0 & X &  \\ \hline
-\textbf{SaveToAcc} & X & 0 & 1 & 1 & X & X & count & 1 & 0 & X & counQ++; \\ \hline
+\textbf{SaveToAcc} & X & 0 & 1 & 1 & X & X & count & 1 & 0 & X & counQ=count+1; \\ \hline
 \textbf{SaveToRV} & 0 & 0 & X & X & X & X & X & 0 & 1 & X & count++; \\ \hline
 \textbf{Result} & X & X & X & X & X & X & X & X & X & X & \begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular} \\ \hline
 \end{tabular}
 \caption{Kontrolér násobiaceho integrátora v FP}
-\label{my-label}
+\label{kontrolermulfp}
 \end{table}
 \end{landscape}
 
@@ -789,7 +828,7 @@ V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou z
 \textbf{Result} & X &  &  & X & X & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}en = 0 ? Result : Init;\end{tabular} \\ \hline
 \end{tabular}
 \caption{Kontrolér deliaceho integrátora v FX}
-\label{my-label}
+\label{kontrolerdivfx}
 \end{table}
 \end{landscape}
 
@@ -832,14 +871,21 @@ V 64 bitovej verzií bola veľkosť použitých bitov pred desatinnou čiarkou z
 \textbf{CalculationDYx} & 000 & X & X & const\_int+1 & 00 & 1 & 0 & 1 & 1 & 0 &  \\ \hline
 \textbf{Result} & X & X & X & X & X & X & X & 0 & 0 & X & \begin{tabular}[c]{@{}l@{}}en = 0 ?\\ Result : Init;\end{tabular} \\ \hline
 \end{tabular}
-\caption{My caption}
-\label{my-label}
+\caption{Kontrolér deliaceho integrátora v FP.}
+\label{kontrolerdivfp}
 \end{table}
 \end{landscape}
 
 
 \section{Integrátory v pohyblivej rádovej čiarke}
-Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu nie je stanovený v implementácií integrátra ako to je u dvojvstupových integrotoroch, kedže integrátor vykonáva jednoduchú integráciu a pri výpočte nepotrebuje ukladať všetky predchádzajúce členy. Je ovládaný len pomocou signálov RESET a EN. Tie určujú či sa výpočet začína od začiatku alebo sa pokračuje výpočtom ďalšieho člena. Hodnoty kroku h a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
+Integrátory v pohyblivéj rádovej čiarke sú implementované vo verzií bez zdielanej komponenty \textit{EXP}. Delička \textit{DIV}, násobiča \textit{MUL} a sčítačka \textit{SUM} spracovávajú znamienko \textit{S}, exponent \textit{E} a mantisu \textit{M} vnútri seba. Konkrétna implementácia týchto komponent bola prevzatá a upravená z \cite{Guide}.  
+Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinových taktoch, kedže pracujeme v pohyblivej rádovej čiarke a výpočet je náročnejší. Podrobný popís prebiehania týchto operácií v pohyblivéj rádovej čiarke je popísaný v kapitole \ref{REPREZENTACIA_OPERANDOV}. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt a hustota zobrazenia.
+
+
+\subsubsection*{Jednovstupový integrátor}
+
+Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 32 a v 64 bitovej verzií. Počet cyklov výpočtu je závislý len od počtu registrov v sade \textit{h/N}. Na riadenie integrátora rovnako ako v predchádzajúcich variantách sú použité signály \textit{RESET} a \textit{EN}. Ostatné signály a stavy konečného automatu v kontroléry sú zobrazené v tabuľke \ref{kontrolerFP1}. Pri výpočte je použiťý jeden čítač. Ten slúži na počítanie jednotlivých cyklov výpočtu a zároveň ako signál pre výber hodnoty zo sady registrov \textit{h/N}. Výpočet je naštartovaný signálom \textit{Reset}. V ňom sa uložia počiatočné podmienky do registrov \textit{RD} a \textit{RV}. Následne sa pokračuje nasledujúcimi stavmi \textit{Init, MulDYxH, SetupToRD} v ktorých prebieha násobenie a začiatok výpočtu sčítania. V stave \textit{SaveToRD} je vypočítaná hodnota nového člena Taylorovej rady uložená do registra \textit{RD}. V ďalšom stave \textit{SaveToRV} je už hodnota členu sčítaná s hodnotou \textit{RV} a naspäť uložená do registra \textit{RV}. Výpočet \textit{N} krát cykli a prejde do stavu \textit{Result}. V registri \textit{RV} sa nachádza výsledná hodnota rovnice \ref{jednoducha_rovnica}.
+
 
 \bigskip
 \begin{table}[H]
@@ -857,25 +903,25 @@ Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 3
 \textbf{Result} & X & X & X & 0 & 0 & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}If en = 0 ?\\ Result : Init\end{tabular}} \\ \hline
 \end{tabular}
 \caption{Kontrolér jednovstupového integrátora v FP}
-\label{my-label}
+\label{kontrolerFP1}
 \end{table}
 
 
+\subsubsection*{Deliaci a násobiaci integrátor}
+Implementovaný bol aj násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež oba vo verziách s 32 bitmi a 64 bitmi. Jednotlivé stavy a nastavenia signálov násobiaceho integrátora sú popísané v tabuľke \ref{kontrolermulfp}. Pri porovnaní s tebouľkou násobiacého integrátora v pevnej rádovej čiarke \ref{kontrolermulfx} môžeme vidieť, že výpočet oboch integrátorov prebieha rovnako. Rozdiel je v dĺžke vykonávania operácie násobenia, ktorá potrebuje o dva hodinové takty viacej ako varianta s FX aritmetiku. Operácia sčítania potrebuje jeden takt naviac. 
+TODO výpočítať počet operácii
 
-Ďalej bol implementovaný násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež vo verziách s 32 bitmi a 64 bitmi. Integrátory obsahujú paralelnú FP násobičku, paralelnú FP deličku a paralelnú FP sčítačku. Všetky komponenty boli prezvaté z xx a následne upravené a optimalizované pre daný výpočet. Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinovcýh taktoch, kedže pracujeme v pohyblivej rádovej čiarke. Jednotlivé operácie boli popísané v kapitole xx. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt.
+Popis kotnroléru deliaceho integrátora je v tabuľke \ref{kontrolerdivfp}. Pri porovnaní s tabulkou deliaceho integrátora vo FX aritmetike \ref{kontrolerdivfx} je vidieť, že výpočet prebieha podobne v oboch typoch integrátorv. Rozdiel je rovnako ako uá násobiacich integrátorov, v dĺžke vykonávania operácií delenia, násobenia a sčítania. Násobenie sa vykonáva v troch taktoch hodinového signálu a sčítanie v dvoch taktoch (rovnako ako u násobiaceho integrátora). Zaujímavostou je však operácia delenie. Vo FP aritmetike je použitá paralelná delička používvajúca paralelný algoritmus bez návratu k nezápornému zvyšku. Dĺžka výpočtu trvá iba jeden hodinový takt.
+
+
+%Hodnoty kroku \textit{h} a jeho podielov nie sú uložené v komponente integrátora, ale sú privádzané z nadradenej komonenty. Dôvodom je redukovanie duplicity registrov. Podrobnejšie vysvetlenie nájdeme v kapitole \ref{impl_rovnice}.
+
+
+
 
 \section{Sústava integrátorv} \label{impl_rovnice}
-Podľa schémy zapojenia xx bola imeplementovaná komponenta počítajúca diferenciálnu rovnicu xx. Boli použité integrátory v pohyblivej rádovej čiarke so 64 bitmi - konkrétne jednovstupový integrátor a násobiaci integrátor. Ďalej bola použitá komponenta invertor. Kedže pracujeme vo FP, invertor vykonáva jednouché invertovanie znamienkového bitu. 
-Každý integrátor je riadneý svojim vlastným kontrolérom, celé zapojenie je potom ovládané hlavným kontrolérom pomocou signálov RESET a EN. Na začiatku výpočtu sú nahrané počiatočné podmienky do integrátorov. Následne je pomocou povolovacieho signálu EN spustený výpočet na všetkých integrátorch naraz. Všetky integrátory používajú pri výpočte hodnoty h a h/i. Pre optimalizáciu priestorovej zložitosti bola použitá iba jedna sada registrov h. Výber registru h je riadený pomocou signálu SELH. Jeho hodnota je určená podľa čítača cyklov. Hodnota čítača je inkrementovaná na kocni každého cyklu. Pri začatí nového cyklu je táto hodnota použitá pre signál SELH.
-Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s po dokončení výpočtu čakajú na násobiaci integrátor. Ten po dokončení výpočtu aktivuje signál OEN na 1. Kontrolér následne spustí výpočet každého integrátora odznova. Toto sa opakuje až kým výpočet jedného kroku metódy neskončí. Pri výpočte ďalšieho kroku výpočtu sú obnovené počiatočné podmienky a výpočet sa znova vykoná.
-
-\begin{figure}[h]
-\centering
-\scalebox{0.5}{\includegraphics{obrazky/rovnica.png}}
-\caption{Schéma zapojenia integrátorov}
-\label{ppi_fp_sustava_impl}
-\end{figure}
-
+Podľa schémy zapojenia  \ref{ppi_fp_sustava} v sekcií \ref{navrhSustava} bola implementovaná komponenta počítajúca diferenciálnu rovnicu \ref{dif_sint_et}. Komponentu tvorí násobiaci a deliaci integrátor v pohyblivej rádovej čiarke so 64 bitmi. Ďalej bola použitá komponenta invertor. Každý integrátor v zapojení používa sadu registrov \textit{h/N}. Pre zníženie priestorovej náročnosti bola použitá len jedna sada týchto registrov. Veľkosť sady závisí od rádu metódy ktorú chceme použiť. Výpočet bol implementovaný v dvoch variantách počítajúcich s Taylorovou metódou 8. rádu a s Taylorovou metódou až 32. rádu.
+Každý integrátor je riadený svojim vlastným kontrolérom. Celé zapojenie je ešte ovládané hlavným kontrolérom, ktorý ovláda ostatné a to pomocou signálov \textit{Reset} a \textit{EN}. Výpočet prebieha v každom integrátore samostane spôsobom takmer rovnakým aký bol popísaný v predchádzajúcich sekciách tejto kapitoly. Rozdiel je že integrátory nepracujú úplne ako samostatné komponenty s predpočítanými hodnotami, ale v zapojení do sústavy integrátorov kde vstupné hodnoty prichádzajú postupne. Upravené boli niektoré kroky kontroléra u použitých integrátorov. Upravený kontrolér jednovstupého integrátora je v tabuľke \ref{kontrolerppirovnica}. Rozdieľ je, že  integrátor neobsahuje signál \textit{SELh}, kedže sada registrov bola vytvorená ako zdielaný komponent medzi všetkými integrátormi. Signál \textit{SELh} je teraz ovládaný pomocou hlavného kontroléra. Ďalej neobsahuje podmienku na ukončenie výpočtu po dosiahnutí stanoveného počtu cyklov. Tá je  taktiež v totmo príade v réžií hlavného kontroléra. Rovnakými úpravami prešiel aj kontrolér násobiecho integrátora. V násobaicom integrátore bol pridaný ešte jedne výstup pre prečítanie výslednej hodnoty z registra $ RV $. 
 
 
 % Please add the following required packages to your document preamble:
@@ -898,9 +944,33 @@ Kedže výpočet násobiaceho integrátora trvá dlhšie, integrátory q, r a s 
 \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Result}} & \multicolumn{4}{l|}{\begin{tabular}[c]{@{}l@{}}if ENDyx = 0 ?\\      if en = 0 ? Result : MulDYxh\\ : InitDy\end{tabular}} \\ \hline
 \end{tabular}
 \caption{Kontrolér jednovstupového integrátora v FP v zapojení do sústavy}
-\label{my-label}
+\label{kontrolerppirovnica}
 \end{table}
 
+Na začiatku výpočtu je hlavný kontrolér uvedaný do stavu \textit{Reset} a signálom privedie ostatné integrátori taktiež do stavu \textit{Reset}. V tomto stave sú nahrané počiatočné podmienky do integrátorov a privedené na výstup každého integrátora. Hodnota sa tak dostane na potrebné vstupy integrátorov. Následne je pomocou povolovacieho signálu \textit{EN} spustený výpočet na všetkých integrátorch naraz. Vstupné hodnoty násobaiceho integrátoru sú uložené do sady registrov \textit{DR(N-1)} a \textit{DQ(N-1)}. Výpočet pokračuje samostatne v každom integrátore. Kedže však výpočet násobiaceho integrátora trvá najdlhšie z použitých integrátorov, ostatné integrátory q, r a s po dokončení výpočtu čakajú na násobiaci integrátor. Ten po dokončení výpočtu aktivuje signál \textit{OEN (output enable)} na 1. Tento signál je privedený do hlavného kotroléru, ktorý následne spustí ďalší cyklus výpočtu nastavením signálu \textit{EN} do 1 v každom integrátore schémy. Toto sa opakuje až kým výpočet jedného kroku metódy neskončí. Pri výpočte ďalšieho kroku výpočtu sú obnovené počiatočné podmienky a výpočet sa znova vykoná.
+
+% Výber registru h je riadený pomocou signálu SELH. Jeho hodnota je určená podľa čítača cyklov. Hodnota čítača je inkrementovaná na kocni každého cyklu. Pri začatí nového cyklu je táto hodnota použitá pre signál SELH.
+
+
+FPGA na prípravku FitKit 2.0 nie je dostatčne veľké na implementácia tejto  sústavy rovníc predstavenej v sekcií \ref{navrhSustava}, preto bola navrhnutá jednoduchšia diferenciálna rovnica v tvare:
+
+\begin{equation}
+y' = y * e^{at}
+\end{equation}
+\bigskip
+
+Schéma zapojenia tejto rovnice je zobrazená na obrázku \ref{ppi_fp_sustava_impl}. Obsahuje len dva integrátory. Jeden jednovstupý integrátor a jeden násobiaci integrátor. Oba v pevnej rádovej čiarke na 32 bitoch. Pre zníženia miesta je rovnica počítaná s Taylorovou metódou 4. rádu. Komponenta \textit{a} predstavuje konštantu, ktorou je násobená výstupná hodnota integrátora \textit{z}. Vynásobená hodnota je privedená naspäť na vstup tohto integrátora. Toto zapojenie počíta funkciu $ e^{at} $. Integrátor \textit{y} je zapojený taktiež do smyčky a spolu s integrátorom \textit{z} a komponentom \textit{a} tvoria schému zapojenia počítajúc zadanú rovnicu. Do oboch integrátorov je privedená zbernica zo sady registrov $ h $.
+
+\bigskip
+\begin{figure}[h]
+\centering
+\scalebox{0.5}{\includegraphics{obrazky/rovnica.png}}
+\caption{Schéma zapojenia integrátorov}
+\label{ppi_fp_sustava_impl}
+\end{figure}
+
+
+Ovládanie komponentov na prírpavku FitKit 2.0 je relizované cez terminál programu QDevKit. Po inicializáci komunikácie prebieha v nekonečnej smyčke metódou pooling čítanie z riadiaceho registra a z registra výsledku. Hodnoty registrov sú vypisované v terminály v hexadecimálnej forme. Príkazom \textit{help} je možné si zobraziť nápovedu ovládania integrátora. Príkazom \textit{DATAY} je možné nahráť počiatočnú podmienku do integrátora \textit{y} a príkazom \textit{DATAV} do integrátora \textit{v}. Hondoty počiatočnej podienky je nutné zadávať v hexadeximálnej forme s veľkými písmenami. Je to kvôli prevodu z textovej formy do číselnej, ktorá je následne uložená do registra. Krok metódy nie je možné meniť počas behu aplikácie. Je stanovený na hodnotu \textit{0.1}. Po zadaní počiatočných podmienok je výpočet možné spustiť príkazom \textit{START}. Tým sa nastaví povolovací signál \textit{EN} a začne výpočet. Následne je výsledok po jednom kroku zobrazení v terminály. Pre výpočet hodnoty v ďalšom kroku je potrebné zadať ďalšie počiatočné podmienky a výpočet môže pokračovať.
 
 
 
