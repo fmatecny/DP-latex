@@ -7,10 +7,10 @@
 \contentsline {figure}{\numberline {4.2}{\ignorespaces IEEE 754 form\IeC {\'a}t s~jednoduchou presnos\IeC {\v t}ou\relax }}{14}{figure.caption.5}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces IEEE 754 form\IeC {\'a}t s~dvojitou presnos\IeC {\v t}ou\relax }}{14}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Sch\IeC {\'e}ma jendovstup\IeC {\'e}ho a dvojvstup\IeC {\'e}ho integr\IeC {\'a}tora\relax }}{18}{figure.caption.11}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Sch\IeC {\'e}ma jednovstup\IeC {\'e}ho integr\IeC {\'a}tora}}}{18}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Sch\IeC {\'e}ma dvojvstup\IeC {\'e}ho n\IeC {\'a}sobiaceho/deliaceho integr\IeC {\'a}tora}}}{18}{subfigure.1.2}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Paralelno-paraleln\IeC {\'y} n\IeC {\'a}sobiaci integr\IeC {\'a}tor \cite {ZavadaBP}.\relax }}{20}{figure.caption.12}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Sch\IeC {\'e}ma jednovstupov\IeC {\'e}ho a dvojvstupov\IeC {\'e}ho integr\IeC {\'a}tora\relax }}{18}{figure.caption.11}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Sch\IeC {\'e}ma jednovstupov\IeC {\'e}ho integr\IeC {\'a}tora}}}{18}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Sch\IeC {\'e}ma dvojvstupov\IeC {\'e}ho n\IeC {\'a}sobiaceho/deliaceho integr\IeC {\'a}tora}}}{18}{subfigure.1.2}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Paralelno-paraleln\IeC {\'y} n\IeC {\'a}sobiaci integr\IeC {\'a}tor \cite {ZavadaBP}.\relax }}{19}{figure.caption.12}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Paralelno-paraleln\IeC {\'y} deliaci integr\IeC {\'a}tor \cite {MatecnyBP}.\relax }}{21}{figure.caption.14}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Paraleln\IeC {\'y} jednovstupov\IeC {\'y} integr\IeC {\'a}tor v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke.\relax }}{23}{figure.caption.16}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces EXP - blok pracuj\IeC {\'u}ci s~exponentmi.\relax }}{24}{figure.caption.17}
@@ -19,10 +19,11 @@
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Sch\IeC {\'e}ma zapojenia integr\IeC {\'a}torov \cite {MatecnyBP}\relax }}{28}{figure.caption.21}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces FX aritmetika numerick\IeC {\'e}ho integr\IeC {\'a}tora.\relax }}{30}{figure.caption.23}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces FX aritemtika delaiceho integr\IeC {\'a}tora na 32 bitoch.\relax }}{31}{figure.caption.25}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces FX aritmetika delaiceho integr\IeC {\'a}tora na 64 bitoch.\relax }}{31}{figure.caption.26}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Sch\IeC {\'e}ma zapojenia integr\IeC {\'a}torov\relax }}{38}{figure.caption.35}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces FX aritemtika deliaceho integr\IeC {\'a}tora na 32 bitoch.\relax }}{31}{figure.caption.25}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces FX aritmetika deliaceho integr\IeC {\'a}tora na 64 bitoch.\relax }}{31}{figure.caption.26}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Sch\IeC {\'e}ma zapojenia integr\IeC {\'a}torov\relax }}{39}{figure.caption.35}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Stavy jednotliv\IeC {\'y}ch integr\IeC {\'a}torov.\relax }}{40}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsfinish 

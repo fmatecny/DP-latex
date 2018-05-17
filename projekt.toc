@@ -16,10 +16,10 @@
 \contentsline {subsection}{\numberline {4.2.2}N\IeC {\'a}sobenie a delenie}{17}{subsection.4.2.2}
 \contentsline {chapter}{\numberline {5}Numerick\IeC {\'e} integr\IeC {\'a}tory}{18}{chapter.5}
 \contentsline {section}{\numberline {5.1}N\IeC {\'a}vrh n\IeC {\'a}sobiaceho integr\IeC {\'a}tora v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{19}{section.5.1}
-\contentsline {section}{\numberline {5.2}N\IeC {\'a}vrh deliaceho integr\IeC {\'a}tora v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{21}{section.5.2}
-\contentsline {section}{\numberline {5.3}N\IeC {\'a}vrh jendovstup\IeC {\'e}ho integr\IeC {\'a}tora}{22}{section.5.3}
-\contentsline {section}{\numberline {5.4}N\IeC {\'a}vrh komponentu pre spracovanie exponentov}{23}{section.5.4}
-\contentsline {section}{\numberline {5.5}N\IeC {\'a}vrh n\IeC {\'a}sobiaci integr\IeC {\'a}tora v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{25}{section.5.5}
+\contentsline {section}{\numberline {5.2}N\IeC {\'a}vrh deliaceho integr\IeC {\'a}tora v~pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{20}{section.5.2}
+\contentsline {section}{\numberline {5.3}N\IeC {\'a}vrh jednovstupov\IeC {\'e}ho integr\IeC {\'a}tora}{22}{section.5.3}
+\contentsline {section}{\numberline {5.4}N\IeC {\'a}vrh komponentu na spracovanie exponentov}{23}{section.5.4}
+\contentsline {section}{\numberline {5.5}N\IeC {\'a}vrh n\IeC {\'a}sobiacieho integr\IeC {\'a}tora v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{25}{section.5.5}
 \contentsline {section}{\numberline {5.6}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{26}{section.5.6}
 \contentsline {section}{\numberline {5.7}S\IeC {\'u}stava diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{27}{section.5.7}
 \contentsline {chapter}{\numberline {6}Pop\IeC {\'\i }sanie integr\IeC {\'a}torv vo VHDL}{29}{chapter.6}
@@ -27,9 +27,9 @@
 \contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{36}{section.6.2}
 \contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{37}{section.6.3}
 \contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{40}{chapter.7}
-\contentsline {section}{\numberline {7.1}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 2. radu}{40}{section.7.1}
-\contentsline {section}{\numberline {7.2}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 4. radu}{40}{section.7.2}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{41}{chapter.8}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{42}{chapter*.36}
-\contentsline {chapter}{\numberline {A}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho pam\IeC {\v e}\IeC {\v t}ov\IeC {\'e}ho m\IeC {\'e}dia}{44}{appendix.A}
+\contentsline {section}{\numberline {7.1}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 2. r\IeC {\'a}du}{41}{section.7.1}
+\contentsline {section}{\numberline {7.2}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 4. r\IeC {\'a}du}{41}{section.7.2}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{42}{chapter.8}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{43}{chapter*.38}
+\contentsline {chapter}{\numberline {A}Obsah CD}{45}{appendix.A}
 \contentsfinish 
