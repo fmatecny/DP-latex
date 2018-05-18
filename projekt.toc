@@ -27,9 +27,7 @@
 \contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{36}{section.6.2}
 \contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{37}{section.6.3}
 \contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{40}{chapter.7}
-\contentsline {section}{\numberline {7.1}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 2. r\IeC {\'a}du}{41}{section.7.1}
-\contentsline {section}{\numberline {7.2}Porovanie Taylorovej rady s met\IeC {\'o}dou Runge-Kutta 4. r\IeC {\'a}du}{41}{section.7.2}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{42}{chapter.8}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{43}{chapter*.38}
-\contentsline {chapter}{\numberline {A}Obsah CD}{45}{appendix.A}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{43}{chapter.8}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{44}{chapter*.38}
+\contentsline {chapter}{\numberline {A}Obsah CD}{46}{appendix.A}
 \contentsfinish 

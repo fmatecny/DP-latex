@@ -1,16 +1,6 @@
 %=========================================================================
 % (c) Michal Bidlo, Bohuslav Křena, 2008
 
-
-%čo všetko môžem prebrať z BP?
-%graf s num. chybami? nie
-%čo všetko môžem prebrať zo závadovej BP?priloha
-%čo všetko môžem prebrať od čambora? popis násobenia/sčítania priloha
-%na kolko členov bude pracovať taylorová rada? treba tolko registrov 20/40
-%aká sústava rovníc? aké zapojenie?
-%ako bude prebiehať obhajoba?
-%pevná rádová čiarka obrázok je česky....mám rperobiť na slovenský?netreba
-
 \chapter{Úvod}
 Hlavným cieľom tejto práce je návrh hardvérových komponentov na riešenie rozsiahlych diferenciálnych rovníc. Diferenciálne rovnice sa väčšinou riešia pomocou numerickej integrácie, a teda s~použitím vhodných numerických metód. Hardvérový komponent využívajúci numerickú integráciu sa nazýva numerický integrátor.
 
@@ -26,8 +16,6 @@ Vzájomným zapojením navrhnutých numerických integrátorov je možné rieši
 
 \chapter{Numerická integrácia} \label{NUM_INTEGRACIA}
 %popis počáteční úlohy, diskretizace, exaktné/numerické riešenie
-
-
 Diferenciálne rovnice sú matematické rovnice, v~ktorých ako premenné vystupujú derivácie funkcií. Najvyššia derivácia v~rovnici udáva rád rovnice. Rovnice, ktoré obsahujú derivácie len podľa jednej premennej, sa nazývajú obyčajné diferenciálne rovnice (ODR). Rovnice, ktoré obsahujú derivácie podľa viacerých premenných, sú takzvané parciálne diferenciálne rovnice (PDR).
 Diferenciálnu rovnicu je možné riešiť analyticky alebo použitím numerickej metódy. Pri väčšine praktických úloh je analytické riešenie veľmi zložité, preto sa používa skôr riešenie numerické. Základným princípom numerického riešenia je diskretizácia premenných, keď spojitú veličinu nahradíme postupnosťou diskrétnych bodov. Pri použití dostatočne hustého rozloženia bodov môžeme približne reprezentovať spojitú veličinu. Vzdialenosť medzi dvoma susednými bodmi sa nazýva krok metódy. Numerické metódy pri svojom výpočte používajú niekoľko predchádzajúcich krokov. Podľa počtu týchto krokov rozdeľujeme numerické metódy na metódy jednokrokové a viackrokové. Jednokrokové metódy pri svojom výpočte používajú len jeden predchádzajúci krok, viackrokové metódy využívajú niekoľko predchádzajúcich krokov. Pri numerických metódach je teda potrebné zvoliť počiatočný stav, t. j. počiatočnú podmienku riešenej úlohy. Od nej sa následne počíta hodnota funkcie v ďalšom bode \cite{NumMetody}. 
 
@@ -692,14 +680,14 @@ V ďalšej kapitole si predstavíme implementáciu popísaných integrátorov a 
 
 
 \chapter{Popísanie integrátorv vo VHDL}
-Jednotlivé integrátory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim s pomocou použitia \textit{testbanchu}. Potom boli niektoré z integrátorov otestované na programovateľnom hradlovom poli FPGA.
+Jednotlivé integrátory predstavené v kapitole \ref{NUM_INTEGRATORY} boli popísané v jazyku VHDL v prostredí Xilinx ISE a následne odsimulované v nástroji Model Sim s pomocou použitia \textit{testbanchu}. Potom boli niektoré z integrátorov otestované na programovateľnom hradlovom poli FPGA.
 Pre priestorovú zložitosť paralelných integrátorov bola snaha implementovať integrátory na rozsiahlejšom čipe FPGA, a to konkrétne na VIRTEX-5 s čipom XC5VSX50T. Pre prácu s týmto čipom je potrebná plná verzia programu Xilinx ISE s licenciou. Poskytnutie licencie od VUT FIT pre študenta však nie je možné. Riešením nakoniec bolo použitie licencie pomocou pripojenia sa na fakultnú sieť cez VPN. Následne bol integrátor implementovaný na VIRTEX-5, avšak skončenie výpočtu bolo možné zistiť len rozsvietením diódy, čo je nepoužiteľný spôsob na získanie hodnoty výsledku. Preto bolo snahou výsledok zobraziť na LCD displeji, prípadne vytvoriť komunikáciu cez terminál. Sprevádzkovanie displeja podľa rôznych návodov bolo neúspešné a pre komunikáciu s terminálom bolo potrebné doinštalovať ďalšie programy. Vzhľadom na dané komplikácie bolo teda nutné použiť iný čip, a to konkrétne FPGA Spartan 3 XC3S50, ktorý je použitý v študijnej pomôcke FitKit 2.0. Veľkosť tohto FPGA je však veľmi malá, a ani jeden z navrhnutých integrátorov nie je možné naprogramovať na tento čip. Po konzultácii s Ing. Václavom Šimekom sme začali pracovať s prípravkom FitKit 2.0 s vymeneným FPGA za väčší, a to za Spartan 3 XC3S400. Práca s týmto FPGA je kompatibilná s predchádzajúcim čipom, a preto bolo možné na programovanie použiť nástroj QDevKit. Ide o multiplatformový terminálový program pre jednoduchú prácu s FitKitom. Všetky parametre sú už v programe nastavené a komunikácia prebieha cez USB namiesto emulovaného sériového portu, ako je to pri iných terminálových programoch. Informácie o FitKite, o programe QDevKit a taktiež návody na vytvorenie vlastnej aplikácie boli čerpané z webstránky FitKitu \cite{fitkit}.
 Na FitKite bol odskúšaný jednovstupový integrátor s 32 bitovou floating point aritmetikou. Tento integrátor bol vybraný pre jeho najmenšiu priestorovú zložitosť. Ďalej bol implementovaný integrátor počítajúci rovnicu xx. Integrátor pracuje na 32 bitoch a používa FX aritmetiku. Rovnica je počítaná Taylorovou radou 4. rádu. Ostatné integrátory a verzie integrátorov nie je možné nahrať na FPGA, ktoré je použité vo FitKite.
 
 Jednotlivé časti integrátorov boli popísané samostatne a následne bola vytvorená štruktúra vzájomného prepojenia, ktorá tvorí celý integrátor. Pri každom integrátore sú jednotlivé kroky výpočtu riadené kontrolórom. Ten je tvorení cyklickým konečným automatom. Cyklus vyplýva z rovníc \eqref{suma_mul} a \eqref{suma_div}, keďže výpočet jednotlivých členov je podobný, avšak so zväčšujúcim sa počtom operácií. Samozrejme, po skončení výpočtu je možné pomocou signálu $ RESET $ prejsť do počiatočného stavu a zadaním novej počiatočnej podmienky začať nový výpočet. Ďalej podrobnejšie popíšeme jednotlivé integrátory.
 
 \section{Integrátory v pevnej rádovej čiarke}
-Všetky integrátory v pevnej rádovej čiarke (t. j. deliaci, násobiaci a jednovstupový integrátor) kódujú čísla v dvojkovom kóde. Použité sčítačky a násobičky sú paralelné a výpočet operácie trvá jeden hodinový takt. Pri výpočte je však potrebné použiť dva takty, aby došlo k ustáleniu signálov: jeden na nastavenie signálov a druhý na uloženie výsledku.
+Všetky integrátory v pevnej rádovej čiarke (t. j. deliaci, násobiaci a jednovstupový integrátor) kódujú čísla v dvojkovom kóde. Použité sčítačky a násobičky sú paralelné a výpočet operácie trvá jeden hodinový takt. Pri výpočte je však potrebné použiť dva takty, aby došlo k ustáleniu signálov: jeden na nastavenie signálov a druhý na uloženie výsledku.
 
 \subsubsection*{Násobiaci integrátor}
 
@@ -716,7 +704,7 @@ Pre 32 i 64 bitovú verziu bola použitá FX aritmetika, ktorá je názorne zobr
 \end{figure}
 \bigskip
 
-Násobiaci integrátor je ovládaný pomocou kontrolóra. Jednotlivé stavy kontrolóra a nastavenia signálov sú uvedené v tabuľke \ref{kontrolermulfx}. Kontrolór obsahuje 9 stavov a dva čítače \textit{count} a \textit{countQ}. Čítač \textit{count} udáva číslo aktuálneho cyklu a \textit{countQ} je v každom cykle nastavený na hodnotu \textit{count} a postupne sa dekrementuje. Výpočet začína nastavením signálu \textit{reset} na logickú 1. To spôsobí prepnutie násobiaceho integrátora do stavu s rovnakým názvom, čiže \textit{Reset}. V ňom sa integrátor uvedie do počiatočného stavu. Vynulujú sa počítadlá a čaká sa na povoľovací signál \textit{EN}, ktorým sa prepne integrátor do stavu \textit{Init}. V tomto stave je nahraná počiatočná podmienka a sú uložené vstupné hodnoty. Výpočet prejde do stavu \textit{MulDQxDRx}. V ňom sú vynásobené jednotlivé členy \textit{DQi} a \textit{DRj}, kde $ i, j $ značí aktuálne počítaný člen. Z rovnice \ref{suma_mul} vyplýva, že sa vykonáva násobenie kombinácií týchto členov. Na to slúžia spomenuté čítače \textit{count} a \textit{countQ}. Na základe čítačov sa nastavia signály \textit{SELR} a \textit{SELQ}. Po vynásobení členov je výsledok v stave \textit{WriteAcc} uložený do akumulátora. Zo stavu \textit{WriteAcc} je integrátor prepnutý buď do stavu \textit{SetupCounter}, alebo do stavu \textit{MulAccH\_RV}. V stave \textit{SetupCounter} sa dekrementuje počítadlo \textit{countQ} a začína sa násobenie ďalšej kombinácie členov \textit{DQi} a \textit{DQj}. Ak sú vynásobené všetky kombinácie týchto členov, stačí potom už len vynásobiť obsah akumulátora hodnotou $ h/N $. Integrátor je teda prepnutý do stavu \textit{MulAccH\_RV} a vykoná sa operácia násobenia. Výsledok je uložený do registra \textit{RD} (nejde o variantu "posledného" integrátora v zapojení). Potom je v stave \textit{SaveToAcc} sčítaná hodnota s hodnotou registra \textit{RV} a následne je uložená do akumulátora. V ďalšom stave \textit{SaveToRv} je výsledok v \textit{ACC} uložený do registra \textit{RV}. Výpočet končí v stave \textit{Result}, v ktorom je nastavený signál \textit{OEN} (output enable) na logickú jednotku. Po nastavení povoľovacieho signálu \textit{EN} na logickú jednotku je výpočet znova spustený s novými hodnotami.
+Násobiaci integrátor je ovládaný pomocou kontrolóra. Jednotlivé stavy kontrolóra a nastavenia signálov sú uvedené v tabuľke \ref{kontrolermulfx}. Kontrolór obsahuje 9 stavov a dva čítače \textit{count} a \textit{countQ}. Čítač \textit{count} udáva číslo aktuálneho cyklu a \textit{countQ} je v každom cykle nastavený na hodnotu \textit{count} a postupne sa dekrementuje. Výpočet začína nastavením signálu \textit{reset} na logickú 1. To spôsobí prepnutie násobiaceho integrátora do stavu s rovnakým názvom, čiže \textit{Reset}. V ňom sa integrátor uvedie do počiatočného stavu. Vynulujú sa počítadlá a čaká sa na povoľovací signál \textit{EN}, ktorým sa prepne integrátor do stavu \textit{Init}. V tomto stave je nahraná počiatočná podmienka a sú uložené vstupné hodnoty. Výpočet prejde do stavu \textit{MulDQxDRx}. V ňom sú vynásobené jednotlivé členy \textit{DQi} a \textit{DRj}, kde $ i, j $ značí aktuálne počítaný člen. Z rovnice \ref{suma_mul} vyplýva, že sa vykonáva násobenie kombinácií týchto členov. Na to slúžia spomenuté čítače \textit{count} a \textit{countQ}. Na základe čítačov sa nastavia signály \textit{SELR} a \textit{SELQ}. Po vynásobení členov je výsledok v stave \textit{WriteAcc} uložený do akumulátora. Zo stavu \textit{WriteAcc} je integrátor prepnutý buď do stavu \textit{SetupCounter}, alebo do stavu \textit{MulAccH\_RV}. V stave \textit{SetupCounter} sa dekrementuje počítadlo \textit{countQ} a začína sa násobenie ďalšej kombinácie členov \textit{DQi} a \textit{DQj}. Ak sú vynásobené všetky kombinácie týchto členov, stačí potom už len vynásobiť obsah akumulátora hodnotou $ h/N $. Integrátor je teda prepnutý do stavu \textit{MulAccH\_RV} a vykoná sa operácia násobenia. Výsledok je uložený do registra \textit{RD} (nejde o variantu "posledného" integrátora v zapojení). Potom je v stave \textit{SaveToAcc} sčítaná hodnota s hodnotou registra \textit{RV} a následne je uložená do akumulátora. V ďalšom stave \textit{SaveToRv} je výsledok v \textit{ACC} uložený do registra \textit{RV}. Výpočet končí v stave \textit{Result}, v ktorom je nastavený signál \textit{OEN} (output enable) na logickú jednotku. Po nastavení povoľovacieho signálu \textit{EN} na logickú jednotku je výpočet znova spustený s novými hodnotami.
 
 \subsubsection*{Deliaci integrátor}
 
@@ -976,14 +964,16 @@ Zo sústavy ronvíc vytvoríme schému zapojenia integrátorov, ktorá je na obr
 \end{figure}
 
 
-Ovládanie komponentov na prírpavku FitKit 2.0 je relizované cez terminál programu QDevKit. Po inicializáci komunikácie prebieha v nekonečnej smyčke metódou pooling čítanie z riadiaceho registra a z registra výsledku. Hodnoty registrov sú vypisované v terminály v hexadecimálnej forme. Príkazom \textit{help} je možné si zobraziť nápovedu ovládania integrátora. Príkazom \textit{DATAY} je možné nahráť počiatočnú podmienku do integrátora \textit{y} a príkazom \textit{DATAV} do integrátora \textit{v}. Hondoty počiatočnej podmienky je nutné zadávať v hexadeximálnej forme s veľkými písmenami. Je to kvôli prevodu z textovej formy do číselnej, ktorá je následne uložená do registra. Krok metódy nie je možné meniť počas behu aplikácie. Je stanovený na hodnotu \textit{0.1}. Po zadaní počiatočných podmienok je výpočet možné spustiť príkazom \textit{START}. Tým sa nastaví povolovací signál \textit{EN} a začne výpočet. Následne je výsledok po jednom kroku zobrazení v terminály. Pre výpočet hodnoty v ďalšom kroku je potrebné zadať ďalšie počiatočné podmienky a výpočet môže pokračovať.
+Ovládanie komponentov na prírpavku FitKit 2.0 je relizované cez terminál programu QDevKit. Po inicializácii komunikácie prebieha v nekonečnej smyčke metódou pooling čítanie z riadiaceho registra a z registra výsledku. Hodnoty registrov sú vypisované v terminály v hexadecimálnej forme. Príkazom \textit{help} je možné si zobraziť nápovedu ovládania integrátora. Príkazom \textit{DATAY} je možné nahráť počiatočnú podmienku do integrátora \textit{y} a príkazom \textit{DATAV} do integrátora \textit{v}. Hondoty počiatočnej podmienky je nutné zadávať v hexadeximálnej forme s veľkými písmenami. Je to kvôli prevodu z textovej formy do číselnej, ktorá je následne uložená do registra. Krok metódy nie je možné meniť počas behu aplikácie. Je stanovený na hodnotu \textit{0.1}. Po zadaní počiatočných podmienok je výpočet možné spustiť príkazom \textit{START}. Tým sa nastaví povolovací signál \textit{EN} a začne výpočet. Následne je výsledok po jednom kroku zobrazení v terminály. Pre výpočet hodnoty v ďalšom kroku je potrebné zadať ďalšie počiatočné podmienky a výpočet môže pokračovať.
+%Výpočet hodnoty v ďalšom kroku metódy je možné vykonať zadaním nových počiatočných poemienok, ktoré sme získali v predchádzajúcom kroku výpočtu.
+Pri zadaní počiatočných podmienok sú zadané hodnoty uložené v pamäťi MCU. Od
 TODO popísať prácu MCU.+obrázok? 
 
 
 \chapter{Analýza}
 V tejto kapitole zanalyzujeme dosiahnuté výsledky. Analyzovať môžeme rôzne vlastnosti navrhnutého procesoru a taktiež použitej Taylorovej rady. Najdôležitejšími vlastnosťami sú presnosť výsledku, časová náročnosť a priestorová zložitosť. V tejto analýze sa budeme zaoberať časovou zložitosťou numerických metód a ich presnosťou. Porovnáme Taylorovu radu s metódami nižších rádov, ako sú Eulerova metóda, metóda Runge-Kutta 2. rádu a metóda Runge-Kutta 4. rádu. Tieto metódy sú popísane v kapitole \ref{NUM_INTEGRACIA}.
 
-V prvom rade vypočítame čas procesora, potrebný na výpočet sústavy rovníc \ref{rovnicasustava}. V každom takte sa procesor nachádza v nejakom stave. Z výpisu jednotlivých stavov kontrolórov tak môžeme vypočítať, koľko stavov je potrebných na výpočet pri použití rôzneho rádu metódy.
+V prvom rade vypočítame čas procesora, potrebný na výpočet sústavy rovníc \ref{rovnicasustava}. V každom takte sa procesor nachádza v nejakom stave. Z výpisu jednotlivých stavov kontrolórov tak môžeme vypočítať, koľko stavov je potrebných na výpočet pri použití rôzneho rádu metódy. Výsledný počet stavov potom uvádza koľko taktov procesoru je potrených na výpočet. Z frekvencie procesora a z počtu taktov následne získame celkový čas výpočtu.
 
 \bigskip
 \begin{figure}[h]
@@ -993,44 +983,59 @@ V prvom rade vypočítame čas procesora, potrebný na výpočet sústavy rovní
 \label{stavyimg}
 \end{figure}
 
-Zobrazenie jednotlivých stavov kontrolórov je na obrázku \ref{stavyimg}. Jednotlivé bunky predstavujú stavy kontrolóra. Zelenou farbou je znázornený hlavný kontrolór, ktorý ovláda oba integrátory. Žltou farbou sú znázornené stavy jednovstupového integrátora a modrou farbou stavy násobiaceho integrátora. Hlavný kontrolór je v stave \textit{WeitForY} počas celého výpočtu integrátorov. Do ďalšieho stavu prejde po skončení výpočtu násobiaceho integrátora, keďže jeho výpočet trvá dlhšie. Ak sa dosiahol maximálny rád metódy, hlavný kontrolór prejde do stavu \textit{Result}. V opačnom prípade výpočet pokračuje stavom \textit{SetupCount} a je začatý nový cyklus výpočtu. Počet stavov $ T_h $ hlavného integrátora môžeme vyjadriť vzťahom
+Zobrazenie jednotlivých stavov kontrolórov je na obrázku \ref{stavyimg}. Jednotlivé bunky predstavujú stavy kontrolórov. Zelenou farbou je znázornený hlavný kontrolór, ktorý ovláda oba integrátory. Žltou farbou sú znázornené stavy jednovstupového integrátora a modrou farbou stavy násobiaceho integrátora. Hlavný kontrolór je v stave \textit{WeitForY} počas celého výpočtu integrátorov. Z tohto stavu prejde do ďalšieho až po skončení výpočtu násobiaceho integrátora, keďže jeho výpočet trvá najdlhšie. Ak sa dosiahol maximálny rád metódy, hlavný kontrolór prejde do stavu \textit{Result}. V opačnom prípade výpočet pokračuje stavom \textit{SetupCount} a je začatý nový cyklus výpočtu. Počet taktov $ T_h $ hlavného kontrolóra, a teda celého výpočtu, môžeme vyjadriť vzťahom
+
+\begin{eqnarray}
+T_h & = & 2 + 1 + W + 3(N-1) + 1 \nonumber \\
+T_h & = & 1 + W + 3N \, ,
+\end{eqnarray}
+
+kde $ W $ znamená počet stavov v stave \textit{WaitForY}. \textit{N} označuje počet cyklov výpočtu, čiže použitý rád Taylorovej metódy.
+Výpočet jednovstupového integrátora trvá konštantných 6 stavov. Výpočet násobiaceho integrátora trvá 8 stavov a v každom ďalšom cykle je ich počet zvýšený o štyri. Z toho vyplýva, že $ W $ môžeme vyjadriť ako
 
 \begin{equation}
-T_h = 2t + 1t + Wt + 3t*(N-1) + 1t = 1t + Wt + 3t*N \, ,
-\end{equation}
-
-kde $ Wt $ znamená počet stavov v stave \textit{WaitForY}. \textit{N} označuje počet cyklov výpočtu, čiže použitý rád Taylorovej metódy.
-Výpočet jednovstupového integrátora trvá konštantných 6 stavov. Výpočet násobiaceho integrátora trvá 8 stavov a v každom ďalšom cykle je ich počet zvýšený o štyri. Z toho vyplýva, že $ Wt $ môžeme vyjadriť ako
-
-\begin{equation}
-Wt = 6t*N + N*(N+1) + N*(N-1) \, .
+W = 6N + N(N+1) + N(N-1) \, .
 \end{equation}
 \bigskip
 
-Výsledný počet taktov \textit{T} procesora počítajúceho rovnicu \ref{rovnica} vypočítame z predchádzajúcich vzťahov nasledovne:
+Výsledný čas \textit{T} procesora počítajúceho rovnicu \ref{rovnica} vypočítame z predchádzajúcich vzťahov nasledovne:
 \begin{eqnarray}
-T & = & 1t + Wt + 3t*N \nonumber \\ 
-T & = & 1t + 6t*N + 1t*N*(N+1) + 1t*N*(N-1) + 3t*N \nonumber \\
-T & = & 1t + 9tN + 2tN^2 \, .
+T & = & T_h * t_{clk} \nonumber \\
+T & = & (1 + W + 3N)*t_{clk} \nonumber \\ 
+T & = & (1 + 6N + 1N(N+1) + 1N(N-1) + 3N)*t_{clk} \nonumber \\
+T & = & (1 + 9N + 2N^2)*t_{clk} \nonumber \\
+T & = & 1t_{clk} + 9t_{clk}N + 2t_{clk}N^2 \, .
 \end{eqnarray}
 
-
-Ďalším analyzovaným kritériom je presnosť numerických metód. Na porovnanie presnosti potrebujeme vedieť exaktné riešenie problému, ktorý riešime. Rovnica \ref{rovnica} má exaktné riešenie nasledovné:
+Symbol $ t_{clk} $ udáva čas periódy jedného taktu. Zo vzťahu môžme vidieť že časová zložitosť výpočtu je kvadratická.
+Ďalším analyzovaným kritériom je presnosť numerických metód. Na porovnanie presnosti potrebujeme poznať exaktné riešenie problému, ktorý riešime. Rovnica \ref{rovnica} má exaktné riešenie nasledovné:
 
 \begin{equation}
 y' = e^{\frac{e^{at}}{a}} e^{-\frac{1}{a}} ,
 \end{equation}
 \bigskip
 
-kde \textit{t} je čas jedného taktu a \textit{N} je rád metódy.
-Porovnanie jednotlivých metód je zobrazené v tabuľke  
+
+Porovnanie jednotlivých metód je zobrazené v tabuľke \ref{tableanalyza}. Porovnanie jendotlivých metód spočívalo nájdením maximálneho kroku $ h_{max} $ každéj z metód tak, aby rozdiel najvyšších členov metód v čase $ t_{max} $ bol čo najmenší. Chyba výpočtu Eulerovej metódy bola určená podľa vzťahu:
+\begin{equation}
+error = |y_{euler}(t_{max}) - y_{exact}(t_{max})|
+\end{equation}
+\bigskip
+
+Ronvaký postup výpočtu chyby bol použiťý aj u ostatných matódach. Výsledný počet operácií (stavov) výpočtu 
 
 
+
+
+%\scriptsize
+%\catcode`\-=12
+%\setlength\tabcolsep{1.5pt}
+%\centering
 
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[H]
+\begin{table}[]
 \scriptsize
 \catcode`\-=12
 \setlength\tabcolsep{1.5pt}
@@ -1038,19 +1043,18 @@ Porovnanie jednotlivých metód je zobrazené v tabuľke
 \begin{tabular}{|l|r|r|r|r|r|r|r|}
 \hline
 \rowcolor[HTML]{34CDF9} 
-\textbf{metódy} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{krok}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{\begin{tabular}[c]{@{}l@{}}Hodnota najvyššieho\\ člena\end{tabular}}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{čas t}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{výsledok}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{chyba výpočtu}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{stavy/krok}} & \multicolumn{1}{l|}{\cellcolor[HTML]{34CDF9}\textbf{počet operácii}} \\ \hline
-\cellcolor[HTML]{DAE8FC}\textbf{Euler} & 0.00044 & 0.000304474495351315 & 1.00012 & 1.88165390491486 &  & 2273 & 2273*12=27276 \\ \hline
-\cellcolor[HTML]{DAE8FC}\textbf{R-K 2} & 0.03750 & -0.000307508395053446 & 1.01250 & 1.8904869556427 &  & 27 & 27*27=729 \\ \hline
-\cellcolor[HTML]{DAE8FC}\textbf{R-K 4.} & 0.35000 & 0.000317726255161688 & 1.05000 & 1.91570568084717 &  & 3 & 3*56=168 \\ \hline
-\cellcolor[HTML]{DAE8FC}\textbf{Taylor 8} & 1.00000 & -0.000306254019960761 & 1.00000 & 1.88219249248505 &  & 1 & 69 \\ \hline
-\cellcolor[HTML]{DAE8FC}\textbf{\begin{tabular}[c]{@{}l@{}}Exaktné\\ riešenie\end{tabular}} &  &  & 1.00000 & 1.88159639 & 0 &  &  \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{34CDF9}\textbf{metódy}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{$h_{max}$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{\begin{tabular}[c]{@{}c@{}}hodnota\\ najvyššieho\\ člena\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{$t_{max}$}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{výsledok}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{error}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{\begin{tabular}[c]{@{}c@{}}počet\\ krokov\\ {[}$t_{max}/h_{max}${]}\end{tabular}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{34CDF9}\textbf{\begin{tabular}[c]{@{}c@{}}počet operácii\\ {[}$T*(t_{max}/h_{max})${]}\end{tabular}}} \\ \hline
+\cellcolor[HTML]{DAE8FC}\textbf{Euler} & 0.00044 & 3.045E-04 & 1.00012 & 1.88165390491486 & 25.544E-06 & 2273 & 27276 \\ \hline
+\cellcolor[HTML]{DAE8FC}\textbf{R-K 2} & 0.03750 & -3.075E-04 & 1.01250 & 1.89048695564270 & 272.236E-06 & 27 & 729 \\ \hline
+\cellcolor[HTML]{DAE8FC}\textbf{R-K 4.} & 0.35000 & 3.177E-04 & 1.05000 & 1.91570568084717 & 45.604E-06 & 3 & 168 \\ \hline
+\cellcolor[HTML]{DAE8FC}\textbf{Taylor 8} & 1.00000 & -3.063E-04 & 1.00000 & 1.88219249248505 & 596.105E-06 & 1 & 69 \\ \hline
 \end{tabular}
-\caption{My caption}
-\label{my-label}
+\caption{Porovnanie presnosti a rýchlosti numerických metód.}
+\label{tableanalyza}
 \end{table}
 
-\section{Porovanie Taylorovej rady s metódou Runge-Kutta 2. rádu}
-\section{Porovanie Taylorovej rady s metódou Runge-Kutta 4. rádu}
+%\section{Porovanie Taylorovej rady s metódou Runge-Kutta 2. rádu}
+%\section{Porovanie Taylorovej rady s metódou Runge-Kutta 4. rádu}
 
 \chapter{Záver}
 V~tejto práci sme sa zaoberali numerickou integráciou pomocou metódy Taylorovej rady. Úpravou jej členov sme získali potrebné rovnice, z~ktorých boli vytvorené jednotlivé návrhy integrátorov.
