@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{36}{section.6.2}
 \contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{37}{section.6.3}
 \contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{40}{chapter.7}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{43}{chapter.8}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{44}{chapter*.38}
-\contentsline {chapter}{\numberline {A}Obsah CD}{46}{appendix.A}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{44}{chapter.8}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{45}{chapter*.39}
+\contentsline {chapter}{\numberline {A}Obsah CD}{47}{appendix.A}
 \contentsfinish 

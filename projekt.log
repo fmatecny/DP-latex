@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  18 MAY 2018 21:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  20 MAY 2018 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1331,9 +1331,6 @@ LaTeX Warning: Label `my-label' multiply defined.
 
 LaTeX Warning: Label `my-label' multiply defined.
 
-
-LaTeX Warning: Label `my-label' multiply defined.
-
 )
 \openout1 = `projekt.aux'.
 
@@ -1461,7 +1458,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 ...}{\numberline {A}Obsah CD}{46}{appendix.A}
+l.32 ...}{\numberline {A}Obsah CD}{47}{appendix.A}
                                                    [1
 
 
@@ -1541,7 +1538,7 @@ ps-converted-to.pdf obrazky/pevna_rad_carkaa.eps>
 (epstopdf)             \includegraphics on input line 271.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=403, 427.5975pt x 85.31876pt
+<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=405, 427.5975pt x 85.31876pt
 >
 File: obrazky/pevna_rad_carkaa-eps-converted-to.pdf Graphic file (type pdf)
  <use obrazky/pevna_rad_carkaa-eps-converted-to.pdf>
@@ -1560,7 +1557,7 @@ ps-converted-to.pdf obrazky/pevna_rad_carkab.eps>
 (epstopdf)             \includegraphics on input line 272.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=404, 192.72pt x 43.16125pt>
+<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=406, 192.72pt x 43.16125pt>
 File: obrazky/pevna_rad_carkab-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkab-eps-converted-to.pdf>
@@ -1579,7 +1576,7 @@ ps-converted-to.pdf obrazky/pevna_rad_carkac.eps>
 (epstopdf)             \includegraphics on input line 273.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=405, 200.75pt x 44.165pt>
+<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=407, 200.75pt x 44.165pt>
 File: obrazky/pevna_rad_carkac-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkac-eps-converted-to.pdf>
@@ -1598,7 +1595,7 @@ ps-converted-to.pdf obrazky/pevna_rad_carkad.eps>
 (epstopdf)             \includegraphics on input line 274.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=406, 193.72375pt x 44.165pt>
+<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=408, 193.72375pt x 44.165pt>
 File: obrazky/pevna_rad_carkad-eps-converted-to.pdf Graphic file (type pdf)
 <use obrazky/pevna_rad_carkad-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkad-eps-converted-to.pdf used on 
@@ -1620,7 +1617,7 @@ nverted-to.pdf obrazky/IEEE754_32b.eps>
 (epstopdf)             \includegraphics on input line 304.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_32b-eps-converted-to.pdf, id=428, 1372.12625pt x 271.0125pt>
+<obrazky/IEEE754_32b-eps-converted-to.pdf, id=430, 1372.12625pt x 271.0125pt>
 File: obrazky/IEEE754_32b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_32b-eps-converted-to.pdf>
@@ -1638,7 +1635,7 @@ nverted-to.pdf obrazky/IEEE754_64b.eps>
 (epstopdf)             \includegraphics on input line 315.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_64b-eps-converted-to.pdf, id=429, 1372.12625pt x 274.02374pt>
+<obrazky/IEEE754_64b-eps-converted-to.pdf, id=431, 1372.12625pt x 274.02374pt>
 File: obrazky/IEEE754_64b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_64b-eps-converted-to.pdf>
@@ -1663,7 +1660,7 @@ File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 450.
 
-<obrazky/jednoduchy_integrator.pdf, id=485, 268.8975pt x 227.5333pt>
+<obrazky/jednoduchy_integrator.pdf, id=487, 268.8975pt x 227.5333pt>
 File: obrazky/jednoduchy_integrator.pdf Graphic file (type pdf)
 
 <use obrazky/jednoduchy_integrator.pdf>
@@ -1671,7 +1668,7 @@ Package pdftex.def Info: obrazky/jednoduchy_integrator.pdf used on input line 4
 60.
 (pdftex.def)             Requested size: 172.99007pt x 146.38113pt.
 
-<obrazky/del_nas_integrator.pdf, id=486, 268.8975pt x 227.5333pt>
+<obrazky/del_nas_integrator.pdf, id=488, 268.8975pt x 227.5333pt>
 File: obrazky/del_nas_integrator.pdf Graphic file (type pdf)
 
 <use obrazky/del_nas_integrator.pdf>
@@ -1689,7 +1686,7 @@ Underfull \hbox (badness 1014) in paragraph at lines 461--461
 
 pdfTeX warning: pdflatex (file ./obrazky/del_nas_integrator.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
->] <obrazky/ppni.png, id=529, 717.882pt x 398.288pt>
+>] <obrazky/ppni.png, id=531, 717.882pt x 398.288pt>
 File: obrazky/ppni.png Graphic file (type png)
  <use obrazky/ppni.png>
 Package pdftex.def Info: obrazky/ppni.png used on input line 480.
@@ -1700,20 +1697,20 @@ Overfull \hbox (2.75717pt too wide) in paragraph at lines 490--513
  []
 
 [19 <./obrazky/ppni.png>] [20]
-<obrazky/ppdi.png, id=551, 776.501pt x 501.875pt>
+<obrazky/ppdi.png, id=553, 776.501pt x 501.875pt>
 File: obrazky/ppdi.png Graphic file (type png)
  <use obrazky/ppdi.png>
 Package pdftex.def Info: obrazky/ppdi.png used on input line 526.
 (pdftex.def)             Requested size: 776.49911pt x 501.87376pt.
 
-[21 <./obrazky/ppdi.png>] <obrazky/ppi.png, id=566, 724.306pt x 505.89pt>
+[21 <./obrazky/ppdi.png>] <obrazky/ppi.png, id=568, 724.306pt x 505.89pt>
 File: obrazky/ppi.png Graphic file (type png)
 
 <use obrazky/ppi.png>
 Package pdftex.def Info: obrazky/ppi.png used on input line 576.
 (pdftex.def)             Requested size: 724.30423pt x 505.88875pt.
  [22]
-<obrazky/ppdi_fp_exp.png, id=573, 353.32pt x 216.81pt>
+<obrazky/ppdi_fp_exp.png, id=575, 353.32pt x 216.81pt>
 File: obrazky/ppdi_fp_exp.png Graphic file (type png)
 
 <use obrazky/ppdi_fp_exp.png>
@@ -1734,7 +1731,7 @@ Overfull \hbox (12.34242pt too wide) in paragraph at lines 623--623
 vej £iarke 
  []
 
-<obrazky/ppni_fp40.png, id=590, 735.548pt x 529.98pt>
+<obrazky/ppni_fp40.png, id=592, 735.548pt x 529.98pt>
 File: obrazky/ppni_fp40.png Graphic file (type png)
 
 <use obrazky/ppni_fp40.png>
@@ -1746,7 +1743,7 @@ Overfull \hbox (8.8504pt too wide) in paragraph at lines 628--629
  []
 
 [25 <./obrazky/ppni_fp40.png>]
-<obrazky/ppdi_fp.png, id=596, 789.349pt x 574.145pt>
+<obrazky/ppdi_fp.png, id=598, 789.349pt x 574.145pt>
 File: obrazky/ppdi_fp.png Graphic file (type png)
  <use obrazky/ppdi_fp.png>
 Package pdftex.def Info: obrazky/ppdi_fp.png used on input line 643.
@@ -1760,7 +1757,7 @@ Overfull \hbox (1.6615pt too wide) in paragraph at lines 643--644
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [26] [27 <./obrazky/ppdi_fp.png>]
-<obrazky/sustava_integratorov.pdf, id=610, 549.60233pt x 843.93578pt>
+<obrazky/sustava_integratorov.pdf, id=612, 549.60233pt x 843.93578pt>
 File: obrazky/sustava_integratorov.pdf Graphic file (type pdf)
 
 <use obrazky/sustava_integratorov.pdf>
@@ -1771,21 +1768,21 @@ Package pdftex.def Info: obrazky/sustava_integratorov.pdf used on input line 67
 Kapitola 6.
 [29
 
-] <obrazky/FXmularitmetika.png, id=643, 685.85648pt x 189.88588pt>
+] <obrazky/FXmularitmetika.png, id=645, 685.85648pt x 189.88588pt>
 File: obrazky/FXmularitmetika.png Graphic file (type png)
 
 <use obrazky/FXmularitmetika.png>
 Package pdftex.def Info: obrazky/FXmularitmetika.png used on input line 701.
 (pdftex.def)             Requested size: 685.8548pt x 189.88539pt.
  [30 <./obrazky/FXmularitmetika.png>]
-<obrazky/FXdivaritmetika32.png, id=653, 867.24pt x 189.88588pt>
+<obrazky/FXdivaritmetika32.png, id=655, 867.24pt x 189.88588pt>
 File: obrazky/FXdivaritmetika32.png Graphic file (type png)
 
 <use obrazky/FXdivaritmetika32.png>
 Package pdftex.def Info: obrazky/FXdivaritmetika32.png used on input line 717.
 (pdftex.def)             Requested size: 867.2379pt x 189.88539pt.
 
-<obrazky/FXdivaritmetika64.png, id=654, 957.93176pt x 189.88588pt>
+<obrazky/FXdivaritmetika64.png, id=656, 957.93176pt x 189.88588pt>
 File: obrazky/FXdivaritmetika64.png Graphic file (type png)
 
 <use obrazky/FXdivaritmetika64.png>
@@ -1808,45 +1805,43 @@ Overfull \hbox (3.498pt too wide) in paragraph at lines 764--781
 
 
 
-] [37] <obrazky/rovnica.png, id=708, 517.935pt x 452.892pt>
+] [37] <obrazky/rovnica.png, id=710, 517.935pt x 452.892pt>
 File: obrazky/rovnica.png Graphic file (type png)
 
 <use obrazky/rovnica.png>
-Package pdftex.def Info: obrazky/rovnica.png used on input line 961.
+Package pdftex.def Info: obrazky/rovnica.png used on input line 958.
 (pdftex.def)             Requested size: 517.93372pt x 452.89088pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[38] [39 <./obrazky/rovnica.png>]
+ [38 <./obrazky/rovnica.png>] [39]
 Kapitola 7.
-<obrazky/stavy.png, id=722, 825.0825pt x 458.71375pt>
+<obrazky/stavy.png, id=724, 825.0825pt x 458.71375pt>
 File: obrazky/stavy.png Graphic file (type png)
  <use obrazky/stavy.png>
-Package pdftex.def Info: obrazky/stavy.png used on input line 979.
+Package pdftex.def Info: obrazky/stavy.png used on input line 975.
 (pdftex.def)             Requested size: 825.08049pt x 458.71263pt.
 
 [40
 
- <./obrazky/stavy.png>]
+ <./obrazky/stavy.png>] [41]
+<obrazky/graf.png, id=739, 670.75594pt x 322.20375pt>
+File: obrazky/graf.png Graphic file (type png)
+ <use obrazky/graf.png>
+Package pdftex.def Info: obrazky/graf.png used on input line 1031.
+(pdftex.def)             Requested size: 670.75429pt x 322.20296pt.
 
-LaTeX Warning: Reference `tableanalyza' on page 41 undefined on input line 1017
-.
-
-[41] [42]
+[42 <./obrazky/graf.png (PNG copy)>] [43]
 Kapitola 8.
-) (./projekt.bbl [43
+) (./projekt.bbl [44
 
 ]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 14.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [44
+) [45
 
 ])
 \c@ttl@toc@chapters=\count314
 
-(./projekt-30-prilohy-appendices.tex [45]
+(./projekt-30-prilohy-appendices.tex [46]
 Pr\IeC {\'\i }loha A.
 
 Underfull \hbox (badness 10000) in paragraph at lines 10--11
@@ -1858,7 +1853,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 \openout7 = `projekt.ptc'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
- [46
+ [47
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
@@ -1866,20 +1861,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 299.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 299.
 Package rerunfilecheck Info: File `projekt.out' has not changed.
-(rerunfilecheck)             Checksum: FCAEF6CD4014BD23B49FE36D879C98E9;6238.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: ABCC9CB6FE48012567F9C265BF904AAC;6238.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23600 strings out of 494878
- 386516 string characters out of 6178664
- 470967 words of memory out of 5000000
- 26314 multiletter control sequences out of 15000+600000
+ 23611 strings out of 494878
+ 386681 string characters out of 6178664
+ 471204 words of memory out of 5000000
+ 26320 multiletter control sequences out of 15000+600000
  116279 words of font info for 86 fonts, out of 8000000 for 9000
  46 hyphenation exceptions out of 8191
  44i,18n,49p,10404b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1902,10 +1894,10 @@ mbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fo
 nts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1
 /public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on projekt.pdf (49 pages, 1193812 bytes).
+Output written on projekt.pdf (50 pages, 1232550 bytes).
 PDF statistics:
- 874 PDF objects out of 1000 (max. 8388607)
- 727 compressed objects within 8 object streams
- 181 named destinations out of 1000 (max. 500000)
- 380 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 883 PDF objects out of 1000 (max. 8388607)
+ 734 compressed objects within 8 object streams
+ 185 named destinations out of 1000 (max. 500000)
+ 385 words of extra memory for PDF output out of 10000 (max. 10000000)
 

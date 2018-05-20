@@ -867,7 +867,7 @@ Postup výpočtu delaiceho integrátora je podobný ako v násobiacom integráto
 
 \section{Integrátory v pohyblivej rádovej čiarke}
 Integrátory v pohyblivéj rádovej čiarke sú implementované vo verzií bez zdielanej komponenty \textit{EXP}. Delička \textit{DIV}, násobiča \textit{MUL} a sčítačka \textit{SUM} spracovávajú znamienko \textit{S}, exponent \textit{E} a mantisu \textit{M} vnútri seba. Konkrétna implementácia týchto komponent bola prevzatá a upravená z \cite{Guide}.  
-Komponenty vykonávajú operácie sčítanie, násobenie a delenie v troch hodinových taktoch, kedže pracujeme v pohyblivej rádovej čiarke a výpočet je náročnejší. Podrobný popís prebiehania týchto operácií v pohyblivéj rádovej čiarke je popísaný v kapitole \ref{REPREZENTACIA_OPERANDOV}. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt a hustota zobrazenia.
+Komponenty vykonávajú operáciu násobenia v 3 taktoch a operáciu sčítania v dvoch taktoch, kedže pracujeme v pohyblivej rádovej čiarke a výpočet je náročnejší. Podrobný popís prebiehania týchto operácií v pohyblivéj rádovej čiarke je popísaný v kapitole \ref{REPREZENTACIA_OPERANDOV}. Výpočet je teda pomalší oproti variante pracujúcej s pevnou rádovou čiakrou, ale o to presnejší a zároveň sa veľmi zväčšil rozsah zobraziteľných hodnôt a hustota zobrazenia.
 
 
 \subsubsection*{Jednovstupový integrátor}
@@ -896,8 +896,7 @@ Jednovstupový integrátor v pohyblivéj rádovej čiarke bol implmentovaný v 3
 
 
 \subsubsection*{Deliaci a násobiaci integrátor}
-Implementovaný bol aj násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež oba vo verziách s 32 bitmi a 64 bitmi. Jednotlivé stavy a nastavenia signálov násobiaceho integrátora sú popísané v tabuľke \ref{kontrolermulfp}. Pri porovnaní s tebouľkou násobiacého integrátora v pevnej rádovej čiarke \ref{kontrolermulfx} môžeme vidieť, že výpočet oboch integrátorov prebieha rovnako. Rozdiel je v dĺžke vykonávania operácie násobenia, ktorá potrebuje o dva hodinové takty viacej ako varianta s FX aritmetiku. Operácia sčítania potrebuje jeden takt naviac. 
-TODO výpočítať počet operácii
+Implementovaný bol aj násobiaci a deliaci integrátor v pohyblivéj rádovej čiarke a taktiež oba vo verziách s 32 bitmi a 64 bitmi. Jednotlivé stavy a nastavenia signálov násobiaceho integrátora sú popísané v tabuľke \ref{kontrolermulfp}. Pri porovnaní s tebouľkou násobiacého integrátora v pevnej rádovej čiarke \ref{kontrolermulfx} môžeme vidieť, že výpočet oboch integrátorov prebieha rovnako. Rozdiel je v dĺžke vykonávania operácie násobenia, ktorá potrebuje o dva hodinové takty viacej ako varianta s FX aritmetiku. Operácia sčítania potrebuje jeden takt naviac.
 
 Popis kotnroléru deliaceho integrátora je v tabuľke \ref{kontrolerdivfp}. Pri porovnaní s tabulkou deliaceho integrátora vo FX aritmetike \ref{kontrolerdivfx} je vidieť, že výpočet prebieha podobne v oboch typoch integrátorv. Rozdiel je rovnako ako uá násobiacich integrátorov, v dĺžke vykonávania operácií delenia, násobenia a sčítania. Násobenie sa vykonáva v troch taktoch hodinového signálu a sčítanie v dvoch taktoch (rovnako ako u násobiaceho integrátora). Zaujímavostou je však operácia delenie. Vo FP aritmetike je použitá paralelná delička používvajúca paralelný algoritmus bez návratu k nezápornému zvyšku. Dĺžka výpočtu trvá iba jeden hodinový takt.
 
@@ -916,7 +915,7 @@ Každý integrátor je riadený svojim vlastným kontrolérom. Celé zapojenie j
 % \usepackage{multirow}
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[]
+\begin{table}[h]
 \centering
 \begin{tabular}{|
 >{\columncolor[HTML]{EFEFEF}}l |c|c|c|c|}
@@ -934,7 +933,7 @@ Každý integrátor je riadený svojim vlastným kontrolérom. Celé zapojenie j
 \caption{Kontrolér jednovstupového integrátora v FP v zapojení do sústavy}
 \label{kontrolerppirovnica}
 \end{table}
-
+TODO skontrolovať tabulky a stavy....6.6. savetorv ?? 
 Na začiatku výpočtu je hlavný kontrolér uvedaný do stavu \textit{Reset} a signálom privedie ostatné integrátori taktiež do stavu \textit{Reset}. V tomto stave sú nahrané počiatočné podmienky do integrátorov a privedené na výstup každého integrátora. Hodnota sa tak dostane na potrebné vstupy integrátorov. Následne je pomocou povolovacieho signálu \textit{EN} spustený výpočet na všetkých integrátorch naraz. Vstupné hodnoty násobaiceho integrátoru sú uložené do sady registrov \textit{DR(N-1)} a \textit{DQ(N-1)}. Výpočet pokračuje samostatne v každom integrátore. Kedže však výpočet násobiaceho integrátora trvá najdlhšie z použitých integrátorov, ostatné integrátory q, r a s po dokončení výpočtu čakajú na násobiaci integrátor. Ten po dokončení výpočtu aktivuje signál \textit{OEN (output enable)} na 1. Tento signál je privedený do hlavného kotroléru, ktorý následne spustí ďalší cyklus výpočtu nastavením signálu \textit{EN} do 1 v každom integrátore schémy. Toto sa opakuje až kým výpočet jedného kroku metódy neskončí. Pri výpočte ďalšieho kroku výpočtu sú obnovené počiatočné podmienky a výpočet sa znova vykoná.
 
 % Výber registru h je riadený pomocou signálu SELH. Jeho hodnota je určená podľa čítača cyklov. Hodnota čítača je inkrementovaná na kocni každého cyklu. Pri začatí nového cyklu je táto hodnota použitá pre signál SELH.
@@ -947,7 +946,6 @@ y' = y * e^{at} \label{rovnica}
 \end{equation}
 
 Rovnciu môžeme prepísať do sústavy diferenciálnych rovníc:
-
 \begin{eqnarray}
 y' & = & y * z , \quad y(0) = 1 \label{rovnicasustava} \\
 z' & = & a * z , \quad z(0) = 1 \text{, kde } a < 0
@@ -955,19 +953,15 @@ z' & = & a * z , \quad z(0) = 1 \text{, kde } a < 0
 
 Zo sústavy ronvíc vytvoríme schému zapojenia integrátorov, ktorá je na obrázku \ref{ppi_fp_sustava_impl}. Obsahuje len dva integrátory. Jeden jednovstupý integrátor a jeden násobiaci integrátor. Oba v pevnej rádovej čiarke na 32 bitoch. Pre zníženia miesta je rovnica počítaná s Taylorovou metódou 4. rádu. Komponenta \textit{a} predstavuje konštantu, ktorou je násobená výstupná hodnota integrátora \textit{z}. Vynásobená hodnota je privedená naspäť na vstup tohto integrátora. Toto zapojenie počíta funkciu $ e^{at} $. Integrátor \textit{y} je zapojený taktiež do smyčky a spolu s integrátorom \textit{z} a komponentom \textit{a} tvoria schému zapojenia počítajúc zadanú rovnicu. Do oboch integrátorov je privedená zbernica zo sady registrov $ h $.
 
-\bigskip
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\scalebox{0.5}{\includegraphics{obrazky/rovnica.png}}
+\scalebox{0.45}{\includegraphics{obrazky/rovnica.png}}
 \caption{Schéma zapojenia integrátorov}
 \label{ppi_fp_sustava_impl}
 \end{figure}
 
 
-Ovládanie komponentov na prírpavku FitKit 2.0 je relizované cez terminál programu QDevKit. Po inicializácii komunikácie prebieha v nekonečnej smyčke metódou pooling čítanie z riadiaceho registra a z registra výsledku. Hodnoty registrov sú vypisované v terminály v hexadecimálnej forme. Príkazom \textit{help} je možné si zobraziť nápovedu ovládania integrátora. Príkazom \textit{DATAY} je možné nahráť počiatočnú podmienku do integrátora \textit{y} a príkazom \textit{DATAV} do integrátora \textit{v}. Hondoty počiatočnej podmienky je nutné zadávať v hexadeximálnej forme s veľkými písmenami. Je to kvôli prevodu z textovej formy do číselnej, ktorá je následne uložená do registra. Krok metódy nie je možné meniť počas behu aplikácie. Je stanovený na hodnotu \textit{0.1}. Po zadaní počiatočných podmienok je výpočet možné spustiť príkazom \textit{START}. Tým sa nastaví povolovací signál \textit{EN} a začne výpočet. Následne je výsledok po jednom kroku zobrazení v terminály. Pre výpočet hodnoty v ďalšom kroku je potrebné zadať ďalšie počiatočné podmienky a výpočet môže pokračovať.
-%Výpočet hodnoty v ďalšom kroku metódy je možné vykonať zadaním nových počiatočných poemienok, ktoré sme získali v predchádzajúcom kroku výpočtu.
-Pri zadaní počiatočných podmienok sú zadané hodnoty uložené v pamäťi MCU. Od
-TODO popísať prácu MCU.+obrázok? 
+Ovládanie komponentov na prírpavku FitKit 2.0 je relizované cez terminál programu QDevKit. Komunikácia medzi MCU (Micro-Controller Unit) a FPGA prebiaha pomocou rozhrania \textit{SPI}. Jednotlivé hodnoty zadávané v terminály sú ukladané do pamäti a cez prevodník \textit{SPI\_ADC} privedené do registrov FPGA. Jednotlivé registre sú vybrané adresovím dekoderom. Po inicializácii komunikácie prebieha v nekonečnej smyčke metódou pooling čítanie z riadiaceho registra a z registra výsledku. Hodnoty registrov sú vypisované v terminály v hexadecimálnej forme. Príkazom \textit{help} je možné si zobraziť nápovedu ovládania integrátora. Príkazom \textit{DATAY} je možné nahráť počiatočnú podmienku do integrátora \textit{y} a príkazom \textit{DATAV} do integrátora \textit{v}. Hondoty počiatočnej podmienky je nutné zadávať v hexadeximálnej forme s veľkými písmenami. Je to kvôli prevodu z textovej formy do číselnej, ktorá je následne uložená do registra. Krok metódy je stanovený na hodnotu \textit{0.1} a nie je ho možné meniť počas behu aplikácie. Je to z dôvodu nutnosti predpočítania podielov kroku \textit{h}. Tie sú už rpedpočítané v sete registrov. Po zadaní počiatočných podmienok je výpočet možné spustiť príkazom \textit{START}. Tým sa nastaví povolovací signál \textit{EN} a začne výpočet. Následne je výsledok po jednom kroku zobrazení v terminály. Pre výpočet hodnoty v ďalšom kroku je potrebné získaný výsledok zadať ako počiatočnú podmienku násobaiceho integráora \textit{y}. Novú počiatočnú podmienku je potrebné zadať aj u jednovstupého integrátora, tú však nepoznáme. Jednoduchým a užívateľky príjemným riešením je výsledné hodnoty v oboch integrátorov z registrov \textit{RV} skopírovali do registrov \textit{RD}. Kvôli tomu bol pridaný signál \textit{RvToRd} do jednovstupového integrátora, ktorý umožní presun zjedného registra do druhého bez nutnosti nahrania počiatočnej podmienky príkazom \textit{DATAV}. Presun hodnoty v násobaicom integrátore je realizovaný na úrovni MCU, kde je hodnota získaného výsledku uložená ako počiatočná podmienka. Celý tento postup je skritý za jednoduchým príkazom \textit{NEXTY}.
 
 
 \chapter{Analýza}
@@ -987,27 +981,59 @@ Zobrazenie jednotlivých stavov kontrolórov je na obrázku \ref{stavyimg}. Jedn
 
 \begin{eqnarray}
 T_h & = & 2 + 1 + W + 3(N-1) + 1 \nonumber \\
-T_h & = & 1 + W + 3N \, ,
+T_h & = & 1 + W + 3N \, , \label{hkontrolerrovnica}
 \end{eqnarray}
 
-kde $ W $ znamená počet stavov v stave \textit{WaitForY}. \textit{N} označuje počet cyklov výpočtu, čiže použitý rád Taylorovej metódy.
-Výpočet jednovstupového integrátora trvá konštantných 6 stavov. Výpočet násobiaceho integrátora trvá 8 stavov a v každom ďalšom cykle je ich počet zvýšený o štyri. Z toho vyplýva, že $ W $ môžeme vyjadriť ako
+kde \textit{N} označuje počet cyklov výpočtu, čiže použitý rád Taylorovej metódy. $ W $ znamená počet stavov (taktov) v stave \textit{WaitForY}. Počet stávov je rovný počtu stavov najdlhšie trvajúcemu komponentu v sústave zapojenia. Označme potom \textit{W} ako $ W_{jv} $ pre jednovstupý integrátor, $ W_{nas} $ pre násobiaci integrátor a $ W_{div} $ pre delaici integrátor.
+Ak je v zapojení len jednovstupový integrátor počet stavov je 5. Celkový čas výpočtu potom vyjadríme nasledovne:
 
-\begin{equation}
-W = 6N + N(N+1) + N(N-1) \, .
-\end{equation}
-\bigskip
-
-Výsledný čas \textit{T} procesora počítajúceho rovnicu \ref{rovnica} vypočítame z predchádzajúcich vzťahov nasledovne:
 \begin{eqnarray}
-T & = & T_h * t_{clk} \nonumber \\
-T & = & (1 + W + 3N)*t_{clk} \nonumber \\ 
-T & = & (1 + 6N + 1N(N+1) + 1N(N-1) + 3N)*t_{clk} \nonumber \\
-T & = & (1 + 9N + 2N^2)*t_{clk} \nonumber \\
-T & = & 1t_{clk} + 9t_{clk}N + 2t_{clk}N^2 \, .
+W_{jv} & = & 5N \nonumber \\ 
+T_{jv} & = & (1 + W_{jv} + 3N)*t_{clk} \nonumber \\ 
+T_{jv} & = & (1 + 5N + 3N)*t_{clk} \nonumber \\
+T_{jv} & = & 1t_{clk} + 8t_{clk}N \, .
 \end{eqnarray}
 
-Symbol $ t_{clk} $ udáva čas periódy jedného taktu. Zo vzťahu môžme vidieť že časová zložitosť výpočtu je kvadratická.
+Symbol $ t_{clk} $ udáva čas periódy jedného taktu. Podobný výpočet vykonáme aj pre násobiaci a pre deliaci integrátor. 
+Výpočet násobiaceho integrátora trvá 8 stavov a v každom ďalšom cykle je ich počet zvýšený o štyri. Z toho vyplýva, že
+
+\begin{eqnarray}
+W_{nas} & = & 6N + N(N+1) + N(N-1)  \nonumber \\
+T_{nas} & = & (1 + W_{nas} + 3N)*t_{clk} \nonumber \\ 
+T_{nas} & = & (1 + 6N + N(N+1) + N(N-1) + 3N)*t_{clk} \nonumber \\
+T_{nas} & = & (1 + 9N + 2N^2)*t_{clk} \nonumber \\
+T_{nas} & = & 1t_{clk} + 9t_{clk}N + 2t_{clk}N^2 \, .
+\end{eqnarray}
+
+Výpočet počtu krokov deliaceho integrátora je zložitejší. V provom cykle sa vykonáva delenie a až pri výpočte ďalších členov Tylorovej rady sa násobia predchádzajúce členy \textit{DVx} a \textit{DUx} vo všetkcýh kombináciach medzi sebou. Výpčet stavov rozdelíme na počet stavov pre výpočet prvého člena a počet stavo prevýpočet ostatných členov Tylorovej rady. Rovnaké rozdelenie môžme vidieť aj v konečnom automate deliaceho integrátora z tabuľky xx. Počet stavov $ W_{div_1} $ pre prvý člen Taylorovej rady, počet stavov ostatných členov $ W_{div_x} $ a celkový počet krokov deliaceho integrátora vypočítame nasledovne:
+
+\begin{eqnarray}
+W_{div_1} & = & 6 + DIV \nonumber \\ 
+W_{div_x} & = & 10(N-1) + N(N-1) + \frac{(N-1)(N-2)}{2} \nonumber \\ 
+W_{div} & = & W_{div_1} + W_{div_x} \nonumber \\ 
+W_{div} & = & 9N - 4 + DIV + N^2 + \frac{N^2-3N+2}{2} \nonumber \\ 
+\end{eqnarray}
+
+Celkový čas výpočtu je potom  
+
+\begin{eqnarray}
+T_{div} & = & (1 + W_{div} + 3N)*t_{clk} \nonumber \\ 
+T_{div} & = & (1 + 9N - 4 + DIV + N^2 + \frac{N^2-3N+2}{2} + 3N)*t_{clk} \nonumber \\
+T_{div} & = & (DIV - 3 + 12N + N^2 + \frac{N^2-3N+2}{2})*t_{clk} \, .
+\end{eqnarray}
+
+Zo vzťahov môžme vidieť, že časová zložitosť výpočtu pri jednovstupovom integrátore je lineárna, pri násobiacom a deliacom integrátore je kvadratická. Časová zložitosť je znázornená na 
+
+
+
+\begin{figure}[H]
+\centering
+\scalebox{0.6}{\includegraphics{obrazky/graf.png}}
+\caption{Schéma zapojenia integrátorov}
+\label{a}
+\end{figure}
+
+
 Ďalším analyzovaným kritériom je presnosť numerických metód. Na porovnanie presnosti potrebujeme poznať exaktné riešenie problému, ktorý riešime. Rovnica \ref{rovnica} má exaktné riešenie nasledovné:
 
 \begin{equation}
@@ -1035,7 +1061,7 @@ Ronvaký postup výpočtu chyby bol použiťý aj u ostatných matódach. Výsle
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[]
+\begin{table}[h]
 \scriptsize
 \catcode`\-=12
 \setlength\tabcolsep{1.5pt}
