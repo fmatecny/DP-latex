@@ -307,6 +307,7 @@ Management}{\@fit@EN}%
 %-----------------------------------------------------------------------------
 %Parametry 
 \define@key{projinfo}{title.cs}{\global\def\@title@CS{#1}}
+\define@key{projinfo}{title.sk}{\global\def\@title@SK{#1}}
 \define@key{projinfo}{title.en}{\global\def\@title@EN{#1}}
 \define@key{projinfo}{faculty.cs}{\def\@faculty@CS{#1}}
 \define@key{projinfo}{faculty.en}{\def\@faculty@EN{#1}}
@@ -679,7 +680,7 @@ Management}{\@fit@EN}%
   \mkuctxttl{18}{\@titlelen}{\ifslovak\@title@CS\else\ifczech\@title@CS\else\@title@EN\fi\fi}
   \mkuctxtt{10}{\ifslovak\@title@EN\else\ifczech\@title@EN\else\@title@CS\fi\fi}
 }{
-  \mkuctxtt{18}{\ifslovak\@title@CS\else\ifczech\@title@CS\else\@title@EN\fi\fi}
+  \mkuctxtt{18}{\ifslovak\@title@SK\else\ifczech\@title@CS\else\@title@EN\fi\fi}
   \mkuctxtt{10}{\ifslovak\@title@EN\else\ifczech\@title@EN\else\@title@CS\fi\fi}
 }
 \vfill

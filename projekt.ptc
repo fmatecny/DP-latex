@@ -1,10 +1,10 @@
 \select@language {slovak}
 \contentsline {chapter}{\numberline {1}\IeC {\'U}vod}{5}{chapter.1}
 \contentsline {chapter}{\numberline {2}Numerick\IeC {\'a} integr\IeC {\'a}cia}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}Taylorova rada}{6}{section.2.1}
+\contentsline {section}{\numberline {2.1}Taylorova rada}{7}{section.2.1}
 \contentsline {section}{\numberline {2.2}Eulerova met\IeC {\'o}da}{7}{section.2.2}
 \contentsline {section}{\numberline {2.3}Runge-Kutta}{7}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Runge-Kutta 2. r\IeC {\'a}du}{7}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Runge-Kutta 2. r\IeC {\'a}du}{8}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Runge-Kutta 4. r\IeC {\'a}du}{8}{subsection.2.3.2}
 \contentsline {chapter}{\numberline {3}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c Taylorovou radou}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Rie\IeC {\v s}enie diferenci\IeC {\'a}lnej rovnice s~oper\IeC {\'a}ciou n\IeC {\'a}sobenia}{10}{section.3.1}
@@ -22,13 +22,13 @@
 \contentsline {section}{\numberline {5.5}N\IeC {\'a}vrh n\IeC {\'a}sobiacieho integr\IeC {\'a}tora v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{25}{section.5.5}
 \contentsline {section}{\numberline {5.6}Deliaci integr\IeC {\'a}tor v~pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{26}{section.5.6}
 \contentsline {section}{\numberline {5.7}S\IeC {\'u}stava diferenci\IeC {\'a}lnych rovn\IeC {\'\i }c}{27}{section.5.7}
-\contentsline {chapter}{\numberline {6}Pop\IeC {\'\i }sanie integr\IeC {\'a}torv vo VHDL}{29}{chapter.6}
+\contentsline {chapter}{\numberline {6}Pop\IeC {\'\i }sanie integr\IeC {\'a}torov vo VHDL}{29}{chapter.6}
 \contentsline {section}{\numberline {6.1}Integr\IeC {\'a}tory v pevnej r\IeC {\'a}dovej \IeC {\v c}iarke}{30}{section.6.1}
 \contentsline {section}{\numberline {6.2}Integr\IeC {\'a}tory v pohyblivej r\IeC {\'a}dovej \IeC {\v c}iarke}{36}{section.6.2}
-\contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torv}{37}{section.6.3}
+\contentsline {section}{\numberline {6.3}S\IeC {\'u}stava integr\IeC {\'a}torov}{37}{section.6.3}
 \contentsline {chapter}{\numberline {7}Anal\IeC {\'y}za}{40}{chapter.7}
-\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{44}{chapter.8}
-\contentsline {chapter}{Literat\IeC {\'u}ra}{45}{chapter*.39}
+\contentsline {chapter}{\numberline {8}Z\IeC {\'a}ver}{45}{chapter.8}
+\contentsline {chapter}{Literat\IeC {\'u}ra}{46}{chapter*.42}
 \ttl@starttoc {chapters@1}
-\contentsline {chapter}{\numberline {A}Obsah CD}{47}{appendix.A}
+\contentsline {chapter}{\numberline {A}Obsah CD}{48}{appendix.A}
 \contentsfinish 

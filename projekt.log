@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  21 MAY 2018 00:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.11.20)  22 MAY 2018 02:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**projekt.tex
+**projekt
 (./projekt.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 7 language(s) loaded.
@@ -1334,28 +1334,28 @@ LaTeX Warning: Label `my-label' multiply defined.
 )
 \openout1 = `projekt.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 161.
-LaTeX Font Info:    ... okay on input line 161.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 161.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 162.
+LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 162.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )<<t1.cmap>>
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 161.
+LaTeX Info: Redefining \selectfont on input line 162.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1387,7 +1387,7 @@ e
 ))
 \c@lstlisting=\count312
 \AtBeginShipoutBox=\box53
-Package hyperref Info: Link coloring ON on input line 161.
+Package hyperref Info: Link coloring ON on input line 162.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1397,9 +1397,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count313
 )
-LaTeX Info: Redefining \ref on input line 161.
-LaTeX Info: Redefining \pageref on input line 161.
-LaTeX Info: Redefining \nameref on input line 161.
+LaTeX Info: Redefining \ref on input line 162.
+LaTeX Info: Redefining \pageref on input line 162.
+LaTeX Info: Redefining \nameref on input line 162.
 
 (./projekt.out) (./projekt.out)
 \@outlinefile=\write3
@@ -1409,7 +1409,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for T1+qhv on input line 167.
+LaTeX Font Info:    Try loading font information for T1+qhv on input line 168.
  (/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
@@ -1425,21 +1425,21 @@ File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 File: template-fig/VUT_symbol_barevne_CMYK_CZ.pdf Graphic file (type pdf)
  <use template-fig/VUT_symbol_barevne_CMYK_CZ.pdf>
 Package pdftex.def Info: template-fig/VUT_symbol_barevne_CMYK_CZ.pdf used on in
-put line 167.
+put line 168.
 (pdftex.def)             Requested size: 116.65646pt x 115.17995pt.
-LaTeX Font Info:    Try loading font information for T1+fos on input line 167.
+LaTeX Font Info:    Try loading font information for T1+fos on input line 168.
 
 (/usr/share/texlive/texmf-dist/tex/latex/opensans/t1fos.fd
 File: t1fos.fd 2011/11/11 Fontinst v1.927 font definitions for T1/fos.
 )
 LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <18> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 167.
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 168.
 LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <11> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 167.
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 168.
 LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <14> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 167.
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 168.
 LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <10> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 167.
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 168.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./template-fig/VUT_symbol_
@@ -1470,7 +1470,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.179    \listoffigures
+l.180    \listoffigures
                         [2] (./projekt.lof)
 \tf@lof=\write5
 \openout5 = `projekt.lof'.
@@ -1479,7 +1479,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.187    \listoftables
+l.188    \listoftables
                        [3
 
 ] (./projekt.lot)
@@ -1500,7 +1500,7 @@ Kapitola 2.
 ] [7] [8]
 Kapitola 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
@@ -1511,19 +1511,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.178 \end{eqnarray}
+l.195 \end{eqnarray}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{equation.3.1.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.178 \end{eqnarray}
+l.195 \end{eqnarray}
                     ] [11] [12pdfTeX warning (ext4): destination with the same 
 identifier (name{equation.3.2.21}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.255 \chapter
+l.272 \chapter
               {Reprezent√°cia operandov} \label{REPREZENTACIA_OPERANDOV}]
 Kapitola 4.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkaa.eps>
@@ -1535,15 +1535,15 @@ pdf>
 (epstopdf)                    size: 9900 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkaa-e
 ps-converted-to.pdf obrazky/pevna_rad_carkaa.eps>
-(epstopdf)             \includegraphics on input line 275.
+(epstopdf)             \includegraphics on input line 292.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=408, 427.5975pt x 85.31876pt
+<obrazky/pevna_rad_carkaa-eps-converted-to.pdf, id=424, 427.5975pt x 85.31876pt
 >
 File: obrazky/pevna_rad_carkaa-eps-converted-to.pdf Graphic file (type pdf)
  <use obrazky/pevna_rad_carkaa-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkaa-eps-converted-to.pdf used on 
-input line 275.
+input line 292.
 (pdftex.def)             Requested size: 190.29305pt x 37.96866pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkab.eps>
 (epstopdf)                    date: 2018-04-29 21:25:55
@@ -1554,15 +1554,15 @@ pdf>
 (epstopdf)                    size: 11305 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkab-e
 ps-converted-to.pdf obrazky/pevna_rad_carkab.eps>
-(epstopdf)             \includegraphics on input line 276.
+(epstopdf)             \includegraphics on input line 293.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=409, 192.72pt x 43.16125pt>
+<obrazky/pevna_rad_carkab-eps-converted-to.pdf, id=425, 192.72pt x 43.16125pt>
 File: obrazky/pevna_rad_carkab-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkab-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkab-eps-converted-to.pdf used on 
-input line 276.
+input line 293.
 (pdftex.def)             Requested size: 175.15459pt x 39.22739pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkac.eps>
 (epstopdf)                    date: 2018-04-29 21:25:31
@@ -1573,15 +1573,15 @@ pdf>
 (epstopdf)                    size: 9116 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkac-e
 ps-converted-to.pdf obrazky/pevna_rad_carkac.eps>
-(epstopdf)             \includegraphics on input line 277.
+(epstopdf)             \includegraphics on input line 294.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=410, 200.75pt x 44.165pt>
+<obrazky/pevna_rad_carkac-eps-converted-to.pdf, id=426, 200.75pt x 44.165pt>
 File: obrazky/pevna_rad_carkac-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/pevna_rad_carkac-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkac-eps-converted-to.pdf used on 
-input line 277.
+input line 294.
 (pdftex.def)             Requested size: 175.15459pt x 38.53642pt.
 Package epstopdf Info: Source file: <obrazky/pevna_rad_carkad.eps>
 (epstopdf)                    date: 2018-04-29 22:15:37
@@ -1592,14 +1592,14 @@ pdf>
 (epstopdf)                    size: 11186 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/pevna_rad_carkad-e
 ps-converted-to.pdf obrazky/pevna_rad_carkad.eps>
-(epstopdf)             \includegraphics on input line 278.
+(epstopdf)             \includegraphics on input line 295.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=411, 193.72375pt x 44.165pt>
+<obrazky/pevna_rad_carkad-eps-converted-to.pdf, id=427, 193.72375pt x 44.165pt>
 File: obrazky/pevna_rad_carkad-eps-converted-to.pdf Graphic file (type pdf)
 <use obrazky/pevna_rad_carkad-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/pevna_rad_carkad-eps-converted-to.pdf used on 
-input line 278.
+input line 295.
 (pdftex.def)             Requested size: 175.15459pt x 39.93208pt.
  [13
 
@@ -1614,15 +1614,15 @@ Package epstopdf Info: Source file: <obrazky/IEEE754_32b.eps>
 (epstopdf)                    size: 13064 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/IEEE754_32b-eps-co
 nverted-to.pdf obrazky/IEEE754_32b.eps>
-(epstopdf)             \includegraphics on input line 308.
+(epstopdf)             \includegraphics on input line 325.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_32b-eps-converted-to.pdf, id=433, 1372.12625pt x 271.0125pt>
+<obrazky/IEEE754_32b-eps-converted-to.pdf, id=449, 1372.12625pt x 271.0125pt>
 File: obrazky/IEEE754_32b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_32b-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/IEEE754_32b-eps-converted-to.pdf used on input
- line 308.
+ line 325.
 (pdftex.def)             Requested size: 1372.12292pt x 271.01183pt.
 Package epstopdf Info: Source file: <obrazky/IEEE754_64b.eps>
 (epstopdf)                    date: 2017-11-22 15:00:36
@@ -1632,51 +1632,51 @@ Package epstopdf Info: Source file: <obrazky/IEEE754_64b.eps>
 (epstopdf)                    size: 12528 bytes
 (epstopdf)             Command: <repstopdf --outfile=obrazky/IEEE754_64b-eps-co
 nverted-to.pdf obrazky/IEEE754_64b.eps>
-(epstopdf)             \includegraphics on input line 319.
+(epstopdf)             \includegraphics on input line 336.
 Package epstopdf Info: Output file is already uptodate.
 
-<obrazky/IEEE754_64b-eps-converted-to.pdf, id=434, 1372.12625pt x 274.02374pt>
+<obrazky/IEEE754_64b-eps-converted-to.pdf, id=450, 1372.12625pt x 274.02374pt>
 File: obrazky/IEEE754_64b-eps-converted-to.pdf Graphic file (type pdf)
 
 <use obrazky/IEEE754_64b-eps-converted-to.pdf>
 Package pdftex.def Info: obrazky/IEEE754_64b-eps-converted-to.pdf used on input
- line 319.
+ line 336.
 (pdftex.def)             Requested size: 1372.12292pt x 274.02307pt.
  [14 <./obrazky/IEEE754_32b-eps-converted-to.pdf> <./obrazky/IEEE754_64b-eps-co
 nverted-to.pdf>] [15] [16]
 [17]
 Kapitola 5.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 454.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 471.
 
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 454
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 471
 .
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 454.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 471.
 
-<obrazky/jednoduchy_integrator.pdf, id=490, 268.8975pt x 227.5333pt>
+<obrazky/jednoduchy_integrator.pdf, id=506, 268.8975pt x 227.5333pt>
 File: obrazky/jednoduchy_integrator.pdf Graphic file (type pdf)
 
 <use obrazky/jednoduchy_integrator.pdf>
 Package pdftex.def Info: obrazky/jednoduchy_integrator.pdf used on input line 4
-64.
+81.
 (pdftex.def)             Requested size: 172.99007pt x 146.38113pt.
 
-<obrazky/del_nas_integrator.pdf, id=491, 268.8975pt x 227.5333pt>
+<obrazky/del_nas_integrator.pdf, id=507, 268.8975pt x 227.5333pt>
 File: obrazky/del_nas_integrator.pdf Graphic file (type pdf)
 
 <use obrazky/del_nas_integrator.pdf>
-Package pdftex.def Info: obrazky/del_nas_integrator.pdf used on input line 465.
+Package pdftex.def Info: obrazky/del_nas_integrator.pdf used on input line 482.
 
 (pdftex.def)             Requested size: 172.99007pt x 146.38113pt.
 
-Underfull \hbox (badness 1014) in paragraph at lines 465--465
+Underfull \hbox (badness 1014) in paragraph at lines 482--482
 []\T1/lmr/m/n/9 (b) |SchÈma dvoj-v-stu-po-vÈho n·-so-bia-ce-ho-
  []
 
@@ -1686,70 +1686,70 @@ Underfull \hbox (badness 1014) in paragraph at lines 465--465
 
 pdfTeX warning: pdflatex (file ./obrazky/del_nas_integrator.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
->] <obrazky/ppni.png, id=534, 717.882pt x 398.288pt>
+>] <obrazky/ppni.png, id=550, 717.882pt x 398.288pt>
 File: obrazky/ppni.png Graphic file (type png)
  <use obrazky/ppni.png>
-Package pdftex.def Info: obrazky/ppni.png used on input line 484.
+Package pdftex.def Info: obrazky/ppni.png used on input line 501.
 (pdftex.def)             Requested size: 717.88025pt x 398.28702pt.
 
-Overfull \hbox (2.75717pt too wide) in paragraph at lines 494--517
+Overfull \hbox (2.75717pt too wide) in paragraph at lines 511--534
  [][] 
  []
 
 [19 <./obrazky/ppni.png>] [20]
-<obrazky/ppdi.png, id=556, 776.501pt x 501.875pt>
+<obrazky/ppdi.png, id=572, 776.501pt x 501.875pt>
 File: obrazky/ppdi.png Graphic file (type png)
  <use obrazky/ppdi.png>
-Package pdftex.def Info: obrazky/ppdi.png used on input line 530.
+Package pdftex.def Info: obrazky/ppdi.png used on input line 547.
 (pdftex.def)             Requested size: 776.49911pt x 501.87376pt.
 
-[21 <./obrazky/ppdi.png>] <obrazky/ppi.png, id=571, 724.306pt x 505.89pt>
+[21 <./obrazky/ppdi.png>] <obrazky/ppi.png, id=587, 724.306pt x 505.89pt>
 File: obrazky/ppi.png Graphic file (type png)
 
 <use obrazky/ppi.png>
-Package pdftex.def Info: obrazky/ppi.png used on input line 580.
+Package pdftex.def Info: obrazky/ppi.png used on input line 597.
 (pdftex.def)             Requested size: 724.30423pt x 505.88875pt.
  [22]
-<obrazky/ppdi_fp_exp.png, id=579, 353.32pt x 216.81pt>
+<obrazky/ppdi_fp_exp.png, id=595, 353.32pt x 216.81pt>
 File: obrazky/ppdi_fp_exp.png Graphic file (type png)
 
 <use obrazky/ppdi_fp_exp.png>
-Package pdftex.def Info: obrazky/ppdi_fp_exp.png used on input line 595.
+Package pdftex.def Info: obrazky/ppdi_fp_exp.png used on input line 612.
 (pdftex.def)             Requested size: 353.31914pt x 216.80946pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [23 <./obrazky/ppi.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 625--626
+Underfull \hbox (badness 10000) in paragraph at lines 642--643
 
  []
 
 [24 <./obrazky/ppdi_fp_exp.png>]
-Overfull \hbox (12.34242pt too wide) in paragraph at lines 627--627
+Overfull \hbox (12.34242pt too wide) in paragraph at lines 644--644
 []\T1/lmr/bx/n/14.4 N·vrh n·-so-bia-cieho in-teg-r·-tora v po-hyb-li-vej r·-do-
 vej £iarke 
  []
 
-<obrazky/ppni_fp40.png, id=595, 735.548pt x 529.98pt>
+<obrazky/ppni_fp40.png, id=611, 735.548pt x 529.98pt>
 File: obrazky/ppni_fp40.png Graphic file (type png)
 
 <use obrazky/ppni_fp40.png>
-Package pdftex.def Info: obrazky/ppni_fp40.png used on input line 632.
+Package pdftex.def Info: obrazky/ppni_fp40.png used on input line 649.
 (pdftex.def)             Requested size: 735.5462pt x 529.97868pt.
 
-Overfull \hbox (8.8504pt too wide) in paragraph at lines 632--633
+Overfull \hbox (8.8504pt too wide) in paragraph at lines 649--650
  [][] 
  []
 
 [25 <./obrazky/ppni_fp40.png>]
-<obrazky/ppdi_fp.png, id=601, 789.349pt x 574.145pt>
+<obrazky/ppdi_fp.png, id=617, 789.349pt x 574.145pt>
 File: obrazky/ppdi_fp.png Graphic file (type png)
  <use obrazky/ppdi_fp.png>
-Package pdftex.def Info: obrazky/ppdi_fp.png used on input line 647.
+Package pdftex.def Info: obrazky/ppdi_fp.png used on input line 664.
 (pdftex.def)             Requested size: 789.34708pt x 574.1436pt.
 
-Overfull \hbox (1.6615pt too wide) in paragraph at lines 647--648
+Overfull \hbox (1.6615pt too wide) in paragraph at lines 664--665
  [][] 
  []
 
@@ -1757,44 +1757,44 @@ Overfull \hbox (1.6615pt too wide) in paragraph at lines 647--648
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [26] [27 <./obrazky/ppdi_fp.png>]
-<obrazky/sustava_integratorov.pdf, id=615, 549.60233pt x 843.93578pt>
+<obrazky/sustava_integratorov.pdf, id=631, 549.60233pt x 843.93578pt>
 File: obrazky/sustava_integratorov.pdf Graphic file (type pdf)
 
 <use obrazky/sustava_integratorov.pdf>
-Package pdftex.def Info: obrazky/sustava_integratorov.pdf used on input line 67
-8.
+Package pdftex.def Info: obrazky/sustava_integratorov.pdf used on input line 69
+5.
 (pdftex.def)             Requested size: 549.60098pt x 843.93372pt.
  [28 <./obrazky/sustava_integratorov.pdf>]
 Kapitola 6.
 [29
 
-] <obrazky/FXmularitmetika.png, id=648, 685.85648pt x 189.88588pt>
+] <obrazky/FXmularitmetika.png, id=666, 685.85648pt x 189.88588pt>
 File: obrazky/FXmularitmetika.png Graphic file (type png)
 
 <use obrazky/FXmularitmetika.png>
-Package pdftex.def Info: obrazky/FXmularitmetika.png used on input line 705.
+Package pdftex.def Info: obrazky/FXmularitmetika.png used on input line 722.
 (pdftex.def)             Requested size: 685.8548pt x 189.88539pt.
  [30 <./obrazky/FXmularitmetika.png>]
-<obrazky/FXdivaritmetika32.png, id=658, 867.24pt x 189.88588pt>
+<obrazky/FXdivaritmetika32.png, id=676, 867.24pt x 189.88588pt>
 File: obrazky/FXdivaritmetika32.png Graphic file (type png)
 
 <use obrazky/FXdivaritmetika32.png>
-Package pdftex.def Info: obrazky/FXdivaritmetika32.png used on input line 721.
+Package pdftex.def Info: obrazky/FXdivaritmetika32.png used on input line 738.
 (pdftex.def)             Requested size: 867.2379pt x 189.88539pt.
 
-<obrazky/FXdivaritmetika64.png, id=659, 957.93176pt x 189.88588pt>
+<obrazky/FXdivaritmetika64.png, id=677, 957.93176pt x 189.88588pt>
 File: obrazky/FXdivaritmetika64.png Graphic file (type png)
 
 <use obrazky/FXdivaritmetika64.png>
-Package pdftex.def Info: obrazky/FXdivaritmetika64.png used on input line 731.
+Package pdftex.def Info: obrazky/FXdivaritmetika64.png used on input line 748.
 (pdftex.def)             Requested size: 957.92943pt x 189.88539pt.
  [31 <./obrazky/FXdivaritmetika32.png> <./obrazky/FXdivaritmetika64.png>] [32]
-Overfull \hbox (10.45879pt too wide) in paragraph at lines 746--760
+Overfull \hbox (10.45879pt too wide) in paragraph at lines 763--777
  [][] 
  []
 
 
-Overfull \hbox (3.498pt too wide) in paragraph at lines 768--785
+Overfull \hbox (3.498pt too wide) in paragraph at lines 785--802
  [][] 
  []
 
@@ -1805,46 +1805,57 @@ Overfull \hbox (3.498pt too wide) in paragraph at lines 768--785
 
 
 
-] [37] <obrazky/rovnica.png, id=713, 517.935pt x 452.892pt>
+] [37] <obrazky/rovnica.png, id=731, 517.935pt x 452.892pt>
 File: obrazky/rovnica.png Graphic file (type png)
 
 <use obrazky/rovnica.png>
-Package pdftex.def Info: obrazky/rovnica.png used on input line 962.
+Package pdftex.def Info: obrazky/rovnica.png used on input line 980.
 (pdftex.def)             Requested size: 517.93372pt x 452.89088pt.
  [38 <./obrazky/rovnica.png>] [39]
 Kapitola 7.
-<obrazky/stavy.png, id=727, 842.14626pt x 689.57625pt>
+<obrazky/stavy.png, id=743, 842.14626pt x 689.57625pt>
 File: obrazky/stavy.png Graphic file (type png)
  <use obrazky/stavy.png>
-Package pdftex.def Info: obrazky/stavy.png used on input line 979.
+Package pdftex.def Info: obrazky/stavy.png used on input line 997.
 (pdftex.def)             Requested size: 842.14421pt x 689.57455pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [40
 
-] [41 <./obrazky/stavy.png>]
-<obrazky/graf.png, id=743, 670.75594pt x 322.20375pt>
+ <./obrazky/stavy.png>] [41]
+<obrazky/graf.png, id=760, 670.75594pt x 322.20375pt>
 File: obrazky/graf.png Graphic file (type png)
  <use obrazky/graf.png>
-Package pdftex.def Info: obrazky/graf.png used on input line 1033.
+Package pdftex.def Info: obrazky/graf.png used on input line 1050.
 (pdftex.def)             Requested size: 670.75429pt x 322.20296pt.
 
 [42 <./obrazky/graf.png (PNG copy)>] [43]
+<obrazky/modelsim81.png, id=782, 582.175pt x 182.6825pt>
+File: obrazky/modelsim81.png Graphic file (type png)
+
+<use obrazky/modelsim81.png>
+Package pdftex.def Info: obrazky/modelsim81.png used on input line 1126.
+(pdftex.def)             Requested size: 582.17358pt x 182.68204pt.
+
+<obrazky/modelsim82.png, id=785, 582.175pt x 184.69pt>
+File: obrazky/modelsim82.png Graphic file (type png)
+
+<use obrazky/modelsim82.png>
+Package pdftex.def Info: obrazky/modelsim82.png used on input line 1133.
+(pdftex.def)             Requested size: 582.17358pt x 184.68953pt.
+ [44 <./obrazky/modelsim81.png> <./obrazky/modelsim82.png>]
 Kapitola 8.
-) (./projekt.bbl [44
+) (./projekt.bbl [45
 
 ]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 14.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [45
+) [46
 
 ])
 \c@ttl@toc@chapters=\count314
 
-(./projekt-30-prilohy-appendices.tex [46]
+(./projekt-30-prilohy-appendices.tex [47]
 Pr\IeC {\'\i }loha A.
 
 Underfull \hbox (badness 10000) in paragraph at lines 10--11
@@ -1855,52 +1866,53 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 \tf@ptc=\write7
 \openout7 = `projekt.ptc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
- [47
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 300.
+ [48
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 300.
  (./projekt.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 299.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 299.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 300.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 300.
 Package rerunfilecheck Info: File `projekt.out' has not changed.
-(rerunfilecheck)             Checksum: ABCC9CB6FE48012567F9C265BF904AAC;6238.
+(rerunfilecheck)             Checksum: C8344F2FF9ABEDD42CDD0EF6DC2D233E;6248.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23613 strings out of 494878
- 386708 string characters out of 6178664
- 471291 words of memory out of 5000000
- 26322 multiletter control sequences out of 15000+600000
+ 23638 strings out of 494878
+ 387153 string characters out of 6178664
+ 471909 words of memory out of 5000000
+ 26338 multiletter control sequences out of 15000+600000
  116279 words of font info for 86 fonts, out of 8000000 for 9000
  46 hyphenation exceptions out of 8191
- 44i,18n,49p,10404b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,18n,49p,10400b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/op
-ensans-02.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/opensans-
-04.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/opensans-01.enc}
-</usr/share/texlive/texmf-dist/fonts/type1/public/opensans/OpenSans-Bold.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on projekt.pdf (50 pages, 1252151 bytes).
+ensans-03.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/opensans-
+02.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/opensans-04.enc}
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/opensans/opensans-01.enc}</usr/s
+hare/texlive/texmf-dist/fonts/type1/public/opensans/OpenSans-Bold.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on projekt.pdf (51 pages, 1280514 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 740 compressed objects within 8 object streams
- 185 named destinations out of 1000 (max. 500000)
- 385 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 927 PDF objects out of 1000 (max. 8388607)
+ 771 compressed objects within 8 object streams
+ 192 named destinations out of 1000 (max. 500000)
+ 395 words of extra memory for PDF output out of 10000 (max. 10000000)
 

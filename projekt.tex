@@ -101,21 +101,22 @@
 %---------------------------------------------------------------------------
 \projectinfo{
   %Prace / Thesis
-  project=SP,            %typ práce BP/SP/DP/DR  / thesis type (SP = term project)
+  project=DP,            %typ práce BP/SP/DP/DR  / thesis type (SP = term project)
   year=2018,             % rok odevzdání / year of submission
   date=\today,           % datum odevzdání / submission date
   %Nazev prace / thesis title
-  title.cs={Hardvérová realizácia numerického \newline integrátora s metódou vyššieho rádu},  % název práce v češtině či slovenštině (dle zadání) / thesis title in czech language (according to assignment)
+  title.cs={Hardwarová realizace numerického integrátoru s metodou vyššího řádu},  % název práce v češtině či slovenštině (dle zadání) / thesis title in czech language (according to assignment)
+    title.sk={Hardwarová realizace numerického \newline integrátoru s metodou vyššího řádu}, 
   title.en={Hardware Realization of Higher Order Numerical Integrator}, % název práce v angličtině / thesis title in english
   %title.length={14.5cm}, % nastavení délky bloku s titulkem pro úpravu zalomení řádku (lze definovat zde nebo níže) / setting the length of a block with a thesis title for adjusting a line break (can be defined here or below)
   %Autor / Author
   %author={Jméno Příjmení},   % celé jméno a příjmení autora / full name and surname of the author
   author.name={František},   % jméno autora / author name
   author.surname={Matečný},   % příjmení autora / author surname 
-  %author.title.p=Bc., % titul před jménem (nepovinné) / title before the name (optional)
+  author.title.p=Bc., % titul před jménem (nepovinné) / title before the name (optional)
   %author.title.a=PhD, % titul za jménem (nepovinné) / title after the name (optional)
   %Ustav / Department
-  department=UIFS, % doplňte příslušnou zkratku dle ústavu na zadání: UPSY/UIFS/UITS/UPGM / fill in appropriate abbreviation of the department according to assignment: UPSY/UIFS/UITS/UPGM
+  department=UITS, % doplňte příslušnou zkratku dle ústavu na zadání: UPSY/UIFS/UITS/UPGM / fill in appropriate abbreviation of the department according to assignment: UPSY/UIFS/UITS/UPGM
   % Školitel / supervisor
   supervisor.name={Václav},   % jméno školitele / supervisor name 
   supervisor.surname={Šátek},   % příjmení školitele / supervisor surname
@@ -125,7 +126,7 @@
   keywords.cs={diferenciálna rovnica, numerická integrácia, Taylorova rada, pevná rádová čiarka, pohyblivá rádová čiarka, integrátor, FPGA}, % klíčová slova v českém či slovenském jazyce / keywords in czech or slovak language
   keywords.en={diferential equnation, numeric integration, Taylor series, fixed point, floating point, integrator, FPGA}, % klíčová slova v anglickém jazyce / keywords in english
   % Abstrakt / Abstract
-  abstract.cs={Práca popisuje numerickú integráciu a riešenie diferenciálnych rovníc pomocou metódy Taylorovej rady v rôznych typoch integrátorov. Ďalej je popísaná aritmetika pevnej a pohyblivej rádovej čiarky. Následne sú predstavené návrhy a spôsob výpočtu paralelných integrátorov s operáciou násobenia a delania v prevedení pevnej a pohyblivej rádovej čiarky. Súčasťou práce je taktiež implementácia sústavy integrátorov v FPGA}, % abstrakt v českém či slovenském jazyce / abstract in czech or slovak language
+  abstract.cs={Práca popisuje numerickú integráciu a riešenie obyčajných diferenciálnych rovníc pomocou metódy Taylorovej rady v rôznych typoch integrátorov. Ďalej je popísaná aritmetika pevnej a pohyblivej rádovej čiarky. Následne sú predstavené návrhy a spôsob výpočtu paralelných integrátorov s operáciou násobenia a delania v prevedení pevnej a pohyblivej rádovej čiarky. Súčasťou práce je taktiež popísanie integrátorov vo VHDL a ich implementácia v FPGA.}, % abstrakt v českém či slovenském jazyce / abstract in czech or slovak language
   abstract.en={This work deals with numerical integration and solution of differential equations by the Taylor series in many types of integrators. Next is described floating point and fixed point arithmetic. Subsequently are presented designs and method of calculation of parallels multiplication and division integrators in floating point and fixed point arithmetic. TODO - opraviť!!}, % abstrakt v anglickém jazyce / abstract in english
   % Prohlášení (u anglicky psané práce anglicky, u slovensky psané práce slovensky) / Declaration (for thesis in english should be in english)
   declaration={Prehlasujem, že som túto diplomovú prácu vypracoval samostatne pod vedením pána Ing. Václava Šátka, Ph.D. Uviedol som všetky literárne pramene a publikáce, z ktorých
